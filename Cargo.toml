@@ -1,12 +1,12 @@
 [package]
-name = "oxidater"
+name = "oxidator"
 version = "0.1.0"
 authors = ["github.com/Aki0x137"]
 edition = "2021"
 
 description = "A reusable LMAX Disruptor Implementation in Rust"
 license-file = "LICENSE"
-repository = "https://github.com/observe-io/oxidater"
+repository = "https://github.com/observe-io/oxidator"
 readme = "README.md"
 categories = ["concurrency", "data-structures"]
 keywords = ["rust", "disruptor", "high-performance"]
