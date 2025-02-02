@@ -1,6 +1,7 @@
 [package]
 name = "oxidater"
 version = "0.1.0"
+authors = ["github.com/Aki0x137"]
 edition = "2021"
 
 [dependencies]
