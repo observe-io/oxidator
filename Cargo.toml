@@ -5,10 +5,10 @@ authors = ["github.com/Aki0x137"]
 edition = "2021"
 
 description = "A reusable LMAX Disruptor Implementation in Rust"
-license = "LICENSE"
+license-file = "LICENSE"
 repository = "https://github.com/observe-io/oxidater"
 readme = "README.md"
-categories = ["concurrency", "performance", "data-structures"]
+categories = ["concurrency", "data-structures"]
 keywords = ["rust", "disruptor", "high-performance"]
 
 
