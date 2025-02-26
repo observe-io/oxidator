@@ -1,2 +1,2 @@
 # oxidater
-A reusable LMAX Disruptor Implementation in Rust
+A reusable LMAX Disruptor Implementation in Rust [In Progress].
