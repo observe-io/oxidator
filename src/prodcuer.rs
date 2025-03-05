@@ -1,4 +1,5 @@
 use std::cell::Cell;
+use std::marker::PhantomData;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use crate::barrier::DefaultSequenceBarrier;
@@ -8,18 +9,20 @@ use crate::utils::min_sequence;
 struct Producer<T, S: Sequencer, D: DataStorage<T>> {
     sequencer: S,
     data_storage: Arc<D>,
+    phantom_data: PhantomData<T>,
 }
 
-impl<T, S: Sequencer, D: DataStorage<T>> Producer<T, S, D> {
+impl<T: Default, S: Sequencer, D: DataStorage<T>> Producer<T, S, D> {
     pub fn new(sequencer: S, data_storage: Arc<D>) -> Self {
         Self {
             sequencer,
             data_storage,
+            phantom_data: PhantomData::default()
         }
     }
 }
 
-impl<'a, T, S: Sequencer + 'a, D: DataStorage<T> + 'a> EventProducer for Producer<T, S, D> {
+impl<T, S: Sequencer, D: DataStorage<T>> EventProducer for Producer<T, S, D> {
     type Event = T;
     fn write<E, F, G>(&self, events: E, func: F)
     where

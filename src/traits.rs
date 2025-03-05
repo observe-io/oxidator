@@ -111,9 +111,9 @@ pub trait EventConsumerMut<T> {
 }
 
 
-pub trait DataStorage<'a, T>: Send + Sync {
+pub trait DataStorage<T>: Send + Sync {
     unsafe fn get_data(&self, s: Sequence) -> &T;
-    unsafe fn get_data_mut(&self, s: Sequence) -> &'a mut T;
+    unsafe fn get_data_mut(&self, s: Sequence) -> &mut T;
     fn capacity(&self) -> usize;
     fn len(&self) -> usize;
 }
