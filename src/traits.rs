@@ -92,7 +92,7 @@ pub trait WaitStrategy {
     fn wait_for<T: AsRef<AtomicSequence>, F: Fn() -> bool>(
         &self,
         sequence: Sequence,
-        gating_sequence: &[T],
+        dependencies: &[T],
         check_alert: F
     ) -> Option<Sequence>;
     fn signal(&self);
