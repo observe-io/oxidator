@@ -28,7 +28,7 @@ pub const CACHE_LINE_SIZE: usize = 64;
 
 pub const CACHE_LINE_PADDING: usize = CACHE_LINE_SIZE - std::mem::size_of::<AtomicI64>();
 
-struct AtomicSequence {
+pub struct AtomicSequence {
     value: AtomicI64,
     _padding: [u8; CACHE_LINE_PADDING]
 }
@@ -69,7 +69,7 @@ pub trait SequenceBarrier {
 
 pub trait Sequencer {
     type Barrier: SequenceBarrier;
-    fn next(&self, count: Sequence) -> (Sequence, Sequence);
+    fn next(&self, count: usize) -> (Sequence, Sequence);
     fn publish(&self, low: Sequence, high: Sequence);
     fn create_barrier(&mut self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier;
     fn add_gating_sequence(&mut self, gating_sequence: Arc<AtomicSequence>);
@@ -79,16 +79,22 @@ pub trait Sequencer {
 
 pub trait EventProducer {
     type Event;
-    fn write<E, F>(&self, events: E, f: F)
+    fn write<E, F, G>(&self, events: E, f: F)
     where
-        E: IntoIterator,
-        F: Fn(&mut E, Sequence, &E);
+        E: IntoIterator<Item = Self::Event, IntoIter = G>,
+        F: Fn(&mut Self::Event, Sequence, &Self::Event),
+        G: ExactSizeIterator<Item = Self::Event>;
     fn drain(&self);
 }
 
 pub trait WaitStrategy {
     fn new() -> Self;
-    fn wait_for(&self, sequence: Sequence, gating_sequence: Vec<AtomicSequence>, check_alert: dyn Fn() -> bool) -> Option<Sequence>;
+    fn wait_for<T: AsRef<AtomicSequence>, F: Fn() -> bool>(
+        &self,
+        sequence: Sequence,
+        gating_sequence: &[T],
+        check_alert: F
+    ) -> Option<Sequence>;
     fn signal(&self);
 }
 
