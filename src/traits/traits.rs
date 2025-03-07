@@ -98,19 +98,6 @@ pub trait WaitStrategy {
     fn signal(&self);
 }
 
-pub trait EventConsumer<T> {
-    type Barrier: SequenceBarrier;
-
-    fn handle_event(&self, event: &T, sequence: Sequence, eob: bool);
-}
-
-pub trait EventConsumerMut<T> {
-    type Barrier: SequenceBarrier;
-
-    fn handle_event(&self, event: &mut T, sequence: Sequence, eob: bool);
-}
-
-
 pub trait DataStorage<T>: Send + Sync {
     unsafe fn get_data(&self, s: Sequence) -> &T;
     unsafe fn get_data_mut(&self, s: Sequence) -> &mut T;
@@ -119,9 +106,36 @@ pub trait DataStorage<T>: Send + Sync {
 }
 
 
+pub trait Concurrent {
+    fn run(&self);
+}
 
+pub trait EventConsumer<T> {
+    type ConcurrentTask: Concurrent;
+    fn init_concurrent_task<S: SequenceBarrier, D: DataStorage<T>>(
+        &self,
+        barrier: S,
+        data_storage: D,
+    ) -> Self::ConcurrentTask;
+    
+    fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
+}
 
+pub trait EventConsumerMut<T> {
+    type ConcurrentTask: Concurrent;
+    fn new<S: SequenceBarrier, D: DataStorage<T>>(
+        &self,
+        barrier: S,
+        data_storage: D,
+    ) -> Self::ConcurrentTask;
 
+    fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
+}
 
+pub trait Task<T> {
+    fn handle_event(&self, event: &T, sequence: Sequence, eob: bool);
+}
 
-
+pub trait TaskMut<T> {
+    fn handle_event(&self, event: &mut T, sequence: Sequence, eob: bool);
+}

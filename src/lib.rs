@@ -1,8 +1,6 @@
-mod ring_buffer;
-mod error;
-mod utils;
 mod consumer;
+mod coordinator;
+mod producer;
+mod storage;
 mod traits;
-mod prodcuer;
-mod barrier;
-mod wait;
+mod utils;

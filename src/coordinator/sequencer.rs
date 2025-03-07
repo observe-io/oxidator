@@ -1,58 +1,9 @@
 use std::cell::Cell;
-use std::marker::PhantomData;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use crate::barrier::DefaultSequenceBarrier;
-use crate::traits::{DataStorage, EventProducer, AtomicSequence, Sequence, Sequencer, WaitStrategy};
+use crate::traits::{AtomicSequence, Sequence, Sequencer, WaitStrategy};
 use crate::utils::min_sequence;
-
-struct Producer<T, S: Sequencer, D: DataStorage<T>> {
-    sequencer: S,
-    data_storage: Arc<D>,
-    phantom_data: PhantomData<T>,
-}
-
-impl<T: Default, S: Sequencer, D: DataStorage<T>> Producer<T, S, D> {
-    pub fn new(sequencer: S, data_storage: Arc<D>) -> Self {
-        Self {
-            sequencer,
-            data_storage,
-            phantom_data: PhantomData::default()
-        }
-    }
-}
-
-impl<T, S: Sequencer, D: DataStorage<T>> EventProducer for Producer<T, S, D> {
-    type Event = T;
-    fn write<E, F, G>(&self, events: E, func: F)
-    where
-        E: IntoIterator<Item = T, IntoIter = G>,
-        F: Fn(&mut T, Sequence, &T),
-        G: ExactSizeIterator<Item = T>
-    {
-        // TODO:
-        // 1. get items iterator
-        let items = events.into_iter();
-        // 2. get start and end slots for available for these events from sequencer
-        let (start, end) = self.sequencer.next(items.len());
-        // 3. loop through items
-        for (i, item) in items.enumerate() {
-            // 4. get data provider slot and write to it
-            let sequence = start + i as Sequence;
-            unsafe {
-                let slot = &mut self.data_storage.get_data_mut(sequence);
-                func(slot, sequence, &item);
-            };
-        }
-        // 5. exit loop
-        // 6. publish on sequencer
-        self.sequencer.publish(start, end);
-    }
-
-    fn drain(&self) {
-        self.sequencer.drain();
-    }
-}
 
 struct SingleProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,
@@ -60,7 +11,7 @@ struct SingleProducerSequencer<W: WaitStrategy> {
     gating_sequences: Vec<Arc<AtomicSequence>>,
     is_done: Arc<AtomicBool>,
     buffer_size: usize,
-    
+
     current_producer_sequence: Cell<Sequence>,
     slowest_consumer_sequence: Cell<Sequence>,
 }
@@ -84,9 +35,9 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     fn next(&self, count: usize) -> (Sequence, Sequence) {
         let curr_producer_idx = self.current_producer_sequence.take();
         let mut consumer_idx = self.slowest_consumer_sequence.take();
-        
+
         let (low, high) = (curr_producer_idx + 1, curr_producer_idx + (count - 1) as i64);
-        
+
         while consumer_idx + (self.buffer_size as Sequence) < high {
             consumer_idx = min_sequence(&self.gating_sequences);
         }
