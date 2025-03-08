@@ -26,7 +26,7 @@ pub const CACHE_LINE_SIZE: usize = 32;
 )))]
 pub const CACHE_LINE_SIZE: usize = 64;
 
-pub const CACHE_LINE_PADDING: usize = CACHE_LINE_SIZE - std::mem::size_of::<AtomicI64>();
+pub const CACHE_LINE_PADDING: usize = CACHE_LINE_SIZE - size_of::<AtomicI64>();
 
 pub struct AtomicSequence {
     value: AtomicI64,
@@ -111,12 +111,17 @@ pub trait Concurrent {
 }
 
 pub trait EventConsumer<T> {
-    type ConcurrentTask: Concurrent;
-    fn init_concurrent_task<S: SequenceBarrier, D: DataStorage<T>>(
+    type ConcurrentConsumer: Concurrent;
+    type Task: Task<T>;
+    type DataStorage: DataStorage<T>;
+    type Barrier: SequenceBarrier;
+    
+    fn init_concurrent_task(
         &self,
-        barrier: S,
-        data_storage: D,
-    ) -> Self::ConcurrentTask;
+        task: Self::Task,
+        barrier: Self::Barrier,
+        data_storage: Self::DataStorage,
+    ) -> Self::ConcurrentConsumer;
     
     fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
 }
@@ -133,9 +138,9 @@ pub trait EventConsumerMut<T> {
 }
 
 pub trait Task<T> {
-    fn handle_event(&self, event: &T, sequence: Sequence, eob: bool);
+    fn execute_task(&self, event: &T, sequence: Sequence, eob: bool);
 }
 
 pub trait TaskMut<T> {
-    fn handle_event(&self, event: &mut T, sequence: Sequence, eob: bool);
+    fn execute_task(&self, event: &mut T, sequence: Sequence, eob: bool);
 }
