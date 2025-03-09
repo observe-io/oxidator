@@ -1,8 +1,8 @@
 use std::marker::PhantomData;
 use std::sync::{Arc};
-use crate::traits::{AtomicSequence, Concurrent, DataStorage, EventConsumer, SequenceBarrier, Task};
+use crate::traits::{AtomicSequence, Worker, DataStorage, EventConsumer, SequenceBarrier, Task};
 
-struct Consumer<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> {
+pub struct Consumer<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> {
     cursor: Arc<AtomicSequence>,
     data_storage: D,
     sequence_barrier: S,
@@ -10,7 +10,7 @@ struct Consumer<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> {
     phantom_data: PhantomData<T>,
 }
 
-impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> Concurrent for Consumer<T, F, D, S> {
+impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> Worker for Consumer<T, F, D, S> {
     fn run(&self) {
         // TODO:
         // 1. get current cursor
@@ -40,17 +40,16 @@ impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> Concurrent for Consum
 
 
 impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> EventConsumer<T> for Consumer<T, F, D, S> {
-    type ConcurrentConsumer = Self;
+    type ConsumerWorker = Self;
     type Task = F;
     type DataStorage = D;
     type Barrier = S;
 
     fn init_concurrent_task(
-        &self,
         task: Self::Task,
         barrier: Self::Barrier,
         data_storage: Self::DataStorage,
-    ) -> Self::ConcurrentConsumer
+    ) -> Self::ConsumerWorker
     {
         Self {
             cursor: Arc::new(AtomicSequence::default()),

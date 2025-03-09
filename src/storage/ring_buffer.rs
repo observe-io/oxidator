@@ -23,14 +23,14 @@ impl <T: Send + Sync + Default> RingBuffer<T> {
     }
 }
 
-impl<'a, T: Send + Sync> DataStorage<'a, T> for RingBuffer<T> {
+impl<'a, T: Send + Sync> DataStorage<T> for RingBuffer<T> {
     unsafe fn get_data(&self, s: Sequence) -> &T {
         let index = (s as usize) & (self.size - 1);
         let data = self.storage.get_unchecked(index);
         &*data.get()
     }
 
-    unsafe fn get_data_mut(&self, s: Sequence) -> &'a mut T {
+    unsafe fn get_data_mut(&self, s: Sequence) -> &mut T {
         let index = (s as usize) & (self.size - 1);
         let data = self.storage.get_unchecked(index);
         &mut *data.get()

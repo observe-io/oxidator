@@ -1,11 +1,11 @@
 use std::cell::Cell;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
-use crate::barrier::DefaultSequenceBarrier;
+use crate::coordinator::DefaultSequenceBarrier;
 use crate::traits::{AtomicSequence, Sequence, Sequencer, WaitStrategy};
 use crate::utils::min_sequence;
 
-struct SingleProducerSequencer<W: WaitStrategy> {
+pub struct SingleProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,
     wait_strategy: Arc<W>,
     gating_sequences: Vec<Arc<AtomicSequence>>,
@@ -73,7 +73,7 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         while min_sequence(&self.gating_sequences) < self.current_producer_sequence.take() {
             self.wait_strategy.signal();
         }
-        self.is_done.store(true, Ordering::AcqRel);
+        self.is_done.store(true, Ordering::SeqCst);
     }
 }
 

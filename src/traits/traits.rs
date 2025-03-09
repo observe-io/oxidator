@@ -43,7 +43,7 @@ impl AtomicSequence {
     }
 
     pub fn compare_exchange(&self, old: Sequence, new: Sequence) -> bool {
-        self.value.compare_exchange(old, new, Ordering::SeqCst, Ordering::AcqRel).is_ok()
+        self.value.compare_exchange(old, new, Ordering::SeqCst, Ordering::Relaxed).is_ok()
     }
 }
 
@@ -106,28 +106,27 @@ pub trait DataStorage<T>: Send + Sync {
 }
 
 
-pub trait Concurrent {
+pub trait Worker: Send {
     fn run(&self);
 }
 
 pub trait EventConsumer<T> {
-    type ConcurrentConsumer: Concurrent;
+    type ConsumerWorker: Worker;
     type Task: Task<T>;
     type DataStorage: DataStorage<T>;
     type Barrier: SequenceBarrier;
     
     fn init_concurrent_task(
-        &self,
         task: Self::Task,
         barrier: Self::Barrier,
         data_storage: Self::DataStorage,
-    ) -> Self::ConcurrentConsumer;
+    ) -> Self::ConsumerWorker;
     
     fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
 }
 
 pub trait EventConsumerMut<T> {
-    type ConcurrentTask: Concurrent;
+    type ConcurrentTask: Worker;
     fn new<S: SequenceBarrier, D: DataStorage<T>>(
         &self,
         barrier: S,
@@ -143,4 +142,13 @@ pub trait Task<T> {
 
 pub trait TaskMut<T> {
     fn execute_task(&self, event: &mut T, sequence: Sequence, eob: bool);
+}
+
+pub trait Orchestrator {
+    fn with_workers(workers: Vec<Box<dyn Worker>>) -> Self;
+    fn start(self) -> impl WorkerHandle;
+}
+
+pub trait WorkerHandle {
+    fn join(&mut self);
 }

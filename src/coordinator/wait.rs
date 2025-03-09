@@ -39,7 +39,7 @@ impl WaitStrategy for BlockingWaitStrategy {
         if slowest_dependency >= sequence {
             return  Some(slowest_dependency)
         } else { // 3. 2. else 'wait' on condition var to be true
-            let _ = self.cvar.wait(blocked).unwrap();
+            let _unused = self.cvar.wait(blocked).unwrap();
         }
         
         // 4. release lock
