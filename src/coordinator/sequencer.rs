@@ -160,6 +160,6 @@ mod tests_sequencer {
         sequencer.publish(low, high);
         
         let cursor = sequencer.get_cursor();
-        assert_eq!(cursor.load(), low);
+        assert_eq!(cursor.load(), high);
     }
 }

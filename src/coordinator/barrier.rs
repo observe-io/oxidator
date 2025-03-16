@@ -57,7 +57,7 @@ mod barrier_tests {
     fn test_wait_returns_none_when_alerted() {
         let dep = Arc::new(AtomicSequence::from(15));
         let wait_strategy = Arc::new(BlockingWaitStrategy::new());
-        let is_done = Arc::new(AtomicBool::new(false));
+        let is_done = Arc::new(AtomicBool::new(true));
         let barrier = DefaultSequenceBarrier::new(vec![dep.clone()], wait_strategy, is_done);
         let result = barrier.wait_for(11);
         assert_eq!(result, None);

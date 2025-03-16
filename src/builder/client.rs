@@ -26,10 +26,13 @@ pub struct SequencerLayer<T: Send + Sync, D: DataStorage<T>, W: WaitStrategy, S:
 }
 
 impl DisruptorClient {
-    pub fn init_data_storage<T: Send + Sync + Default, D: DataStorage<T>>(size: usize) -> DataStorageLayer<T, D> {
-        let storage = RingBuffer::new(size);
-        let data_layer: DataStorageLayer<T, RingBuffer<T>> = DataStorageLayer::new(storage);
-        data_layer
+    fn new<T: Send + Sync + Default, D: DataStorage<T>>(self, data_storage: D) -> DataStorageLayer<T, D> {
+        DataStorageLayer::new(data_storage)
+    }
+
+    pub fn init_data_storage<T: Send + Sync + Default, D: DataStorage<T>>(self, size: usize) -> DataStorageLayer<T, RingBuffer<T>> {
+        let storage: RingBuffer<T> = RingBuffer::new(size);
+        self.new(storage)
     }
 }
 

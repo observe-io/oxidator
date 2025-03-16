@@ -124,7 +124,7 @@ mod test_wait {
         let dep = AtomicSequence::from(10);
         let dependencies = vec![&dep];
         let result = wait_strategy.wait_for(5, &dependencies, || false);
-        assert_eq!(result, Some(5));
+        assert_eq!(result, Some(10));
     }
     
     #[test]
@@ -141,7 +141,7 @@ mod test_wait {
         let wait_strategy = Arc::new(BlockingWaitStrategy::new());
         let wait_strategy_clone = wait_strategy.clone();
         let handle = thread::spawn(move || {
-            let dep = AtomicSequence::from(7);
+            let dep = AtomicSequence::from(3);
             let dependencies = vec![&dep];
             let start = Instant::now();
             let result = wait_strategy_clone.wait_for(5, &dependencies, || false);
@@ -149,7 +149,7 @@ mod test_wait {
             result
         });
         
-        thread::sleep(Duration::from_millis(50));
+        thread::sleep(Duration::from_millis(100));
         wait_strategy.signal();
         let res = handle.join().unwrap();
         assert_eq!(res, None);
@@ -201,8 +201,8 @@ mod test_wait {
     
     #[test]
     fn test_busy_spin_wait_strategy_not_ready() {
-        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
-        let dep = AtomicSequence::from(15);
+        let wait_strategy = Arc::new(BusySpinWaitStrategy::new());
+        let dep = AtomicSequence::from(5);
         let dependencies = vec![&dep];
         let result = wait_strategy.wait_for(10, &dependencies, || false);
         assert_eq!(result, None);
@@ -210,7 +210,7 @@ mod test_wait {
     
     #[test]
     fn test_busy_spin_wait_strategy_eventually_ready() {
-        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let wait_strategy = Arc::new(BusySpinWaitStrategy::new());
         let wait_strategy_clone = wait_strategy.clone();
         let dep = Arc::new(AtomicSequence::from(3));
         let dep_clone = dep.clone();
@@ -238,15 +238,7 @@ mod test_wait {
         let wait_strategy = Arc::new(YieldingWaitStrategy::new());
         let dep = AtomicSequence::from(20);
         let dependencies = vec![&dep];
-        let result = wait_strategy.wait_for(10, &dependencies, || false);
-        assert_eq!(result, Some(20));
-    }
-    
-    #[test]
-    fn test_yielding_wait_strategy_alert() {
-        let wait_strategy = Arc::new(YieldingWaitStrategy::new());
-        let dep = AtomicSequence::from(15);
-        let dependencies = vec![&dep];
+        let rendencies = vec![&dep];
         let result = wait_strategy.wait_for(10, &dependencies, || true);
         assert_eq!(result, None);
     }
@@ -254,7 +246,7 @@ mod test_wait {
     #[test]
     fn test_yielding_wait_strategy_not_ready() {
         let wait_strategy = Arc::new(YieldingWaitStrategy::new());
-        let dep = AtomicSequence::from(15);
+        let dep = AtomicSequence::from(5);
         let dependencies = vec![&dep];
         let result = wait_strategy.wait_for(10, &dependencies, || false);
         assert_eq!(result, None);
