@@ -58,7 +58,7 @@ mod tests {
     #[should_panic(expected = "ring buffer should be power of 2")]
     fn incorrect_initialization() {
         const SIZE: usize = 5;
-        let ring_buffer: RingBuffer<()> = RingBuffer::new(SIZE);
+        let _: RingBuffer<()> = RingBuffer::new(SIZE);
     }
 
     #[test]

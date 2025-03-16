@@ -77,6 +77,89 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     }
 }
 
-struct MultiProducerSequencer {
+pub struct MultiProducerSequencer<W: WaitStrategy> {
+    wait_strategy: Arc<W>,
     // TODO:
+}
+
+impl<W: WaitStrategy> MultiProducerSequencer<W> {}
+impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
+    type Barrier = DefaultSequenceBarrier<W>;
+
+    fn next(&self, count: usize) -> (Sequence, Sequence) {
+        todo!()
+    }
+
+    fn publish(&self, low: Sequence, high: Sequence) {
+        todo!()
+    }
+
+    fn create_barrier(&mut self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
+        todo!()
+    }
+
+    fn add_gating_sequence(&mut self, gating_sequence: Arc<AtomicSequence>) {
+        todo!()
+    }
+
+    fn get_cursor(&self) -> Arc<AtomicSequence> {
+        todo!()
+    }
+
+    fn drain(&self) {
+        todo!()
+    }
+}
+
+#[cfg(test)]
+mod tests_sequencer {
+    use super::*;
+    use crate::coordinator::{BlockingWaitStrategy, BusySpinWaitStrategy};
+    use std::sync::Arc;
+    use std::sync::atomic::Ordering;
+    use crate::traits::{AtomicSequence, Sequencer, Sequence, WaitStrategy};
+    
+    fn create_new_dating_sequence(seq: Sequence) -> Arc<AtomicSequence> {
+        Arc::new(AtomicSequence::from(seq))
+    }
+    
+    #[test]
+    fn test_next_range() {
+        let wait_strategy = BlockingWaitStrategy::new();
+        let sequencer = SingleProducerSequencer::new(wait_strategy, 8);
+        
+        let gating_seq = create_new_dating_sequence(100);
+        let mut sequencer = {
+            let mut s = sequencer;
+            s.add_gating_sequence(gating_seq.clone());
+            s
+        };
+        
+        let (low, high) = sequencer.next(3);
+        assert_eq!(low, Sequence::from(1));
+        assert_eq!(high, Sequence::from(2));
+        
+        let (low, high) = sequencer.next(4);
+        assert_eq!(low, Sequence::from(3));
+        assert_eq!(high, Sequence::from(5));
+    }
+    
+    #[test]
+    fn test_publish() {
+        let wait_strategy = BusySpinWaitStrategy::new();
+        let sequencer = SingleProducerSequencer::new(wait_strategy, 8);
+        
+        let gating_seq = create_new_dating_sequence(100);
+        let mut sequencer = {
+            let mut s = sequencer;
+            s.add_gating_sequence(gating_seq.clone());
+            s
+        };
+        
+        let (low, high) = sequencer.next(5);
+        sequencer.publish(low, high);
+        
+        let cursor = sequencer.get_cursor();
+        assert_eq!(cursor.load(), low);
+    }
 }

@@ -10,7 +10,7 @@ pub struct Consumer<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> {
     phantom_data: PhantomData<T>,
 }
 
-impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> Worker for Consumer<T, F, D, S> {
+impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> Worker for Consumer<T, F, D, S> {
     fn run(&self) {
         // TODO:
         // 1. get current cursor
@@ -38,8 +38,7 @@ impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> Worker for Consumer<T
     }
 }
 
-
-impl<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> EventConsumer<T> for Consumer<T, F, D, S> {
+impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> EventConsumer<T> for Consumer<T, F, D, S> {
     type ConsumerWorker = Self;
     type Task = F;
     type DataStorage = D;

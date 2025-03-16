@@ -62,7 +62,13 @@ impl Default for AtomicSequence {
     }
 }
 
-pub trait SequenceBarrier {
+impl AsRef<AtomicSequence> for AtomicSequence {
+    fn as_ref(&self) -> &AtomicSequence {
+        self
+    }
+}
+
+pub trait SequenceBarrier: Send + Sync {
     fn wait_for(&self, s: Sequence) -> Option<Sequence>;
     fn signal(&self);
 }
@@ -87,7 +93,7 @@ pub trait EventProducer {
     fn drain(&self);
 }
 
-pub trait WaitStrategy {
+pub trait WaitStrategy: Send + Sync {
     fn new() -> Self;
     fn wait_for<T: AsRef<AtomicSequence>, F: Fn() -> bool>(
         &self,

@@ -2,14 +2,14 @@ use std::marker::PhantomData;
 use std::sync::Arc;
 use crate::traits::{DataStorage, EventProducer, Sequence, Sequencer};
 
-struct Producer<T, S: Sequencer, D: DataStorage<T>> {
-    sequencer: S,
+pub struct Producer<T, S: Sequencer, D: DataStorage<T>> {
+    sequencer: Arc<S>,
     data_storage: Arc<D>,
     phantom_data: PhantomData<T>,
 }
 
 impl<T: Default, S: Sequencer, D: DataStorage<T>> Producer<T, S, D> {
-    pub fn new(sequencer: S, data_storage: Arc<D>) -> Self {
+    pub fn new(sequencer: Arc<S>, data_storage: Arc<D>) -> Self {
         Self {
             sequencer,
             data_storage,
@@ -47,5 +47,42 @@ impl<T, S: Sequencer, D: DataStorage<T>> EventProducer for Producer<T, S, D> {
 
     fn drain(&self) {
         self.sequencer.drain();
+    }
+}
+
+#[cfg(test)]
+mod consumer_test {
+    use super::*;
+    use std::sync::Arc;
+    use crate::coordinator::*;
+    use crate::producer::Producer;
+    use crate::storage::RingBuffer;
+    use crate::traits::{Sequencer, AtomicSequence, WaitStrategy, Sequence, EventProducer};
+
+    fn new_gating_sequence(s: Sequence) -> Arc<AtomicSequence> {
+        Arc::new(AtomicSequence::from(s))
+    }
+
+    #[test]
+    fn test_producer_write() {
+        let storage_capacity = 16;
+        let data_storage = Arc::new(RingBuffer::<i32>::new(storage_capacity));
+
+        let wait_strategy = BlockingWaitStrategy::new();
+        let mut sequencer = Arc::new(SingleProducerSequencer::new(wait_strategy, storage_capacity));
+        Arc::get_mut(&mut sequencer).unwrap().add_gating_sequence(new_gating_sequence(100));
+
+        let producer = Producer::<i32, SingleProducerSequencer<BlockingWaitStrategy>, _>::new(sequencer, data_storage.clone());
+
+        let events = vec![1, 2, 3, 4];
+
+        producer.write(events, |slot: &mut i32, _sequence: Sequence, event: &i32| {
+            *slot = event + 10;
+        });
+
+        for (i, expected) in [11, 12, 13].iter().enumerate() {
+            let value = unsafe { *data_storage.get_data(((i + 1) as Sequence)) };
+            assert_eq!(value, *expected);
+        }
     }
 }

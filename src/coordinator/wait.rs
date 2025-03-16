@@ -14,7 +14,7 @@ pub struct YieldingWaitStrategy;
 
 impl WaitStrategy for BlockingWaitStrategy {
     fn new() -> Self {
-        Self{
+        Self {
             guard: Mutex::new(false),
             cvar: Condvar::new()
         }
@@ -72,7 +72,7 @@ impl WaitStrategy for BusySpinWaitStrategy {
         let slowest_dependency = min_sequence(dependencies);
         // 2. 1. if slowest dependency is less than or equal to current sequence, return slowest dependency
         if slowest_dependency >= sequence {
-            return Some(slowest_dependency)
+            return Some(slowest_dependency);
         }
         // 2. 2. else 'wait' on condition var to be true
         None
@@ -110,4 +110,175 @@ impl WaitStrategy for YieldingWaitStrategy {
     fn signal(&self) {}
 }
 
-
+#[cfg(test)]
+mod test_wait {
+    use super::*;
+    use std::sync::Arc;
+    use std::time::{Duration, Instant};
+    
+    // Tests for BlockingWaitStrategy Tests
+    
+    #[test]
+    fn test_blocking_wait_strategy_ready() {
+        let wait_strategy = BlockingWaitStrategy::new();
+        let dep = AtomicSequence::from(10);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(5, &dependencies, || false);
+        assert_eq!(result, Some(5));
+    }
+    
+    #[test]
+    fn test_blocking_wait_strategy_alert() {
+        let wait_strategy = BlockingWaitStrategy::new();
+        let dep = AtomicSequence::from(10);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(5, &dependencies, || true);
+        assert_eq!(result, None);
+    }
+    
+    #[test]
+    fn test_blocking_wait_strategy_signal() {
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let wait_strategy_clone = wait_strategy.clone();
+        let handle = thread::spawn(move || {
+            let dep = AtomicSequence::from(7);
+            let dependencies = vec![&dep];
+            let start = Instant::now();
+            let result = wait_strategy_clone.wait_for(5, &dependencies, || false);
+            assert!(start.elapsed() >= Duration::from_millis(50));
+            result
+        });
+        
+        thread::sleep(Duration::from_millis(50));
+        wait_strategy.signal();
+        let res = handle.join().unwrap();
+        assert_eq!(res, None);
+    }
+    
+    #[test]
+    fn test_blocking_wait_strategy_eventually_ready() {
+        let dep = Arc::new(AtomicSequence::from(3));
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        
+        let wait_strategy_clone = wait_strategy.clone();
+        let dep_clone = dep.clone();
+        let handle = thread::spawn(move || {
+            loop {
+                let dependency = vec![dep_clone.as_ref()];
+                if let Some(seq) = wait_strategy_clone.wait_for(5, &dependency, || false) {
+                    return seq;
+                }
+                thread::sleep(Duration::from_millis(10));
+            }
+        });
+        
+        thread::sleep(Duration::from_millis(50));
+        dep.store(10);
+        wait_strategy.signal();
+        let res = handle.join().unwrap();
+        assert_eq!(res, 10);
+    }
+    
+    // BusySpinWaitStrategy Tests
+    
+    #[test]
+    fn test_busy_spin_wait_strategy_alert() {
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let dep = AtomicSequence::from(15);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || true);
+        assert_eq!(result, None);
+    }
+    
+    #[test]
+    fn test_busy_spin_wait_strategy_ready() {
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let dep = AtomicSequence::from(15);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || false);
+        assert_eq!(result, Some(15));
+    }
+    
+    #[test]
+    fn test_busy_spin_wait_strategy_not_ready() {
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let dep = AtomicSequence::from(15);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || false);
+        assert_eq!(result, None);
+    }
+    
+    #[test]
+    fn test_busy_spin_wait_strategy_eventually_ready() {
+        let wait_strategy = Arc::new(BlockingWaitStrategy::new());
+        let wait_strategy_clone = wait_strategy.clone();
+        let dep = Arc::new(AtomicSequence::from(3));
+        let dep_clone = dep.clone();
+        
+        let handle = thread::spawn(move || {
+            loop {
+                let dependency = vec![dep_clone.as_ref()];
+                if let Some(seq) = wait_strategy_clone.wait_for(10, &dependency, || false) {
+                    return seq;
+                }
+                thread::sleep(Duration::from_millis(10));
+            }
+        });
+        
+        thread::sleep(Duration::from_millis(50));
+        dep.store(10);
+        let result = handle.join().unwrap();
+        assert_eq!(result, 10);
+    }
+    
+    // YieldingWaitStrategy Tests
+    
+    #[test]
+    fn test_yielding_wait_strategy_ready() {
+        let wait_strategy = Arc::new(YieldingWaitStrategy::new());
+        let dep = AtomicSequence::from(20);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || false);
+        assert_eq!(result, Some(20));
+    }
+    
+    #[test]
+    fn test_yielding_wait_strategy_alert() {
+        let wait_strategy = Arc::new(YieldingWaitStrategy::new());
+        let dep = AtomicSequence::from(15);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || true);
+        assert_eq!(result, None);
+    }
+    
+    #[test]
+    fn test_yielding_wait_strategy_not_ready() {
+        let wait_strategy = Arc::new(YieldingWaitStrategy::new());
+        let dep = AtomicSequence::from(15);
+        let dependencies = vec![&dep];
+        let result = wait_strategy.wait_for(10, &dependencies, || false);
+        assert_eq!(result, None);
+    }
+    
+    #[test]
+    fn test_yielding_wait_strategy_eventually_ready() {
+        let wait_strategy = Arc::new(YieldingWaitStrategy::new());
+        let wait_strategy_clone = wait_strategy.clone();
+        let dep = Arc::new(AtomicSequence::from(3));
+        let dep_clone = dep.clone();
+        let handle = thread::spawn(move || {
+            loop {
+                let dependency = vec![dep_clone.as_ref()];
+                if let Some(seq) = wait_strategy_clone.wait_for(10, &dependency, || false) {
+                    return seq;
+                }
+                thread::sleep(Duration::from_millis(10));
+            }
+        });
+        
+        thread::sleep(Duration::from_millis(50));
+        dep.store(10);
+        let result = handle.join().unwrap();
+        assert_eq!(result, 10);
+    }
+}
