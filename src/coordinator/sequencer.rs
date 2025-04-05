@@ -53,7 +53,7 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         self.wait_strategy.signal();
     }
 
-    fn create_barrier(&mut self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
+    fn create_barrier(&self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
         DefaultSequenceBarrier::new(
             self.gating_sequences.clone(),
             self.wait_strategy.clone(),
@@ -94,7 +94,7 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
         todo!()
     }
 
-    fn create_barrier(&mut self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
+    fn create_barrier(&self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
         todo!()
     }
 

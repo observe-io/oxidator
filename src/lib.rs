@@ -4,4 +4,7 @@ mod producer;
 mod storage;
 mod traits;
 mod utils;
-mod builder;
+mod client;
+
+pub use client::*;
+pub use traits::*;

@@ -1,10 +1,10 @@
 use std::marker::PhantomData;
 use std::sync::{Arc};
-use crate::traits::{AtomicSequence, Worker, DataStorage, EventConsumer, SequenceBarrier, Task};
+use crate::traits::{AtomicSequence, DataStorage, EventConsumer, SequenceBarrier, Task, Worker};
 
 pub struct Consumer<T, F: Task<T>, D: DataStorage<T>, S: SequenceBarrier> {
     cursor: Arc<AtomicSequence>,
-    data_storage: D,
+    data_storage: Arc<D>,
     sequence_barrier: S,
     task: F,
     phantom_data: PhantomData<T>,
@@ -47,7 +47,7 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> EventCon
     fn init_concurrent_task(
         task: Self::Task,
         barrier: Self::Barrier,
-        data_storage: Self::DataStorage,
+        data_storage: Arc<Self::DataStorage>,
     ) -> Self::ConsumerWorker
     {
         Self {

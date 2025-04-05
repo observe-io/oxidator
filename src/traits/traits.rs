@@ -77,7 +77,7 @@ pub trait Sequencer {
     type Barrier: SequenceBarrier;
     fn next(&self, count: usize) -> (Sequence, Sequence);
     fn publish(&self, low: Sequence, high: Sequence);
-    fn create_barrier(&mut self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier;
+    fn create_barrier(&self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier;
     fn add_gating_sequence(&mut self, gating_sequence: Arc<AtomicSequence>);
     fn get_cursor(&self) -> Arc<AtomicSequence>;
     fn drain(&self);
@@ -125,7 +125,7 @@ pub trait EventConsumer<T> {
     fn init_concurrent_task(
         task: Self::Task,
         barrier: Self::Barrier,
-        data_storage: Self::DataStorage,
+        data_storage: Arc<Self::DataStorage>,
     ) -> Self::ConsumerWorker;
     
     fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
