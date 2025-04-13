@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 use std::marker::PhantomData;
 use std::sync::Arc;
-use crate::consumer::{self, Consumer, ConsumerOrchestrator};
+use crate::consumer::{Consumer, ConsumerOrchestrator};
 use crate::coordinator::{BlockingWaitStrategy, BusySpinWaitStrategy, MultiProducerSequencer, SingleProducerSequencer, YieldingWaitStrategy};
-use crate::producer::{self, Producer};
-use crate::storage::{self, RingBuffer};
-use crate::traits::{AtomicSequence, DataStorage, EventProducer, Sequence, SequenceBarrier, Sequencer, Task, WaitStrategy, Worker, WorkerHandle};
+use crate::producer::Producer;
+use crate::storage::RingBuffer;
+use crate::traits::{DataStorage, Sequencer, Task, WaitStrategy, Worker, Orchestrator, EventConsumer};
 
 /// Uses Decorator pattern to construct
 pub struct DisruptorClient;
@@ -183,6 +183,36 @@ impl<T: Default + Send + Sync, D: DataStorage<T>, W: WaitStrategy, S: Sequencer>
         self.validate_dependencies(&depndencies);
         self.dependency_map.insert(index, depndencies);
         index
+    }
+
+    fn create_consumer<F: Task<T>>(
+        &self,
+        task: F,
+        barrier: S::Barrier,
+        data_storage: Arc<D>
+    ) -> Consumer<T, F, D, S::Barrier>
+    where
+        T: 'static,
+        D: 'static,
+        S::Barrier: 'static,
+        F: Task<T> + Send + 'static,
+    {
+        Consumer::init_concurrent_task(task, barrier, data_storage)
+    }
+
+    pub fn init_consumers(&self) -> ConsumerOrchestrator {
+        let mut workers: Vec<Box<dyn Worker>> = Vec::new();
+        for (i, task) in self.tasks.iter().enumerate() {
+            let mut dep_cursors = Vec::new();
+            for &dep in self.dependency_map.get(&i).unwrap_or(&Vec::new()) {
+                dep_cursors.push(self.sequencer_layer.sequencer.get_cursor());
+            }
+            let barrier = self.sequencer_layer.sequencer.create_barrier(dep_cursors);
+            let consumer = self.create_consumer(task.clone_box(), barrier, self.sequencer_layer.wait_strategy_layer.data_storage_layer.data_storage.clone());
+        
+            workers.push(Box::new(consumer));
+        }
+        ConsumerOrchestrator::with_workers(workers)
     }
 
     

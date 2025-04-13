@@ -3,7 +3,7 @@ pub mod coordinator;
 pub mod producer;
 mod storage;
 pub mod traits;
-pub mod utils;
+mod utils;
 pub mod client;
 
 pub use client::*;
