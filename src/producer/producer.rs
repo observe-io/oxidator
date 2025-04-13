@@ -50,6 +50,16 @@ impl<T, S: Sequencer, D: DataStorage<T>> EventProducer for Producer<T, S, D> {
     }
 }
 
+impl<T, S: Sequencer, D: DataStorage<T>> Clone for Producer<T, S, D> {
+    fn clone(&self) -> Self {
+        Self {
+            sequencer: Arc::clone(&self.sequencer),
+            data_storage: Arc::clone(&self.data_storage),
+            phantom_data: PhantomData,
+        }
+    }
+}
+
 #[cfg(test)]
 mod consumer_test {
     use super::*;

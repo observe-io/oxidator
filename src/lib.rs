@@ -1,10 +1,12 @@
-mod consumer;
-mod coordinator;
-mod producer;
+pub mod consumer;
+pub mod coordinator;
+pub mod producer;
 mod storage;
-mod traits;
-mod utils;
-mod client;
+pub mod traits;
+pub mod utils;
+pub mod client;
 
 pub use client::*;
 pub use traits::*;
+pub use coordinator::*;
+pub use storage::*;

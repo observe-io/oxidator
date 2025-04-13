@@ -11,7 +11,7 @@ impl Orchestrator for ConsumerOrchestrator {
         }
     }
 
-    fn start(self) -> ConsumerWorkerHandle {
+    fn start(self) -> impl WorkerHandle {
         let mut handles = Vec::new();
         
         for worker in self.workers.into_iter() {
@@ -31,7 +31,7 @@ pub struct ConsumerWorkerHandle {
 }
 
 impl ConsumerWorkerHandle {
-    fn new(handles: Vec<JoinHandle<()>>) -> Self {
+    pub fn new(handles: Vec<JoinHandle<()>>) -> Self {
         Self {
             thread_handles: handles
         }

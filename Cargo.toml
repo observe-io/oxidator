@@ -13,3 +13,8 @@ keywords = ["rust", "disruptor", "high-performance"]
 
 
 [dependencies]
+
+
+[[example]]
+name = "multi_producer"
+path = "sample/multi_producer_sample.rs"

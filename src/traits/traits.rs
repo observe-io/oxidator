@@ -142,8 +142,25 @@ pub trait EventConsumerMut<T> {
     fn get_consumer_cursor(&self) -> Arc<AtomicSequence>;
 }
 
-pub trait Task<T> {
+pub trait Task<T>: Send + Sync {
     fn execute_task(&self, event: &T, sequence: Sequence, eob: bool);
+    fn clone_box(&self) -> Box<dyn Task<T> + Send + Sync + 'static>;
+}
+
+impl<T> Clone for Box<dyn Task<T> + Send + Sync + 'static> {
+    fn clone(&self) -> Self {
+        self.clone_box()
+    }
+}
+
+impl<T> Task<T> for Box<dyn Task<T> + Send + Sync + 'static> {
+    fn execute_task(&self, event: &T, sequence: Sequence, eob: bool) {
+        (**self).execute_task(event, sequence, eob);
+    }
+
+    fn clone_box(&self) -> Box<dyn Task<T> + Send + Sync + 'static> {
+        (**self).clone_box()
+    }
 }
 
 pub trait TaskMut<T> {
