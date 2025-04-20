@@ -26,21 +26,25 @@ impl WaitStrategy for BlockingWaitStrategy {
         dependencies: &[T],
         check_alert: F) -> Option<Sequence>
     {
+        if dependencies.is_empty() {
+            return None;
+        }
         // TODO:
         // 1. acquire lock
-        let blocked = self.guard.lock().unwrap();
+        let mut blocked = self.guard.lock().unwrap();
         // 2. check if alert has been triggered by producer/sequencer, if yes, return
         if check_alert() {
             return None
         }
         // 3. check slowest cursor among dependencies
         let slowest_dependency = min_sequence(dependencies);
-        // 3. 1. if slowest dependency is less than or equal to current sequence, return slowest dependency
+        // 3. 1. if slowest dependency is greater than or equal to current sequence, return slowest dependency
         if slowest_dependency >= sequence {
-            return  Some(slowest_dependency)
-        } else { // 3. 2. else 'wait' on condition var to be true
-            let _unused = self.cvar.wait(blocked).unwrap();
+            return  Some(slowest_dependency);
         }
+        // 3. 2. else 'wait' on condition var to be true
+        let _unused = self.cvar.wait(blocked).unwrap();
+
         
         // 4. release lock
         None
@@ -64,13 +68,17 @@ impl WaitStrategy for BusySpinWaitStrategy {
         dependencies: &[T],
         check_alert: F
     ) -> Option<Sequence> {
+        if dependencies.is_empty() {
+            return None;
+        }
+
         // 1. check if alert has been triggered by producer/sequencer, if yes, return
         if check_alert() {
             return None
         }
         // 2. check slowest cursor among dependencies
         let slowest_dependency = min_sequence(dependencies);
-        // 2. 1. if slowest dependency is less than or equal to current sequence, return slowest dependency
+        // 2. 1. if slowest dependency is greater than or equal to current sequence, return slowest dependency
         if slowest_dependency >= sequence {
             return Some(slowest_dependency);
         }
@@ -92,6 +100,9 @@ impl WaitStrategy for YieldingWaitStrategy {
         dependencies: &[T],
         check_alert: F
     ) -> Option<Sequence> {
+        if dependencies.is_empty() {
+            return None;
+        }
         // 1. check if alert has been triggered by producer/sequencer, if yes, return
         if check_alert() {
             return None

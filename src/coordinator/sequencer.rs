@@ -1,4 +1,5 @@
 use std::cell::Cell;
+use std::cmp::min;
 use std::sync::{Arc, Mutex};
 use std::sync::atomic::{AtomicBool, Ordering};
 use crate::coordinator::DefaultSequenceBarrier;
@@ -51,7 +52,8 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         let curr_producer_idx = self.current_producer_sequence.take();
         let mut consumer_idx = self.slowest_consumer_sequence.take();
 
-        let (low, high) = (curr_producer_idx + 1, curr_producer_idx + (count - 1) as i64);
+        let low = curr_producer_idx + 1;
+        let high = curr_producer_idx + count as i64;
 
         while consumer_idx + (self.buffer_size as Sequence) < high {
             consumer_idx = min_sequence(&self.gating_sequences);
@@ -85,10 +87,29 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     }
 
     fn drain(&self) {
-        while min_sequence(&self.gating_sequences) < self.current_producer_sequence.take() {
+        // while min_sequence(&self.gating_sequences) < self.current_producer_sequence.take() {
+        //     self.wait_strategy.signal();
+        // }
+        // self.is_done.store(true, Ordering::SeqCst);
+
+        self.is_done.store(true, Ordering::SeqCst);
+
+        if !self.gating_sequences.is_empty() {
+            let target = self.current_producer_sequence.take();
+            let mut min_seq = min_sequence(&self.gating_sequences);
+
+            let mut attempts = 0;
+            while min_seq < target && attempts < 10 {
+                self.wait_strategy.signal();
+                std::thread::sleep(std::time::Duration::from_millis(50));
+                min_seq = min_sequence(&self.gating_sequences);
+                attempts += 1;
+            }
+        }
+
+        for _ in 0..5 {
             self.wait_strategy.signal();
         }
-        self.is_done.store(true, Ordering::SeqCst);
     }
 }
 
@@ -121,12 +142,16 @@ impl<W: WaitStrategy> MultiProducerSequencer<W> {
     }
 
     fn buffer_has_capacity(&self, count: usize) -> bool {
-        let has_capacity = if (self.highest_claimed_sequence.load() - min_sequence(&self.gating_sequences)) as usize + count < self.buffer_size {
-            true
-        } else {
-            false
-        };
-        has_capacity
+        let highest_claimed = self.highest_claimed_sequence.load();
+        let min_seq = min_sequence(&self.gating_sequences);
+
+        if highest_claimed < min_seq {
+            return count <= self.buffer_size;
+        }
+
+        let used_slots = (highest_claimed - min_seq) as usize;
+
+        self.buffer_size >= used_slots + count
     }
 }
 
@@ -151,9 +176,10 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
         loop {
             let highest_claimed = self.highest_claimed_sequence.load();
             if self.buffer_has_capacity(count) {
-                let end = (self.highest_claimed_sequence.load() + count as i64) as Sequence;
-                if self.highest_claimed_sequence.compare_exchange(highest_claimed, end) {
-                    return  (highest_claimed + 1, end);
+                let low = highest_claimed + 1;
+                let high = highest_claimed + count as i64;
+                if self.highest_claimed_sequence.compare_exchange(highest_claimed, high) {
+                    return  (low, high);
                 }
             }
         }
@@ -186,11 +212,8 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
             }
 
             let mut curr = self.cursor.load();
-            while !self.cursor.compare_exchange(curr, max_committable_sequence) {
+            while curr < max_committable_sequence && !self.cursor.compare_exchange(curr, max_committable_sequence) {
                 curr = self.cursor.load();
-                if curr >= max_committable_sequence {
-                    break;
-                }
             }
         }
 
@@ -199,7 +222,8 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
         self.wait_strategy.signal();
     }
 
-    fn create_barrier(&self, gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
+    fn create_barrier(&self, mut gating_sequences: Vec<Arc<AtomicSequence>>) -> Self::Barrier {
+        gating_sequences.push(self.cursor.clone());
         DefaultSequenceBarrier::new(
             gating_sequences,
             self.wait_strategy.clone(),
@@ -216,12 +240,30 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
     }
 
     fn drain(&self) {
-        while min_sequence(&self.gating_sequences) < self.cursor.load() {
-            self.wait_strategy.signal();
+        // while min_sequence(&self.gating_sequences) < self.cursor.load() {
+        //     self.wait_strategy.signal();
+        // }
+
+        // self.wait_strategy.signal();
+        // self.is_done.store(true, Ordering::SeqCst);
+        self.is_done.store(true, Ordering::SeqCst);
+
+        if !self.gating_sequences.is_empty() {
+            let target = self.highest_claimed_sequence.load();
+            let mut min_seq = min_sequence(&self.gating_sequences);
+
+            let mut attempts = 0;
+            while min_seq < target && attempts < 10 {
+                self.wait_strategy.signal();
+                std::thread::sleep(std::time::Duration::from_millis(50));
+                min_seq = min_sequence(&self.gating_sequences);
+                attempts += 1;
+            }
         }
 
-        self.wait_strategy.signal();
-        self.is_done.store(true, Ordering::SeqCst);
+        for _ in 0..5 {
+            self.wait_strategy.signal();
+        }
     }
 }
 

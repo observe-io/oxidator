@@ -15,7 +15,7 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> Worker f
         // TODO:
         // 1. get current cursor
         let cursor  = self.cursor.clone();
-        let next = cursor.load() + 1;
+        let mut next = cursor.load() + 1;
         // 2. loop
         loop {
             // 3. get sequence number till which i'm allowed to process using barrier
@@ -24,11 +24,12 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> Worker f
                 for i in next..=upper_limit {
                     unsafe {
                         let slot = self.data_storage.get_data(i);
-                        self.task.execute_task(&slot, i, i==upper_limit);
+                        self.task.execute_task(&slot, i, i == upper_limit);
                     }
                 }
                 // 5. reset cursor
-                self.cursor.store(upper_limit);
+                cursor.store(upper_limit);
+                next = upper_limit + 1;
                 // 6. signal to barrier, lock can be released, if any
                 self.sequence_barrier.signal();
             } else {

@@ -15,12 +15,12 @@ pub struct DataStorageLayer<T: Default + Send + Sync + 'static, D: DataStorage<T
     event_marker: PhantomData<T>,
 }
 
-pub struct WaitStrategyLayer<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, > {
+pub struct WaitStrategyLayer<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy> {
     wait_strategy: W,
     data_storage_layer: DataStorageLayer<T, D>,
 }
 
-pub struct SequencerLayer<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, S: Sequencer>
+pub struct SequencerLayer<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, S: Sequencer + Clone>
 where
     S::Barrier: 'static
 {
@@ -28,7 +28,7 @@ where
     wait_strategy_layer: WaitStrategyLayer<T, D, W>,
 }
 
-pub struct ConsumerFactory<T: Default + Send + Sync + 'static, D: DataStorage<T> + 'static, W: WaitStrategy, S: Sequencer>
+pub struct ConsumerFactory<T: Default + Send + Sync + 'static, D: DataStorage<T> + 'static, W: WaitStrategy, S: Sequencer + Clone>
 where
     S::Barrier: 'static
 {
@@ -96,7 +96,7 @@ impl<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy> Wai
     }
 }
 
-impl<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, S: Sequencer> SequencerLayer<T, D, W, S> {
+impl<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, S: Sequencer + Clone> SequencerLayer<T, D, W, S> {
     fn new(wait_strategy_layer: WaitStrategyLayer<T, D, W>, sequencer: S) -> Self {
         Self {
             wait_strategy_layer,
@@ -104,24 +104,31 @@ impl<T: Default + Send + Sync + 'static, D: DataStorage<T>, W: WaitStrategy, S: 
         }
     }
     
-    fn build<F>(self, producer_count: usize) -> (Vec<Producer<T, S, D>>, ConsumerFactory<T, D, W, S>) 
+    pub fn build<F>(self, producer_count: usize) -> (Vec<Producer<T, S, D>>, ConsumerFactory<T, D, W, S>) 
     where
-        F: Task<T> + Send + 'static
+        F: Task<T> + Send + Sync + Clone + 'static
     {
-        let sequencer = self.sequencer.clone();
         let data_storage = self.wait_strategy_layer.data_storage_layer.data_storage.clone();
 
-        let producers = (0..producer_count)
-            .map(|_| Producer::new(sequencer.clone(), data_storage.clone()))
-            .collect();
+        let mut producers = Vec::new();
+        for _ in 0..producer_count {
+            producers.push(
+                Producer::new(
+                    self.sequencer.clone(),
+                    data_storage.clone()
+                )
+            );
+        }
 
         let consumer_factory = ConsumerFactory::new(self);
+
+
         (producers, consumer_factory)
         
     }
 }
 
-impl<T: Default + Send + Sync, D: DataStorage<T>, W: WaitStrategy, S: Sequencer> ConsumerFactory<T, D, W, S> {
+impl<T: Default + Send + Sync, D: DataStorage<T>, W: WaitStrategy, S: Sequencer + Clone> ConsumerFactory<T, D, W, S> {
     pub fn new(sequencer_layer: SequencerLayer<T, D, W, S>) -> Self {
         Self {
             sequencer_layer,
@@ -202,6 +209,8 @@ impl<T: Default + Send + Sync, D: DataStorage<T>, W: WaitStrategy, S: Sequencer>
 
     pub fn init_consumers(&self) -> ConsumerOrchestrator {
         let mut workers: Vec<Box<dyn Worker>> = Vec::new();
+        let mut consumer_cursors = Vec::new();
+
         for (i, task) in self.tasks.iter().enumerate() {
             let mut dep_cursors = Vec::new();
             for &dep in self.dependency_map.get(&i).unwrap_or(&Vec::new()) {
@@ -210,8 +219,15 @@ impl<T: Default + Send + Sync, D: DataStorage<T>, W: WaitStrategy, S: Sequencer>
             let barrier = self.sequencer_layer.sequencer.create_barrier(dep_cursors);
             let consumer = self.create_consumer(task.clone_box(), barrier, self.sequencer_layer.wait_strategy_layer.data_storage_layer.data_storage.clone());
         
+            consumer_cursors.push(consumer.get_consumer_cursor());
             workers.push(Box::new(consumer));
         }
+
+        let mut sequencer = self.sequencer_layer.sequencer.as_ref().clone();
+        for cursor in &consumer_cursors {
+            sequencer.add_gating_sequence(cursor.clone());
+        }
+
         ConsumerOrchestrator::with_workers(workers)
     }
 

@@ -1,6 +1,8 @@
 use std::sync::{Arc};
 use std::sync::atomic::{AtomicI64, Ordering};
 
+use crate::consumer;
+
 pub type Sequence = i64;
 
 #[cfg(any(

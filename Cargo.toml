@@ -17,4 +17,8 @@ keywords = ["rust", "disruptor", "high-performance"]
 
 [[example]]
 name = "multi_producer"
-path = "sample/multi_producer_sample.rs"
+path = "samples/multi_producer_sample.rs"
+
+[[example]]
+name = "single_producer"
+path = "samples/single_producer_sample.rs"
