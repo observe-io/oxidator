@@ -19,21 +19,24 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> Worker f
         // 2. loop
         loop {
             // 3. get sequence number till which i'm allowed to process using barrier
-            if let Some(upper_limit) = self.sequence_barrier.wait_for(next) {
+            match self.sequence_barrier.wait_for(next) {
                 // 4. for all slots returned, i.e. from current cursor + 1, till avaialble, run Handler business logic
-                for i in next..=upper_limit {
-                    unsafe {
-                        let slot = self.data_storage.get_data(i);
-                        self.task.execute_task(&slot, i, i == upper_limit);
+                Some(upper_limit) => {
+                    for i in next..=upper_limit {
+                        unsafe {
+                            let slot = self.data_storage.get_data(i);
+                            self.task.execute_task(&slot, i, i == upper_limit);
+                        }
                     }
+                    // 5. reset cursor
+                    cursor.store(upper_limit);
+                    next = upper_limit + 1;
+                    // 6. signal to barrier, lock can be released, if any
+                    self.sequence_barrier.signal();
                 }
-                // 5. reset cursor
-                cursor.store(upper_limit);
-                next = upper_limit + 1;
-                // 6. signal to barrier, lock can be released, if any
-                self.sequence_barrier.signal();
-            } else {
-                return; // early return without updating consumer cursor
+                None => {
+                    return; // early return without updating consumer cursor
+                }
             }
         }
     }

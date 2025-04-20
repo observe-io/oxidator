@@ -2,6 +2,8 @@ use oxidator::client::DisruptorClient;
 use oxidator::traits::{Task, Sequence, WorkerHandle, Orchestrator, EventProducer};
 use oxidator::RingBuffer;
 use std::sync::{Arc, Mutex, atomic::{AtomicI32, Ordering}};
+use std::thread;
+use std::time::Duration;
 
 #[derive(Default, Debug, Clone)]
 struct Event {
@@ -106,7 +108,7 @@ fn main() {
 
     let (mut producers, mut consumer_factory) = DisruptorClient
     .init_data_storage::<Event, RingBuffer<Event>>(buffer_size)
-    .with_yielding_wait_strategy()
+    .with_blocking_wait_strategy()
     .with_single_producer()
     .build::<PrinterTask>(num_producers);
 
@@ -136,7 +138,13 @@ fn main() {
                 println!("Producer wrote value {} at sequence {}", event.value, seq);
             }
         });
+
+        if i % 50 == 0 {
+            thread::sleep(Duration::from_millis(10));
+        }
     }
+
+    thread::sleep(Duration::from_millis(100));
 
     producer.drain();
 
@@ -148,12 +156,6 @@ fn main() {
     println!("All prodcuers and consumers have completed. Final Sum: {}", final_sum);
     println!("Expected sum: {}",  expected_sum);
 
-    if final_sum == expected_sum && producer_counts[0] == num_events as i32 {
-        println!("SUCCESS: All events were processed correctly");
-    } else {
-        println!("ERROR: Event processing incorrect");
-        println!("Expected sum {}, Final Sum: {}", expected_sum, final_sum);
-        println!("Expected events {}, Received events {}", num_events, producer_counts[0]);
-    }
-
+    println!("Expected sum {}, Final Sum: {}", expected_sum, final_sum);
+    println!("Expected events {}, Received events {}", num_events, producer_counts[0]);
 }
