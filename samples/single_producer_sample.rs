@@ -16,21 +16,6 @@ struct PrinterTask;
 
 impl Task<Event> for PrinterTask {
     fn execute_task(&self, event: &Event, sequence: Sequence, end_of_batch: bool) {
-        if sequence % 50 == 0 || end_of_batch {
-            println!(
-                "Printer: Processing event with value {} from producer {} at sequence {}",
-                event.value,
-                event.producer_id,
-                sequence
-            );
-
-            if end_of_batch {
-                println!(
-                    "Printer: End of Batch at sequence: {}",
-                    sequence
-                )
-            }
-        }
     }
 
     fn clone_box(&self) -> Box<dyn Task<Event> +Send + Sync + 'static> {
@@ -79,21 +64,6 @@ impl Task<Event> for SumTask {
             counters.producer_events[producer_id] += 1;
         }
         drop(counters);
-
-        if sequence % 50 == 0 || end_of_batch {
-            print!(
-                "SumTask: Current sum is {} at sequence {}",
-                self.get_sum(),
-                sequence
-            );
-
-            if end_of_batch {
-                println!(
-                    "SumTask: End of Batch at sequence {}",
-                    sequence
-                );
-            }
-        }
     }
 
     fn clone_box(&self) -> Box<dyn Task<Event> + Send + Sync + 'static> {
@@ -102,10 +72,12 @@ impl Task<Event> for SumTask {
 }
 
 fn main() {
-    let buffer_size = 1024;
+    // Increase buffer size to make sure we can handle more events
+    let buffer_size = 256;
     let num_producers = 1;
     let num_events = 400;
 
+    // Configure disruptor
     let (mut producers, mut consumer_factory) = DisruptorClient
     .init_data_storage::<Event, RingBuffer<Event>>(buffer_size)
     .with_blocking_wait_strategy()
@@ -125,6 +97,7 @@ fn main() {
 
     let mut consumer_handle = consumers.start();
 
+    // Produce events
     for i in 0..num_events {
         let event = Event {
             value: i + 1,
@@ -133,29 +106,30 @@ fn main() {
 
         producer.write(vec![event], |slot: &mut Event, seq: i64, event| {
             *slot = event.clone();
-
-            if seq % 50 == 0 {
-                println!("Producer wrote value {} at sequence {}", event.value, seq);
-            }
         });
-
-        if i % 50 == 0 {
-            thread::sleep(Duration::from_millis(10));
-        }
     }
 
-    thread::sleep(Duration::from_millis(100));
-
+    // Clean up and wait for completion
     producer.drain();
-
     consumer_handle.join();
 
+    // Final verification - keeping only these prints
     let final_sum = sum_handle.get_sum();
     let expected_sum = (1..=num_events).sum::<i32>();
     let producer_counts = sum_handle.get_counters();
-    println!("All prodcuers and consumers have completed. Final Sum: {}", final_sum);
-    println!("Expected sum: {}",  expected_sum);
-
+    
     println!("Expected sum {}, Final Sum: {}", expected_sum, final_sum);
     println!("Expected events {}, Received events {}", num_events, producer_counts[0]);
+    
+    if final_sum != expected_sum {
+        println!("ERROR: Final sum doesn't match expected sum!");
+    } else {
+        println!("SUCCESS: Final sum matches expected sum!");
+    }
+    
+    if producer_counts[0] != num_events {
+        println!("ERROR: Received events count doesn't match expected count!");
+    } else {
+        println!("SUCCESS: All events were processed correctly!");
+    }
 }

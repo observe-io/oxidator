@@ -33,8 +33,9 @@ impl WaitStrategy for BlockingWaitStrategy {
         
         loop {
             let slowest_dependency = min_sequence(dependencies);
+
             if slowest_dependency >= sequence {
-                return  Some(slowest_dependency);
+                return Some(slowest_dependency);
             }
 
             if check_alert() {
@@ -44,6 +45,7 @@ impl WaitStrategy for BlockingWaitStrategy {
                 }
                 return None
             }
+            
             blocked = self.cvar.wait(blocked).unwrap();
         }
     }

@@ -24,7 +24,8 @@ impl<W: WaitStrategy> DefaultSequenceBarrier<W> {
 impl<W: WaitStrategy> SequenceBarrier for DefaultSequenceBarrier<W> {
     fn wait_for(&self, s: Sequence) -> Option<Sequence> {
         let result = self.wait_strategy.wait_for(s, &*self.gating_sequences, || {
-            self.is_done.load(Ordering::Relaxed)
+            let is_done = self.is_done.load(Ordering::Relaxed);
+            is_done
         });
         result
     }
