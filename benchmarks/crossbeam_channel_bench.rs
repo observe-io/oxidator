@@ -242,12 +242,12 @@ fn bench_crossbeam_channel_multi(n_producers: usize, events_per_producer: u64) {
 }
 
 fn bench_oxidator_single_busy(n: u64) {
-    let (mut producers, mut consumer_factory) = DisruptorClient
-    .init_data_storage::<Event, RingBuffer<Event>>(BUFFER_SIZE)
-    .with_yielding_wait_strategy()
-    .with_single_producer()
-    .build::<DummyTask>(1);
-    let producer = producers.remove(0);
+    let total_events = n;
+    let client = DisruptorClient;
+    let data_storage_layer = client.init_data_storage::<Event, RingBuffer<Event>>(BUFFER_SIZE);
+    let wait_strategy_layer = data_storage_layer.with_yielding_wait_strategy();
+    let sequencer_layer = wait_strategy_layer.with_multi_producer();
+    let (producers, mut consumer_factory) = sequencer_layer.build::<DummyTask>(1);
 
     let dummy_task = Box::new(DummyTask);
     let benchmark_task = Box::new(BenchmarkTask::new());
@@ -259,25 +259,41 @@ fn bench_oxidator_single_busy(n: u64) {
     let consumers = consumer_factory.init_consumers();
     let mut consumer_handle = consumers.start();
 
-    let producer_handle = thread::spawn(move || {
-        for _ in 0..n {
-            let now = SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .unwrap()
-                .as_nanos() as u64;
-            let event = Event { value: now, producer_id: 0 };
-             producer.write(vec![event], |slot, _, event_ref| {
-                *slot = event_ref.clone();
-            });
-        }
-        producer.drain();
-    });
+    let barrier = Arc::new(Barrier::new(1));
 
-    producer_handle.join().unwrap(); 
+    let mut producer_handles = Vec::new();
+    for (id, producer) in producers.into_iter().enumerate() {
+        let barrier_clone = barrier.clone();
+        let handle = thread::spawn(move || {
+            barrier_clone.wait();
+            for _ in 0..n {
+                let now = SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_nanos() as u64;
+                let event = Event { value: now, producer_id: id };
+                 producer.write(vec![event], |slot, _, event_ref| {
+                    *slot = event_ref.clone();
+                });
+            }
+            producer
+        });
+        producer_handles.push(handle);
+    }
+
+    let mut completed_producers = Vec::new();
+    for handle in producer_handles {
+        completed_producers.push(handle.join().unwrap());
+    }
+
+    if let Some(producer) = completed_producers.first() {
+         producer.drain();
+    }
+
     consumer_handle.join();
 
     let final_processed_count = task_clone.get_processed_count();
-    assert_eq!(final_processed_count, n, "Assertion failed: Processed count mismatch");
+    assert_eq!(final_processed_count, total_events, "Assertion failed: Processed count mismatch");
 }
 
 fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
@@ -285,7 +301,7 @@ fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
     let client = DisruptorClient;
     let data_storage_layer = client.init_data_storage::<Event, RingBuffer<Event>>(BUFFER_SIZE);
     let wait_strategy_layer = data_storage_layer.with_yielding_wait_strategy();
-    let sequencer_layer = wait_strategy_layer.with_multi_producer();
+    let sequencer_layer = wait_strategy_layer.with_single_producer();
     let (producers, mut consumer_factory) = sequencer_layer.build::<DummyTask>(n_producers);
 
     let dummy_task = Box::new(DummyTask);
@@ -298,13 +314,9 @@ fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
     let consumers = consumer_factory.init_consumers();
     let mut consumer_handle = consumers.start();
 
-    let barrier = Arc::new(Barrier::new(n_producers));
-
     let mut producer_handles = Vec::new();
     for (id, producer) in producers.into_iter().enumerate() {
-        let barrier_clone = barrier.clone();
         let handle = thread::spawn(move || {
-            barrier_clone.wait();
             for _ in 0..events_per_producer {
                 let now = SystemTime::now()
                     .duration_since(UNIX_EPOCH)
@@ -367,6 +379,10 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     group.bench_function(BenchmarkId::new("crossbeam_channel", &multi_producer_label), |b| {
         b.iter(|| bench_crossbeam_channel_multi(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
+    });
+
+    group.bench_function(BenchmarkId::new("oxidator_yielding", NUM_EVENTS), |b| {
+        b.iter(|| bench_oxidator_multi_busy(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
 
     group.finish();

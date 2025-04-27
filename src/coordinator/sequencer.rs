@@ -18,7 +18,7 @@ pub struct SingleProducerSequencer<W: WaitStrategy> {
 impl<W: WaitStrategy> SingleProducerSequencer<W> {
     pub fn new(wait_strategy: W, buffer_size: usize) -> Self {
         Self {
-            cursor: Arc::new(AtomicSequence::from()),
+            cursor: Arc::new(AtomicSequence::default()),
             wait_strategy: Arc::new(wait_strategy),
             gating_sequences: Vec::new(),
             is_done: Arc::new(AtomicBool::from(false)),
