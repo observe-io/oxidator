@@ -259,13 +259,9 @@ fn bench_oxidator_single_busy(n: u64) {
     let consumers = consumer_factory.init_consumers();
     let mut consumer_handle = consumers.start();
 
-    let barrier = Arc::new(Barrier::new(1));
-
     let mut producer_handles = Vec::new();
     for (id, producer) in producers.into_iter().enumerate() {
-        let barrier_clone = barrier.clone();
         let handle = thread::spawn(move || {
-            barrier_clone.wait();
             for _ in 0..n {
                 let now = SystemTime::now()
                     .duration_since(UNIX_EPOCH)
@@ -297,11 +293,11 @@ fn bench_oxidator_single_busy(n: u64) {
 }
 
 fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
-    let total_events = n_producers as u64 * events_per_producer;
+    let total_events = (n_producers as u64) * events_per_producer;
     let client = DisruptorClient;
     let data_storage_layer = client.init_data_storage::<Event, RingBuffer<Event>>(BUFFER_SIZE);
     let wait_strategy_layer = data_storage_layer.with_yielding_wait_strategy();
-    let sequencer_layer = wait_strategy_layer.with_single_producer();
+    let sequencer_layer = wait_strategy_layer.with_multi_producer();
     let (producers, mut consumer_factory) = sequencer_layer.build::<DummyTask>(n_producers);
 
     let dummy_task = Box::new(DummyTask);
@@ -338,7 +334,7 @@ fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
     }
 
     if let Some(producer) = completed_producers.first() {
-         producer.drain();
+        producer.drain();
     }
 
     consumer_handle.join();
@@ -367,25 +363,25 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     group.finish();
 
-    let mut group = c.benchmark_group("multi_producer");
+    let mut multi_group = c.benchmark_group("multi_producer");
     let multi_producer_label = format!("{}p_{}e", NUM_PRODUCERS_MULTI, EVENTS_PER_PRODUCER_MULTI);
-    group.throughput(Throughput::Elements(NUM_EVENTS));
-    group.warm_up_time(Duration::from_secs(5));
-    group.measurement_time(Duration::from_secs(10));
+    multi_group.throughput(Throughput::Elements(NUM_EVENTS));
+    multi_group.warm_up_time(Duration::from_secs(5));
+    multi_group.measurement_time(Duration::from_secs(10));
 
-    group.bench_function(BenchmarkId::new("std_channel", &multi_producer_label), |b| {
+    multi_group.bench_function(BenchmarkId::new("std_channel", &multi_producer_label), |b| {
         b.iter(|| bench_std_channel_multi(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
 
-    group.bench_function(BenchmarkId::new("crossbeam_channel", &multi_producer_label), |b| {
+    multi_group.bench_function(BenchmarkId::new("crossbeam_channel", &multi_producer_label), |b| {
         b.iter(|| bench_crossbeam_channel_multi(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
 
-    group.bench_function(BenchmarkId::new("oxidator_yielding", NUM_EVENTS), |b| {
+    multi_group.bench_function(BenchmarkId::new("oxidator_yielding", NUM_EVENTS), |b| {
         b.iter(|| bench_oxidator_multi_busy(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
 
-    group.finish();
+    multi_group.finish();
 }
 
 criterion_group!(benches, criterion_benchmark);
