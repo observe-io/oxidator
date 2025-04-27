@@ -13,6 +13,7 @@ keywords = ["rust", "disruptor", "high-performance"]
 
 
 [dependencies]
+crossbeam-channel = "0.5.15"
 
 
 [[example]]
