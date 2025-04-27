@@ -42,7 +42,7 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> Worker f
     }
 }
 
-impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> EventConsumer<T> for Consumer<T, F, D, S> {
+impl<T: Default + Send + Sync + 'static, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> EventConsumer<T> for Consumer<T, F, D, S> {
     type ConsumerWorker = Self;
     type Task = F;
     type DataStorage = D;
@@ -54,8 +54,9 @@ impl<T: Send, F: Task<T> + Send, D: DataStorage<T>, S: SequenceBarrier> EventCon
         data_storage: Arc<Self::DataStorage>,
     ) -> Self::ConsumerWorker
     {
+        
         Self {
-            cursor: Arc::new(AtomicSequence::default()),
+            cursor: Arc::new(AtomicSequence::from(-1)),
             task,
             data_storage,
             sequence_barrier: barrier,

@@ -26,11 +26,13 @@ impl<T, S: Sequencer, D: DataStorage<T>> EventProducer for Producer<T, S, D> {
         F: Fn(&mut T, Sequence, &T),
         G: ExactSizeIterator<Item = T>
     {
-        // TODO:
         // 1. get items iterator
         let items = events.into_iter();
+        let items_len = items.len();
+        
         // 2. get start and end slots for available for these events from sequencer
-        let (start, end) = self.sequencer.next(items.len());
+        let (start, end) = self.sequencer.next(items_len);
+        
         // 3. loop through items
         for (i, item) in items.enumerate() {
             // 4. get data provider slot and write to it
