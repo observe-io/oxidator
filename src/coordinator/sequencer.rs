@@ -1,12 +1,8 @@
-use std::cell::Cell;
-use std::cmp::min;
 use std::sync::{Arc, Mutex};
 use std::sync::atomic::{AtomicBool, Ordering};
 use crate::coordinator::DefaultSequenceBarrier;
 use crate::traits::{AtomicSequence, Sequence, Sequencer, WaitStrategy};
 use crate::utils::min_sequence;
-use crate::SequenceBarrier;
-use std::thread; // Add thread for logging
 
 pub struct SingleProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,
@@ -15,20 +11,20 @@ pub struct SingleProducerSequencer<W: WaitStrategy> {
     is_done: Arc<AtomicBool>,
     buffer_size: usize,
 
-    current_producer_sequence: Cell<Sequence>,
-    slowest_consumer_sequence: Cell<Sequence>,
+    current_producer_sequence: Arc<AtomicSequence>,
+    slowest_consumer_sequence: Arc<AtomicSequence>,
 }
 
 impl<W: WaitStrategy> SingleProducerSequencer<W> {
     pub fn new(wait_strategy: W, buffer_size: usize) -> Self {
         Self {
-            cursor: Arc::new(AtomicSequence::from(-1)),
+            cursor: Arc::new(AtomicSequence::from()),
             wait_strategy: Arc::new(wait_strategy),
             gating_sequences: Vec::new(),
             is_done: Arc::new(AtomicBool::from(false)),
             buffer_size,
-            current_producer_sequence: Cell::new(Sequence::from(-1)),
-            slowest_consumer_sequence: Cell::new(Sequence::default()),
+            current_producer_sequence: Arc::new(AtomicSequence::default()),
+            slowest_consumer_sequence: Arc::new(AtomicSequence::default()),
         }
     }
 }
@@ -41,8 +37,8 @@ impl<W: WaitStrategy> Clone for SingleProducerSequencer<W> {
             gating_sequences: self.gating_sequences.clone(),
             is_done: self.is_done.clone(),
             buffer_size: self.buffer_size,
-            current_producer_sequence: Cell::new(self.current_producer_sequence.get()),
-            slowest_consumer_sequence: Cell::new(self.slowest_consumer_sequence.get()),
+            current_producer_sequence: self.current_producer_sequence.clone(),
+            slowest_consumer_sequence: self.slowest_consumer_sequence.clone(),
         }
     }
 }
@@ -50,13 +46,13 @@ impl<W: WaitStrategy> Clone for SingleProducerSequencer<W> {
 impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     type Barrier = DefaultSequenceBarrier<W>;
     fn next(&self, count: usize) -> (Sequence, Sequence) {
-        let curr_producer_idx = self.current_producer_sequence.take();
+        let curr_producer_idx = self.current_producer_sequence.load();
 
         let low = curr_producer_idx + 1;
         let high = curr_producer_idx + count as i64;
 
         loop {
-            let raw_consumer_idx = self.slowest_consumer_sequence.get();
+            let raw_consumer_idx = self.slowest_consumer_sequence.load();
 
             let consumer_idx = if raw_consumer_idx == 0 && curr_producer_idx >= (self.buffer_size as i64 - 1) {
                 self.buffer_size as i64
@@ -74,15 +70,15 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
 
                 let updated_consumer_idx = min_sequence(&self.gating_sequences);
 
-                self.slowest_consumer_sequence.set(updated_consumer_idx);
- 
+                self.slowest_consumer_sequence.store(updated_consumer_idx);
+
                 continue;
             }
 
             break;
         }
 
-        self.current_producer_sequence.set(high);
+        self.current_producer_sequence.store(high);
 
         (low, high)
     }
@@ -91,9 +87,10 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         self.cursor.store(high);
 
         if !self.gating_sequences.is_empty() {
-            self.slowest_consumer_sequence.set(min_sequence(&self.gating_sequences));
+             let min_seq = min_sequence(&self.gating_sequences);
+             self.slowest_consumer_sequence.store(min_seq);
         }
-        
+
         self.wait_strategy.signal();
     }
 
@@ -109,7 +106,7 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         self.gating_sequences.push(gating_sequence);
 
         if !self.gating_sequences.is_empty() {
-            self.slowest_consumer_sequence.set(min_sequence(&self.gating_sequences));
+            self.slowest_consumer_sequence.store(min_sequence(&self.gating_sequences));
         }
     }
 
