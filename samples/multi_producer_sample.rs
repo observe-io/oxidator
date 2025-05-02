@@ -116,7 +116,6 @@ fn main() {
 
     let mut producer_handles = vec![];
 
-    // Start producer threads silently
     for producer_id in 0..num_producers {
         let producer = producers[producer_id % producers.len()].clone();
         
@@ -140,7 +139,6 @@ fn main() {
         producer_handles.push(handle);
     }
 
-    // Wait for producers to finish
     for handle in producer_handles {
         handle.join().unwrap();
     }
@@ -151,7 +149,6 @@ fn main() {
     println!("Waiting for consumers to finish...");
     consumer_handle.join();
 
-    // Verification code starts here - keep all of these print statements
     let final_sum = sum_task.get_sum();
 
     let producer_counts = sum_task.get_counters();
@@ -159,30 +156,25 @@ fn main() {
     let producer_sums = sum_task.get_producer_sums();
     
     let mut total_processed = 0;
-    let mut expected_sum = 0;
+    let mut total_expected_sum_calculated = 0i64;
     let mut total_actual_sum_from_components = 0i64;
-    
+
     for producer_id in 0..num_producers {
         let actual_count = producer_counts[producer_id];
         total_processed += actual_count;
-  
+
         let producer_actual_sum = producer_sums[producer_id];
         total_actual_sum_from_components += producer_actual_sum;
 
-        let start = (producer_id * events_per_producer + 1) as i32;
-        let end = if actual_count > 0 {
-            producer_max_values[producer_id]
-        } else {
-            start
-        };
+        let start_val = (producer_id * events_per_producer + 1) as i64;
+        let end_val = (producer_id * events_per_producer + events_per_producer) as i64;
 
-        let theoretical_sum = if actual_count > 0 {
-            (actual_count as i64 * (start as i64 + end as i64)) / 2
+        let expected_producer_sum = if events_per_producer > 0 {
+             (events_per_producer as i64 * (start_val + end_val)) / 2
         } else {
             0
         };
-
-        expected_sum += producer_actual_sum;
+        total_expected_sum_calculated += expected_producer_sum;
 
         println!(
             "Producer {} | actual events processed: {} | expected events produced: {}",
@@ -190,34 +182,35 @@ fn main() {
             actual_count,
             events_per_producer
         );
+
         println!(
-            "    Range: {} to {}, Max value seen: {}",
-            start, end, producer_max_values[producer_id]
+            "    Expected sum for generated events: {}, Actual tracked sum by consumer: {}, Difference: {}",
+            expected_producer_sum, producer_actual_sum,
+            (expected_producer_sum - producer_actual_sum).abs()
         );
-        println!(
-            "    Theoretical sum: {}, Actual tracked sum: {}, Difference: {}",
-            theoretical_sum, producer_actual_sum, 
-            (theoretical_sum - producer_actual_sum).abs()
-        );
+
+        assert_eq!(actual_count as usize, events_per_producer, "Producer {} event count mismatch", producer_id);
+        assert_eq!(producer_actual_sum, expected_producer_sum, "Producer {} sum mismatch", producer_id);
     }
-    
+
     let total_expected = num_producers * events_per_producer;
     let completion_percentage = (total_processed as f64 / total_expected as f64) * 100.0;
-    
+
     println!("All producers and consumers have completed:");
-    println!("  Final tracked sum: {}", final_sum);
-    println!("  Expected sum: {}", expected_sum);
-    println!("  Sum from individual producer tracking: {}", total_actual_sum_from_components);
+    println!("  Final tracked sum (Atomic): {}", final_sum);
+    println!("  Expected sum (Calculated from producer ranges): {}", total_expected_sum_calculated);
+    println!("  Sum from individual producer tracking (Mutex): {}", total_actual_sum_from_components);
     println!("  Total events processed by SumTask: {}", total_processed);
     println!("  Total events expected: {}", total_expected);
     println!("  Completion percentage: {:.2}%", completion_percentage);
 
-    assert!(completion_percentage >= 95.0, 
-        "Total processed events count too low: {}/{} ({:.2}%)", 
+    assert!(completion_percentage >= 99.99,
+        "Total processed events count too low: {}/{} ({:.2}%)",
         total_processed, total_expected, completion_percentage);
-    let sum_difference = (final_sum as i64 - expected_sum).abs();
-    let tolerance_percentage = if expected_sum > 0 {
-        (sum_difference as f64 / expected_sum as f64) * 100.0
+
+    let sum_difference = (final_sum as i64 - total_expected_sum_calculated).abs();
+    let tolerance_percentage = if total_expected_sum_calculated > 0 {
+        (sum_difference as f64 / total_expected_sum_calculated as f64) * 100.0
     } else {
         0.0
     };
@@ -228,19 +221,19 @@ fn main() {
     } else {
         0.0
     };
-    
-    let tolerance_threshold = 15.0; 
-    
-    println!("Verification metrics:");
-    println!("  Expected sum vs final sum difference: {} ({:.2}%)", sum_difference, tolerance_percentage);
-    println!("  Final sum vs component sum difference: {} ({:.2}%)", component_difference, component_tolerance);
-    
-    assert!(tolerance_percentage <= tolerance_threshold, 
-        "Sum difference too large: {} ({:.2}%)", sum_difference, tolerance_percentage);
 
-    assert!(component_tolerance <= 0.01, 
-        "Component tracking inconsistency detected: {} ({:.2}%)", 
+    let tolerance_threshold = 0.01;
+
+    println!("Verification metrics:");
+    println!("  Expected sum vs final atomic sum difference: {} ({:.2}%)", sum_difference, tolerance_percentage);
+    println!("  Final atomic sum vs component sum (Mutex) difference: {} ({:.2}%)", component_difference, component_tolerance);
+
+    assert!(tolerance_percentage <= tolerance_threshold,
+        "Sum difference (Atomic vs Expected) too large: {} ({:.2}%)", sum_difference, tolerance_percentage);
+
+    assert!(component_tolerance <= tolerance_threshold,
+        "Component tracking inconsistency detected (Atomic vs Mutex): {} ({:.2}%)",
         component_difference, component_tolerance);
-    
+
     println!("\nVerification successful!");
 }
