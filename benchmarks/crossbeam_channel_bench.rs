@@ -5,12 +5,12 @@ use crossbeam_channel::unbounded as crossbeam_unbounded;
 use oxidator::DisruptorClient;
 use oxidator::traits::{EventProducer, Orchestrator, Sequence, Task, WorkerHandle};
 use oxidator::RingBuffer;
-use std::sync::{mpsc, Arc, Barrier, Mutex, atomic::{AtomicU64, Ordering}};
+use std::sync::{mpsc, Arc, Mutex, atomic::{AtomicU64, Ordering}};
 use std::thread;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-const BUFFER_SIZE: usize = 256;
-const NUM_EVENTS: u64 = 1_000;
+const BUFFER_SIZE: usize = 512;
+const NUM_EVENTS: u64 = 10_000;
 const NUM_PRODUCERS_MULTI: usize = 2;
 const EVENTS_PER_PRODUCER_MULTI: u64 = NUM_EVENTS / NUM_PRODUCERS_MULTI as u64;
 
@@ -105,14 +105,11 @@ fn bench_std_channel_single(n: u64) {
 fn bench_std_channel_multi(n_producers: usize, events_per_producer: u64) {
     let (tx, rx) = mpsc::channel::<Event>();
     let total_events = n_producers as u64 * events_per_producer;
-    let barrier = Arc::new(Barrier::new(n_producers + 1));
 
     let consumer_handle = thread::spawn({
-        let barrier_clone = barrier.clone();
         move || {
             let mut received = 0;
             let task = BenchmarkTask::new();
-            barrier_clone.wait();
             while received < total_events {
                 if let Ok(event) = rx.recv() {
                     task.execute_task(&event, 0, false);
@@ -128,9 +125,7 @@ fn bench_std_channel_multi(n_producers: usize, events_per_producer: u64) {
     let mut producer_handles = Vec::new();
     for id in 0..n_producers {
         let tx_clone = tx.clone();
-        let barrier_clone = barrier.clone();
         let handle = thread::spawn(move || {
-            barrier_clone.wait();
             for _ in 0..events_per_producer {
                 let now = SystemTime::now()
                     .duration_since(UNIX_EPOCH)
@@ -193,14 +188,11 @@ fn bench_crossbeam_channel_single(n: u64) {
 fn bench_crossbeam_channel_multi(n_producers: usize, events_per_producer: u64) {
     let (tx, rx) = crossbeam_unbounded::<Event>();
     let total_events = n_producers as u64 * events_per_producer;
-    let barrier = Arc::new(Barrier::new(n_producers + 1));
 
     let consumer_handle = thread::spawn({
-        let barrier_clone = barrier.clone();
         move || {
             let mut received = 0;
             let task = BenchmarkTask::new();
-            barrier_clone.wait();
             while received < total_events {
                  if let Ok(event) = rx.recv() {
                     task.execute_task(&event, 0, false);
@@ -216,9 +208,7 @@ fn bench_crossbeam_channel_multi(n_producers: usize, events_per_producer: u64) {
     let mut producer_handles = Vec::new();
     for id in 0..n_producers {
         let tx_clone = tx.clone();
-        let barrier_clone = barrier.clone();
         let handle = thread::spawn(move || {
-            barrier_clone.wait();
             for _ in 0..events_per_producer {
                 let now = SystemTime::now()
                     .duration_since(UNIX_EPOCH)
@@ -268,7 +258,7 @@ fn bench_oxidator_single_busy(n: u64) {
                     .unwrap()
                     .as_nanos() as u64;
                 let event = Event { value: now, producer_id: id };
-                 producer.write(vec![event], |slot, _, event_ref| {
+                producer.write(vec![event], |slot, _, event_ref| {
                     *slot = event_ref.clone();
                 });
             }
@@ -282,8 +272,9 @@ fn bench_oxidator_single_busy(n: u64) {
         completed_producers.push(handle.join().unwrap());
     }
 
-    if let Some(producer) = completed_producers.first() {
-         producer.drain();
+    // Drain all producers to ensure all events are published
+    for producer in completed_producers {
+        producer.drain();
     }
 
     consumer_handle.join();
@@ -333,7 +324,8 @@ fn bench_oxidator_multi_busy(n_producers: usize, events_per_producer: u64) {
         completed_producers.push(handle.join().unwrap());
     }
 
-    if let Some(producer) = completed_producers.first() {
+    // Drain all producers to ensure all events are published
+    for producer in completed_producers {
         producer.drain();
     }
 
@@ -348,19 +340,19 @@ fn criterion_benchmark(c: &mut Criterion) {
     group.throughput(Throughput::Elements(NUM_EVENTS));
     group.warm_up_time(Duration::from_secs(5));
     group.measurement_time(Duration::from_secs(10));
-
+    
     group.bench_function(BenchmarkId::new("std_channel", NUM_EVENTS), |b| {
         b.iter(|| bench_std_channel_single(black_box(NUM_EVENTS)));
     });
-
+    
     group.bench_function(BenchmarkId::new("crossbeam_channel", NUM_EVENTS), |b| {
         b.iter(|| bench_crossbeam_channel_single(black_box(NUM_EVENTS)));
     });
-
+    
     group.bench_function(BenchmarkId::new("oxidator_yielding", NUM_EVENTS), |b| {
         b.iter(|| bench_oxidator_single_busy(black_box(NUM_EVENTS)));
     });
-
+    
     group.finish();
 
     let mut multi_group = c.benchmark_group("multi_producer");
@@ -368,16 +360,16 @@ fn criterion_benchmark(c: &mut Criterion) {
     multi_group.throughput(Throughput::Elements(NUM_EVENTS));
     multi_group.warm_up_time(Duration::from_secs(5));
     multi_group.measurement_time(Duration::from_secs(10));
-
+    
     multi_group.bench_function(BenchmarkId::new("std_channel", &multi_producer_label), |b| {
         b.iter(|| bench_std_channel_multi(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
-
+    
     multi_group.bench_function(BenchmarkId::new("crossbeam_channel", &multi_producer_label), |b| {
         b.iter(|| bench_crossbeam_channel_multi(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
-
-    multi_group.bench_function(BenchmarkId::new("oxidator_yielding", NUM_EVENTS), |b| {
+    
+    multi_group.bench_function(BenchmarkId::new("oxidator_yielding", &multi_producer_label), |b| {
         b.iter(|| bench_oxidator_multi_busy(black_box(NUM_PRODUCERS_MULTI), black_box(EVENTS_PER_PRODUCER_MULTI)));
     });
 

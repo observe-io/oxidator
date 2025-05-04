@@ -40,3 +40,6 @@ criterion = "0.5"
 name = "crossbeam_channel_bench"
 path = "benchmarks/crossbeam_channel_bench.rs"
 harness = false # Required for criterion benchmarks
+
+[profile.release]
+debug = true

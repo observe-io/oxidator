@@ -93,9 +93,9 @@ impl Task<Event> for SumTask {
 
 
 fn main() {
-    let buffer_size = 1024;
-    let num_producers = 4;
-    let events_per_producer = 8000;
+    let buffer_size = 128;
+    let num_producers = 2;
+    let events_per_producer = 200;
 
     println!("Starting multi-producer benchmark with {} producers, {} events each (total: {})",
         num_producers, events_per_producer, num_producers * events_per_producer);
