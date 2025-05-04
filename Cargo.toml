@@ -22,3 +22,6 @@ path = "samples/multi_producer_sample.rs"
 [[example]]
 name = "single_producer"
 path = "samples/single_producer_sample.rs"
+
+[profile.release]
+debug = true

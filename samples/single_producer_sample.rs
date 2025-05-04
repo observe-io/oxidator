@@ -80,7 +80,7 @@ fn main() {
     // Configure disruptor
     let (mut producers, mut consumer_factory) = DisruptorClient
     .init_data_storage::<Event, RingBuffer<Event>>(buffer_size)
-    .with_blocking_wait_strategy()
+    .with_yielding_wait_strategy()
     .with_single_producer()
     .build::<PrinterTask>(num_producers);
 
@@ -94,23 +94,34 @@ fn main() {
     let sum_idx = consumer_factory.add_task(sum_task, vec![printer_idx]);
 
     let consumers = consumer_factory.init_consumers();
-
     let mut consumer_handle = consumers.start();
 
+    let mut producer_handles = Vec::new();
+
     // Produce events
-    for i in 0..num_events {
-        let event = Event {
-            value: i + 1,
-            producer_id: 0,
-        };
+    let handle = thread::spawn(move || {
+        for i in 0..num_events {
+            let event = Event {
+                value: i + 1,
+                producer_id: 0,
+            };
 
-        producer.write(vec![event], |slot: &mut Event, seq: i64, event| {
-            *slot = event.clone();
-        });
+            producer.write(vec![event], |slot: &mut Event, seq: i64, event| {
+                *slot = event.clone();
+            });
+        }
+        producer
+    });
+    producer_handles.push(handle);
+
+    let mut completed_producers = Vec::new();
+    for handle in producer_handles {
+        completed_producers.push(handle.join().unwrap());
     }
-
     // Clean up and wait for completion
-    producer.drain();
+    if let Some(producer) = completed_producers.first() {
+        producer.drain();
+    }
     consumer_handle.join();
 
     // Final verification - keeping only these prints
