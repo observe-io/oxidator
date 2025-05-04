@@ -1,0 +1,11695 @@
+cmd: ./target/debug/examples/multi_producer
+events: Ir
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/alloc.rs
+fn=<alloc::alloc::Global as core::alloc::Allocator>::allocate
+253 10
+254 2
+255 4
+fn=<alloc::alloc::Global as core::alloc::Allocator>::deallocate
+0 44
+116 110
+265 132
+266 110
+269 88
+271 44
+fn=<alloc::alloc::Global as core::clone::Clone>::clone
+46 84
+fn=alloc::alloc::Global::alloc_impl
+0 2
+187 256248
+188 128124
+189 8
+192 256232
+193 192174
+194 64058
+195 32029
+197 128124
+fn=alloc::alloc::alloc
+90 96087
+96 160145
+98 64058
+fn=alloc::alloc::exchange_malloc
+0 64058
+253 64058
+254 160145
+347 160145
+349 224203
+350 128116
+353 64058
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/boxed.rs
+fn=<alloc::boxed::Box<T,A> as core::clone::Clone>::clone
+0 1
+940 1
+1403 1
+1742 3
+1744 5
+1746 4
+1747 3
+1749 2
+fn=<alloc::boxed::Box<T,A> as core::ops::drop::Drop>::drop
+0 10
+1676 21
+1679 33
+1682 13
+1683 33
+1684 20
+1687 14
+fn=<multi_producer::PrinterTask as oxidator::traits::traits::Task<multi_producer::Event>>::clone_box
+0 1
+274 3
+fn=<multi_producer::SumTask as oxidator::traits::traits::Task<multi_producer::Event>>::clone_box
+0 1
+274 7
+fn=alloc::boxed::Box<T,A>::new_uninit_in
+480 1
+487 9
+488 2
+491 2
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+0 2
+513 1
+517 1
+521 10
+523 4
+524 3
+fn=alloc::slice::hack::into_vec
+1403 64002
+fn=alloc::sync::Arc<T>::new
+0 10
+274 74
+1403 10
+fn=multi_producer::main
+0 2
+274 10
+275 1
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::init_consumers
+0 4
+274 12
+fn=std::thread::Builder::spawn_unchecked_
+0 12
+274 72
+275 12
+1173 18
+1403 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/raw_vec.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+508 16
+fn=<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<T,A> as core::ops::drop::Drop>::drop
+273 128016
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+186 4
+295 1
+508 1
+513 2
+fn=<T as alloc::vec::spec_from_elem::SpecFromElem>::from_elem
+0 12
+442 8
+443 36
+444 16
+fn=<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop
+400 64046
+402 96069
+403 64046
+fn=<alloc::vec::Vec<T,A> as core::clone::Clone>::clone
+508 2
+518 1
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+295 64008
+508 64008
+513 64008
+fn=<alloc::vec::Vec<T,A> as core::ops::drop::Drop>::drop
+508 19
+fn=<alloc::vec::Vec<T,A> as core::ops::index::Index<I>>::index
+508 192012
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+508 6
+fn=<alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter
+186 5
+fn=alloc::raw_vec::RawVec<T,A>::grow_one
+335 27
+336 9
+337 18
+566 18
+567 135
+fn=alloc::raw_vec::RawVecInner<A>::with_capacity_in
+0 9
+417 36
+418 15
+419 12
+422 24
+424 6
+428 6
+513 15
+622 3
+623 12
+fn=alloc::slice::hack::into_vec
+0 32001
+256 96003
+fn=alloc::vec::Vec<T,A>::as_slice
+508 192018
+fn=alloc::vec::Vec<T,A>::extend_trusted
+508 1
+fn=alloc::vec::Vec<T,A>::push
+295 1045
+508 1045
+513 2090
+fn=alloc::vec::Vec<T,A>::reserve
+327 3
+513 2
+558 4
+623 3
+fn=alloc::vec::Vec<T>::with_capacity
+186 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/rc.rs
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+3059 16
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/slice.rs
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+124 9
+139 1
+140 3
+141 3
+144 11
+148 4
+152 2
+154 6
+155 2
+fn=<alloc::vec::Vec<T,A> as core::clone::Clone>::clone
+111 2
+fn=alloc::slice::<impl [T]>::into_vec
+526 160005
+528 64002
+529 64002
+fn=alloc::slice::hack::into_vec
+99 224007
+101 32001
+103 32001
+105 64002
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/sync.rs
+fn=<alloc::sync::Arc<T,A> as core::clone::Clone>::clone
+0 40
+2163 120
+2175 40
+2192 120
+2196 240
+2197 80
+fn=<alloc::sync::Arc<T,A> as core::convert::AsRef<T>>::as_ref
+2206 50
+3917 50
+3919 50
+fn=<alloc::sync::Arc<T,A> as core::ops::deref::Deref>::deref
+2205 512055
+2206 512055
+2207 512055
+fn=<alloc::sync::Arc<T,A> as core::ops::drop::Drop>::drop
+0 22
+2550 222
+2554 222
+2597 44
+2599 200
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+0 64
+3069 48
+3070 32
+3076 64
+3208 48
+3217 64
+3219 32
+3231 160
+3234 48
+fn=alloc::sync::Arc<T,A>::drop_slow
+1899 32
+1905 80
+1910 65
+1911 64
+fn=alloc::sync::Arc<T,A>::is_unique
+0 6
+2497 18
+2505 48
+2509 36
+2514 18
+2515 12
+2519 24
+fn=alloc::sync::Arc<T>::new
+0 8
+386 19
+389 118
+394 10
+395 20
+fn=std::thread::Builder::spawn_unchecked_
+0 4
+282 18
+389 66
+394 6
+2175 12
+2192 36
+2196 54
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+0 6
+2175 6
+2192 18
+2196 24
+fn=std::thread::JoinInner<T>::join
+0 6
+2413 36
+2419 6
+2490 12
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/into_iter.rs
+fn=<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<T,A> as core::ops::drop::Drop>::drop
+491 64008
+494 96012
+496 320040
+498 64008
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+0 128020
+26 128024
+28 128024
+208 256051
+209 32008
+218 256048
+219 32004
+221 64016
+222 32008
+223 32008
+225 160056
+226 96031
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::size_hint
+0 128008
+28 64004
+229 384024
+233 192012
+235 576036
+236 128008
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop
+0 32008
+113 96016
+487 64008
+501 32004
+504 64020
+507 128016
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/is_zero.rs
+fn=<bool as alloc::vec::is_zero::IsZero>::is_zero
+16 4
+17 4
+18 8
+37 4
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 16
+1575 24
+1671 8
+3472 16
+3474 16
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 2
+803 3
+1898 1
+2882 3
+2883 6
+fn=<alloc::vec::Vec<T,A> as core::clone::Clone>::clone
+0 2
+1575 3
+1671 1
+3286 7
+3287 2
+3289 2
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+2681 64008
+3450 96012
+3453 160020
+3454 128016
+3459 96012
+3461 128016
+3462 192024
+3464 64008
+fn=<alloc::vec::Vec<T,A> as core::ops::deref::Deref>::deref
+3265 192018
+3266 96009
+3267 192018
+fn=<alloc::vec::Vec<T,A> as core::ops::drop::Drop>::drop
+3781 37
+3786 47
+3789 28
+fn=<alloc::vec::Vec<T,A> as core::ops::index::Index<I>>::index
+0 192012
+1575 288018
+1671 96006
+3357 480030
+3359 192012
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+0 6
+1607 9
+3369 15
+3371 6
+fn=<alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter
+803 3
+fn=<alloc::vec::Vec<T> as core::default::Default>::default
+423 10
+3797 2
+3799 2
+fn=<alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter
+3423 12
+3424 6
+3425 2
+fn=alloc::slice::hack::into_vec
+935 96003
+fn=alloc::vec::Vec<T,A>::as_slice
+0 192018
+1561 192018
+1575 288027
+1576 192018
+1671 96009
+fn=alloc::vec::Vec<T,A>::extend_trusted
+0 3
+3552 6
+3553 11
+3554 4
+3555 1
+3561 2
+3564 3
+3565 9
+3581 2
+fn=alloc::vec::Vec<T,A>::extend_trusted::{{closure}}
+3565 4096
+3566 1024
+3571 1024
+fn=alloc::vec::Vec<T,A>::is_empty
+2681 32000
+2705 32000
+2706 64000
+2707 64000
+fn=alloc::vec::Vec<T,A>::len
+2680 96011
+2681 96011
+2689 96011
+fn=alloc::vec::Vec<T,A>::push
+0 4162
+2417 8305
+2419 3135
+2422 4180
+2423 20
+2427 2130
+2428 2090
+2430 2090
+fn=alloc::vec::Vec<T,A>::reserve
+1271 5
+1272 4
+1273 2
+fn=alloc::vec::Vec<T>::new
+422 13
+423 65
+424 13
+fn=alloc::vec::Vec<T>::with_capacity
+482 8
+484 2
+803 3
+fn=alloc::vec::from_elem
+3186 32
+3187 16
+3188 8
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/set_len_on_drop.rs
+fn=<alloc::vec::set_len_on_drop::SetLenOnDrop as core::ops::drop::Drop>::drop
+30 1
+31 3
+32 1
+fn=alloc::vec::Vec<T,A>::extend_trusted
+14 3
+fn=alloc::vec::Vec<T,A>::extend_trusted::{{closure}}
+19 3072
+24 1024
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/spec_extend.rs
+fn=<alloc::vec::Vec<T,A> as alloc::vec::spec_extend::SpecExtend<T,I>>::spec_extend
+28 4
+29 1
+30 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/spec_from_elem.rs
+fn=<T as alloc::vec::spec_from_elem::SpecFromElem>::from_elem
+0 8
+24 36
+25 32
+26 16
+31 12
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/spec_from_iter.rs
+fn=<alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter
+33 5
+34 2
+35 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/spec_from_iter_nested.rs
+fn=<alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter
+0 6
+52 6
+53 7
+54 3
+62 6
+63 6
+64 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/../../stdarch/crates/core_arch/src/simd.rs
+fn=core::core_arch::x86::sse2::_mm_set1_epi8
+18 140
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/../../stdarch/crates/core_arch/src/x86/mod.rs
+fn=<core::core_arch::x86::__m128i as core::core_arch::x86::m128iExt>::as_m128i
+562 25
+563 50
+564 25
+fn=core::core_arch::x86::m128iExt::as_i8x16
+540 75
+541 225
+542 50
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/../../stdarch/crates/core_arch/src/x86/sse2.rs
+fn=core::core_arch::x86::sse2::_mm_cmpeq_epi8
+842 28
+843 147
+844 14
+fn=core::core_arch::x86::sse2::_mm_load_si128
+1214 4
+1215 4
+1216 2
+fn=core::core_arch::x86::sse2::_mm_loadu_si128
+1227 35
+1234 10
+1235 10
+2914 30
+fn=core::core_arch::x86::sse2::_mm_movemask_epi8
+0 11
+1433 22
+1434 11
+1435 110
+1436 33
+1437 22
+fn=core::core_arch::x86::sse2::_mm_set1_epi8
+1073 14
+1118 133
+1120 7
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/alloc/layout.rs
+fn=<alloc::alloc::Global as core::alloc::Allocator>::deallocate
+149 44
+161 22
+fn=<alloc::boxed::Box<T,A> as core::ops::drop::Drop>::drop
+140 14
+fn=alloc::alloc::Global::alloc_impl
+149 96093
+236 4
+fn=alloc::alloc::alloc
+149 32029
+161 32029
+fn=alloc::alloc::exchange_malloc
+140 64058
+fn=alloc::boxed::Box<T,A>::new_uninit_in
+140 2
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+140 5
+fn=alloc::raw_vec::RawVecInner<A>::with_capacity_in
+149 3
+fn=alloc::vec::Vec<T,A>::reserve
+0 1
+149 1
+fn=core::alloc::layout::Layout::from_size_align_unchecked::precondition_check
+137 192324
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/alloc/mod.rs
+fn=<&A as core::alloc::Allocator>::deallocate
+384 80
+386 32
+387 32
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/borrow.rs
+fn=<T as core::borrow::Borrow<T>>::borrow
+211 6
+213 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/cell.rs
+fn=<alloc::sync::Arc<T,A> as core::clone::Clone>::clone
+2198 80
+fn=<alloc::sync::Arc<T,A> as core::ops::drop::Drop>::drop
+2198 148
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+2198 32
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::deref::Deref>::deref
+2198 64003
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::deref::DerefMut>::deref_mut
+2198 67328
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::drop::Drop>::drop
+2198 64006
+fn=alloc::sync::Arc<T,A>::is_unique
+2198 12
+fn=core::sync::atomic::AtomicI32::fetch_add
+2198 32000
+fn=std::hash::random::RandomState::new::{{closure}}
+544 2
+fn=std::sync::poison::mutex::Mutex<T>::new
+0 1
+2099 3
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::get_or_init
+2198 1
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::initialize
+2198 4
+fn=std::thread::Builder::spawn_unchecked_
+2099 24
+2198 24
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+2198 12
+fn=std::thread::JoinInner<T>::join
+2220 18
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/clone.rs
+fn=<alloc::boxed::Box<T,A> as core::clone::Clone>::clone
+277 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/clone/uninit.rs
+fn=<T as core::clone::uninit::CopySpec>::clone_one
+13 4
+19 4
+21 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/cmp.rs
+fn=<Q as hashbrown::Equivalent<K>>::equivalent
+1922 9
+fn=<core::ops::range::Range<T> as core::iter::range::RangeIteratorImpl>::spec_next
+1824 68138
+fn=<core::ops::range::RangeInclusive<T> as core::iter::range::RangeInclusiveIteratorImpl>::spec_next
+1824 384000
+1826 384000
+fn=core::cmp::Ord::max
+0 1
+998 2
+1002 10
+1003 5
+1824 4
+fn=core::cmp::impls::<impl core::cmp::Ord for i64>::cmp
+1836 38
+1837 171
+1838 19
+fn=core::cmp::impls::<impl core::cmp::PartialEq for usize>::eq
+1740 21
+fn=core::cmp::min_by
+0 19
+1502 133
+1503 228
+1504 57
+fn=core::iter::range::<impl core::iter::traits::iterator::Iterator for core::ops::range::Range<A>>::size_hint
+1824 4
+fn=core::iter::traits::exact_size::ExactSizeIterator::len
+1740 320020
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs
+fn=<&T as core::convert::AsRef<U>>::as_ref
+703 3
+704 3
+705 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/num.rs
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+78 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/fmt/mod.rs
+fn=<alloc::sync::Arc<T,A> as core::ops::drop::Drop>::drop
+600 296
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+600 64
+fn=<alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter
+600 2
+fn=<std::thread::Packet<T> as core::ops::drop::Drop>::drop
+609 12
+fn=alloc::vec::Vec<T,A>::extend_trusted
+600 2
+609 2
+fn=core::fmt::Arguments::new_const
+600 10
+602 45
+603 5
+fn=core::fmt::Arguments::new_v1
+608 42
+613 112
+614 14
+fn=core::fmt::Arguments::new_v1_formatted
+624 27
+630 30
+631 3
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+600 40
+fn=core::ptr::read_volatile::precondition_check
+600 64058
+fn=core::ptr::replace::precondition_check
+600 2
+fn=core::slice::raw::from_raw_parts::precondition_check
+600 384048
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+600 8
+fn=core::sync::atomic::atomic_compare_exchange
+600 384036
+fn=core::sync::atomic::atomic_load
+600 896384
+fn=core::sync::atomic::atomic_store
+600 256056
+fn=hashbrown::raw::RawIterRange<T>::new
+600 2
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+600 4
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+600 2
+fn=hashbrown::raw::RawTableInner::drop_inner_table
+600 2
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+600 4
+fn=hashbrown::raw::RawTableInner::prepare_resize::{{closure}}
+600 2
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+609 12
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/fmt/rt.rs
+fn=core::fmt::rt::Argument::new_display
+100 148
+103 111
+113 74
+115 37
+fn=core::fmt::rt::Placeholder::new
+23 80
+31 40
+32 10
+fn=core::fmt::rt::UnsafeArg::new
+221 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/hash/mod.rs
+fn=core::hash::BuildHasher::hash_one
+0 20
+694 30
+699 10
+700 10
+701 15
+702 15
+fn=core::hash::Hasher::write_usize
+393 15
+394 15
+395 10
+fn=core::hash::impls::<impl core::hash::Hash for &T>::hash
+946 15
+947 10
+948 10
+fn=core::hash::impls::<impl core::hash::Hash for usize>::hash
+811 30
+812 10
+813 10
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/hash/sip.rs
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::finish
+310 10
+311 40
+313 30
+315 10
+316 15
+317 10
+319 15
+320 10
+322 20
+323 10
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::write
+0 50
+103 5
+106 10
+109 15
+255 35
+256 5
+257 10
+259 5
+261 15
+277 15
+278 15
+280 10
+281 50
+285 10
+287 10
+288 15
+289 10
+291 15
+297 30
+298 5
+299 15
+fn=<core::hash::sip::Sip13Rounds as core::hash::sip::Sip>::c_rounds
+74 320
+76 50
+77 50
+78 10
+80 10
+82 10
+84 10
+85 10
+86 10
+88 10
+90 10
+360 20
+362 20
+fn=<core::hash::sip::Sip13Rounds as core::hash::sip::Sip>::d_rounds
+74 480
+76 75
+77 75
+78 15
+80 15
+82 15
+84 15
+85 15
+86 15
+88 15
+90 15
+365 10
+369 10
+fn=<std::hash::random::DefaultHasher as core::hash::Hasher>::finish
+242 5
+fn=<std::hash::random::DefaultHasher as core::hash::Hasher>::write
+232 5
+fn=<std::hash::random::RandomState as core::hash::BuildHasher>::build_hasher
+179 25
+186 65
+190 20
+195 10
+196 20
+fn=core::hash::sip::Hasher<S>::reset
+200 5
+201 5
+202 15
+203 15
+204 15
+205 15
+206 5
+207 5
+fn=core::hash::sip::u8to64_le
+120 45
+122 5
+123 5
+124 25
+130 30
+135 20
+142 5
+143 10
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/hint.rs
+fn=core::hint::assert_unchecked::precondition_check
+206 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/intrinsics/mod.rs
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::write
+4412 5
+4441 10
+fn=<i64 as core::iter::range::Step>::forward_unchecked
+0 63994
+1521 127988
+fn=core::core_arch::x86::sse2::_mm_loadu_si128
+4441 20
+fn=core::hash::sip::u8to64_le
+4412 10
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+0 30
+3886 30
+4431 20
+4432 60
+4433 60
+4434 70
+fn=core::slice::raw::from_raw_parts::precondition_check
+3874 192024
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+3874 4
+fn=core::ub_checks::maybe_is_nonoverlapping::runtime
+0 30
+1521 20
+3874 80
+3876 30
+fn=hashbrown::raw::RawTable<T,A>::find
+1498 6
+fn=hashbrown::raw::RawTable<T,A>::reserve
+1521 4
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+0 3
+1521 2
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+4607 1
+4627 4
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+0 2
+1498 4
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+1498 8
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+1521 4
+fn=hashbrown::raw::TableLayout::calculate_layout_for
+0 4
+1521 16
+fn=hashbrown::raw::capacity_to_buckets
+0 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/adapters/enumerate.rs
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+24 10
+fn=<core::iter::adapters::enumerate::Enumerate<I> as core::iter::traits::iterator::Iterator>::next
+0 288010
+46 320009
+47 384014
+48 96006
+49 224014
+50 320004
+51 192015
+fn=core::iter::traits::iterator::Iterator::enumerate
+24 288003
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/adapters/map.rs
+fn=<core::iter::adapters::map::Map<I,F> as core::iter::traits::iterator::Iterator>::fold
+88 6
+124 123
+128 32
+129 62
+fn=<core::iter::adapters::map::Map<I,F> as core::iter::traits::iterator::Iterator>::next
+106 90
+107 180
+108 120
+fn=<core::iter::adapters::map::Map<I,F> as core::iter::traits::iterator::Iterator>::size_hint
+111 8
+112 4
+113 4
+fn=core::iter::adapters::map::map_fold::{{closure}}
+0 2124
+88 22889
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/adapters/take.rs
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 3
+37 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/range.rs
+fn=<core::ops::range::Range<T> as core::iter::range::RangeIteratorImpl>::spec_next
+0 34060
+763 102207
+764 170354
+765 102180
+767 204360
+768 68120
+770 9
+772 136276
+fn=<core::ops::range::RangeInclusive<T> as core::iter::range::RangeInclusiveIteratorImpl>::spec_next
+0 256000
+1156 576018
+1157 448006
+1158 64006
+1160 896000
+1161 768012
+1163 383964
+1164 63994
+1166 64006
+1167 128012
+1169 832030
+fn=<i64 as core::iter::range::Step>::forward_unchecked
+187 191982
+189 63994
+190 127988
+fn=<usize as core::iter::range::Step>::forward_unchecked
+203 238420
+206 68120
+fn=<usize as core::iter::range::Step>::steps_between
+0 8
+262 12
+263 6
+265 6
+266 14
+270 2
+fn=core::iter::range::<impl core::iter::traits::iterator::Iterator for core::ops::range::Range<A>>::next
+848 68138
+849 34069
+850 68138
+fn=core::iter::range::<impl core::iter::traits::iterator::Iterator for core::ops::range::Range<A>>::size_hint
+0 6
+853 10
+854 10
+855 6
+859 4
+fn=core::iter::range::<impl core::iter::traits::iterator::Iterator for core::ops::range::RangeInclusive<A>>::next
+1251 384012
+1252 192006
+1253 384012
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/traits/collect.rs
+fn=<I as core::iter::traits::collect::IntoIterator>::into_iter
+0 32000
+322 160043
+323 448042
+324 128016
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/traits/exact_size.rs
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop
+156 128020
+fn=core::iter::traits::exact_size::ExactSizeIterator::len
+116 192012
+117 576036
+122 128008
+124 128008
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs
+fn=core::iter::traits::iterator::Iterator::collect
+1967 5
+1971 3
+1972 2
+fn=core::iter::traits::iterator::Iterator::enumerate
+958 32003
+963 32001
+fn=core::iter::traits::iterator::Iterator::fold
+0 4100
+2539 4
+2544 1
+2545 11272
+2546 4096
+2547 1
+2549 4
+fn=core::iter::traits::iterator::Iterator::for_each
+790 3
+797 6
+800 2
+801 2
+fn=core::iter::traits::iterator::Iterator::for_each::call::{{closure}}
+797 13312
+fn=core::iter::traits::iterator::Iterator::map
+745 124
+751 31
+fn=core::iter::traits::iterator::Iterator::min
+3143 90
+3148 30
+3149 60
+fn=core::iter::traits::iterator::Iterator::min_by
+3258 90
+3268 30
+3269 60
+fn=core::iter::traits::iterator::Iterator::min_by::fold::{{closure}}
+3265 247
+fn=core::iter::traits::iterator::Iterator::reduce
+0 90
+2576 90
+2581 330
+2582 270
+2583 150
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs
+fn=core::iter::traits::exact_size::ExactSizeIterator::len
+0 64004
+44 256016
+46 128008
+47 64004
+fn=core::result::Result<T,E>::is_ok
+538 128000
+fn=hashbrown::raw::RawTable<T,A>::reserve
+538 2
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+538 8
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+538 4
+fn=std::sync::poison::mutex::Mutex<T>::lock
+538 64006
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/marker.rs
+fn=<core::marker::PhantomData<T> as core::default::Default>::default
+820 7
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/mem/manually_drop.rs
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+181 192024
+265 128016
+fn=std::thread::Builder::spawn_unchecked_
+181 32
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+181 60
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/mem/maybe_uninit.rs
+fn=<alloc::boxed::Box<T,A> as core::clone::Clone>::clone
+597 1
+fn=std::thread::Builder::spawn_unchecked_
+308 36
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+555 12
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/mem/mod.rs
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 1
+309 1
+fn=<alloc::boxed::Box<T,A> as core::ops::drop::Drop>::drop
+0 14
+395 34
+538 34
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+395 64
+538 64
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+309 32004
+fn=alloc::boxed::Box<T,A>::new_uninit_in
+309 1
+467 1
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+309 1
+467 1
+fn=alloc::vec::Vec<T,A>::push
+0 1045
+309 1045
+fn=core::mem::drop
+940 288000
+fn=core::mem::take
+793 10
+794 10
+795 4
+fn=core::ptr::non_null::NonNull<T>::sub_ptr
+309 64023
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+733 13
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+0 6
+940 24
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/int_macros.rs
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+2107 64012
+fn=<i64 as core::iter::range::Step>::forward_unchecked
+547 127988
+2298 255976
+2382 383964
+fn=core::num::<impl i64>::abs
+0 10
+3449 18
+3453 12
+3454 28
+3456 2
+3458 18
+3566 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/niche_types.rs
+fn=<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<T,A> as core::ops::drop::Drop>::drop
+0 32004
+54 32004
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 1
+61 1
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 96012
+61 32004
+fn=alloc::raw_vec::RawVecInner<A>::with_capacity_in
+0 3
+61 3
+fn=alloc::slice::hack::into_vec
+54 32001
+fn=alloc::vec::Vec<T,A>::push
+0 1045
+61 1045
+fn=alloc::vec::Vec<T,A>::reserve
+0 2
+61 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/nonzero.rs
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+375 2
+604 8
+fn=hashbrown::raw::RawTable<T,A>::find
+375 3
+604 12
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+375 2
+604 8
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+375 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/uint_macros.rs
+fn=<core::hash::sip::Sip13Rounds as core::hash::sip::Sip>::c_rounds
+260 60
+261 180
+1981 40
+fn=<core::hash::sip::Sip13Rounds as core::hash::sip::Sip>::d_rounds
+260 90
+261 270
+1981 60
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::fold
+560 30
+572 19
+fn=<usize as core::iter::range::Step>::forward_unchecked
+572 34060
+fn=alloc::raw_vec::RawVecInner<A>::with_capacity_in
+2021 3
+2022 6
+fn=alloc::vec::Vec<T,A>::reserve
+2022 2
+fn=core::hash::Hasher::write_usize
+3482 5
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+85 400
+fn=core::num::<impl usize>::unchecked_add::precondition_check
+567 34079
+2351 68158
+fn=core::ptr::read_volatile::precondition_check
+85 640580
+fn=core::ptr::replace::precondition_check
+85 20
+fn=core::slice::raw::from_raw_parts::precondition_check
+85 3840480
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+85 80
+fn=core::ub_checks::maybe_is_nonoverlapping::runtime
+0 20
+872 20
+2549 30
+2550 10
+2552 10
+2580 70
+2581 10
+fn=hashbrown::raw::RawIterRange<T>::new
+84 1
+3310 1
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+84 2
+3310 2
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+2022 4
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+84 1
+494 5
+498 3
+3310 1
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+84 2
+3310 2
+fn=hashbrown::raw::TableLayout::calculate_layout_for
+494 20
+498 12
+872 4
+2580 14
+2581 2
+fn=hashbrown::raw::capacity_to_buckets
+870 1
+2579 1
+fn=std::hash::random::RandomState::new::{{closure}}
+1981 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ops/function.rs
+fn=core::ops::function::FnMut::call_mut
+166 171
+fn=core::ops::function::FnOnce::call_once
+0 1
+250 66
+fn=core::ops::function::FnOnce::call_once{{vtable.shim}}
+250 30
+fn=core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &mut F>::call_once
+304 166
+305 117
+306 98
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ops/range.rs
+fn=<core::ops::range::RangeInclusive<T> as core::iter::range::RangeInclusiveIteratorImpl>::spec_next
+0 128000
+546 1024012
+fn=core::ops::range::RangeInclusive<Idx>::new
+378 192018
+379 192018
+380 64006
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/option.rs
+fn=<core::iter::adapters::enumerate::Enumerate<I> as core::iter::traits::iterator::Iterator>::next
+0 32000
+2487 128021
+2488 224006
+2501 32001
+fn=<core::iter::adapters::map::Map<I,F> as core::iter::traits::iterator::Iterator>::next
+0 30
+1118 210
+1119 150
+fn=<i64 as core::iter::range::Step>::forward_unchecked
+1085 127988
+fn=alloc::alloc::Global::alloc_impl
+1254 96087
+fn=core::iter::traits::exact_size::ExactSizeIterator::len
+2189 320020
+2190 384024
+2195 64004
+fn=core::iter::traits::iterator::Iterator::reduce
+2487 60
+2488 120
+fn=core::option::Option<T>::unwrap_or
+998 6
+999 14
+1000 6
+1003 4
+fn=core::option::Option<T>::unwrap_or_default
+1048 60
+1052 60
+1053 90
+1056 60
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+2488 4
+fn=hashbrown::raw::RawTable<T,A>::find
+2488 6
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+1281 3
+1282 5
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+0 4
+608 2
+976 6
+977 4
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+652 8
+1084 4
+1085 4
+fn=hashbrown::raw::TableLayout::calculate_layout_for
+2488 24
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::initialize
+0 3
+1021 1
+1023 6
+1451 7
+1453 1
+fn=std::thread::Builder::spawn_unchecked_
+0 6
+1021 12
+1023 20
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+0 5
+998 6
+999 1
+1001 2
+1451 7
+1453 4
+fn=std::thread::JoinInner<T>::join
+0 12
+976 18
+977 54
+1728 6
+fn=std::thread::local::LocalKey<T>::try_with
+1254 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/panic/unwind_safe.rs
+fn=<core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once
+271 24
+272 36
+273 24
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/pin.rs
+fn=std::thread::Builder::spawn_unchecked_
+1088 6
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+1088 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/alignment.rs
+fn=<alloc::alloc::Global as core::alloc::Allocator>::deallocate
+92 44
+fn=alloc::alloc::alloc
+92 64058
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/const_ptr.rs
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+533 64012
+1236 64012
+1256 64012
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::write
+967 15
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+0 40
+55 40
+171 10
+1479 40
+1483 60
+fn=core::ptr::const_ptr::<impl *const T>::sub_ptr::precondition_check
+785 64023
+796 64023
+fn=core::ptr::non_null::NonNull<T>::sub_ptr
+0 128046
+800 64023
+802 256098
+fn=core::ptr::read_volatile::precondition_check
+0 96087
+55 64058
+1479 64058
+1483 64058
+fn=core::ptr::replace::precondition_check
+0 3
+55 2
+1479 2
+1483 2
+fn=core::slice::raw::from_raw_parts::precondition_check
+0 576072
+55 384048
+1479 384048
+1483 384048
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+0 12
+55 8
+1479 8
+1483 8
+fn=core::ub_checks::maybe_is_nonoverlapping::runtime
+171 20
+fn=hashbrown::raw::RawIterRange<T>::new
+66 1
+933 1
+967 6
+1400 1
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+0 2
+933 2
+1400 2
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+1400 1
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+1400 2
+fn=std::thread::local::LocalKey<T>::try_with
+299 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/metadata.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+114 16
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+127 2
+fn=<alloc::vec::Vec<T,A> as core::clone::Clone>::clone
+114 2
+fn=<alloc::vec::Vec<T,A> as core::ops::index::Index<I>>::index
+114 192012
+fn=alloc::alloc::Global::alloc_impl
+0 32029
+127 64062
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/mod.rs
+fn=<T as core::clone::uninit::CopySpec>::clone_one
+1582 2
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+1380 64040
+fn=<core::ops::range::RangeInclusive<T> as core::iter::range::RangeInclusiveIteratorImpl>::spec_next
+1380 127988
+1582 63994
+fn=alloc::alloc::Global::alloc_impl
+599 4
+930 32031
+fn=alloc::alloc::alloc
+1740 64058
+1752 96087
+fn=alloc::vec::Vec<T,A>::extend_trusted::{{closure}}
+1582 2048
+fn=alloc::vec::Vec<T,A>::push
+1582 2107
+fn=core::mem::take
+1380 12
+1582 12
+fn=core::ptr::drop_in_place<(usize,alloc::vec::Vec<usize>)>
+523 12
+fn=core::ptr::drop_in_place<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<alloc::boxed::Box<dyn oxidator::traits::traits::Worker>,alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<multi_producer::Event,alloc::alloc::Global>>
+523 160000
+fn=core::ptr::drop_in_place<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<std::thread::JoinHandle<()>,alloc::alloc::Global>>
+523 15
+fn=core::ptr::drop_in_place<<oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start::{{closure}}>
+523 10
+fn=core::ptr::drop_in_place<[alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>>]>
+0 5
+523 30
+fn=core::ptr::drop_in_place<[alloc::boxed::Box<dyn oxidator::traits::traits::Worker>]>
+0 1
+523 10
+fn=core::ptr::drop_in_place<[alloc::sync::Arc<oxidator::traits::traits::AtomicSequence>]>
+0 19
+523 106
+fn=core::ptr::drop_in_place<[oxidator::producer::producer::Producer<multi_producer::Event,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>]>
+0 9
+523 50
+fn=core::ptr::drop_in_place<[std::thread::JoinHandle<()>]>
+0 5
+523 50
+fn=core::ptr::drop_in_place<alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>+core::marker::Sync+core::marker::Send>>
+0 4
+523 28
+fn=core::ptr::drop_in_place<alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>>>
+0 4
+523 28
+fn=core::ptr::drop_in_place<alloc::boxed::Box<dyn oxidator::traits::traits::Worker>>
+0 6
+523 30
+fn=core::ptr::drop_in_place<alloc::boxed::Box<multi_producer::SumTask>>
+0 1
+523 9
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>>>>
+523 5
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<alloc::boxed::Box<dyn oxidator::traits::traits::Worker>>>
+523 5
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<alloc::sync::Arc<oxidator::traits::traits::AtomicSequence>>>
+523 25
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<bool>>
+523 20
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<core::cell::UnsafeCell<multi_producer::Event>>>
+523 5
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<core::sync::atomic::AtomicI64>>
+523 5
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<multi_producer::Event>>
+523 160000
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<oxidator::producer::producer::Producer<multi_producer::Event,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>>>
+523 5
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<std::thread::JoinHandle<()>>>
+523 25
+fn=core::ptr::drop_in_place<alloc::raw_vec::RawVec<usize>>
+523 20
+fn=core::ptr::drop_in_place<alloc::sync::Arc<alloc::vec::Vec<core::sync::atomic::AtomicI64>>>
+523 10
+fn=core::ptr::drop_in_place<alloc::sync::Arc<core::sync::atomic::AtomicBool>>
+523 20
+fn=core::ptr::drop_in_place<alloc::sync::Arc<core::sync::atomic::AtomicI32>>
+523 15
+fn=core::ptr::drop_in_place<alloc::sync::Arc<oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>>>
+523 45
+fn=core::ptr::drop_in_place<alloc::sync::Arc<oxidator::coordinator::wait::YieldingWaitStrategy>>
+523 20
+fn=core::ptr::drop_in_place<alloc::sync::Arc<oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>>
+523 60
+fn=core::ptr::drop_in_place<alloc::sync::Arc<oxidator::traits::traits::AtomicSequence>>
+523 65
+fn=core::ptr::drop_in_place<alloc::sync::Arc<std::sync::poison::mutex::Mutex<multi_producer::EventCounters>>>
+523 15
+fn=core::ptr::drop_in_place<alloc::sync::Arc<std::thread::Inner>>
+523 60
+fn=core::ptr::drop_in_place<alloc::sync::Arc<std::thread::Packet<()>>>
+523 60
+fn=core::ptr::drop_in_place<alloc::sync::Weak<alloc::vec::Vec<core::sync::atomic::AtomicI64>,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<core::sync::atomic::AtomicBool,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<core::sync::atomic::AtomicI32,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<oxidator::coordinator::wait::YieldingWaitStrategy,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<oxidator::traits::traits::AtomicSequence,&alloc::alloc::Global>>
+523 15
+fn=core::ptr::drop_in_place<alloc::sync::Weak<std::sync::poison::mutex::Mutex<multi_producer::EventCounters>,&alloc::alloc::Global>>
+523 5
+fn=core::ptr::drop_in_place<alloc::sync::Weak<std::thread::Packet<()>,&alloc::alloc::Global>>
+523 30
+fn=core::ptr::drop_in_place<alloc::vec::Vec<alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>>>>
+0 1
+523 8
+fn=core::ptr::drop_in_place<alloc::vec::Vec<alloc::sync::Arc<oxidator::traits::traits::AtomicSequence>>>
+0 5
+523 40
+fn=core::ptr::drop_in_place<alloc::vec::Vec<bool>>
+0 4
+523 32
+fn=core::ptr::drop_in_place<alloc::vec::Vec<core::cell::UnsafeCell<multi_producer::Event>>>
+0 1
+523 8
+fn=core::ptr::drop_in_place<alloc::vec::Vec<core::sync::atomic::AtomicI64>::extend_trusted<core::iter::adapters::map::Map<core::ops::range::Range<usize>,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>::new::{{closure}}>>::{{closure}}>
+523 5
+fn=core::ptr::drop_in_place<alloc::vec::Vec<core::sync::atomic::AtomicI64>>
+0 1
+523 8
+fn=core::ptr::drop_in_place<alloc::vec::Vec<oxidator::producer::producer::Producer<multi_producer::Event,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>>>
+0 1
+523 8
+fn=core::ptr::drop_in_place<alloc::vec::Vec<std::thread::JoinHandle<()>>>
+0 2
+523 18
+fn=core::ptr::drop_in_place<alloc::vec::Vec<usize>>
+0 4
+523 32
+fn=core::ptr::drop_in_place<alloc::vec::into_iter::IntoIter<alloc::boxed::Box<dyn oxidator::traits::traits::Worker>>>
+523 5
+fn=core::ptr::drop_in_place<alloc::vec::into_iter::IntoIter<multi_producer::Event>>
+523 160000
+fn=core::ptr::drop_in_place<alloc::vec::into_iter::IntoIter<std::thread::JoinHandle<()>>>
+523 15
+fn=core::ptr::drop_in_place<alloc::vec::set_len_on_drop::SetLenOnDrop>
+523 5
+fn=core::ptr::drop_in_place<core::cell::UnsafeCell<core::option::Option<core::result::Result<(),alloc::boxed::Box<dyn core::any::Any+core::marker::Send>>>>>
+523 30
+fn=core::ptr::drop_in_place<core::iter::adapters::enumerate::Enumerate<alloc::vec::into_iter::IntoIter<multi_producer::Event>>>
+523 160000
+fn=core::ptr::drop_in_place<core::iter::adapters::map::map_fold<usize,core::sync::atomic::AtomicI64,(),oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>::new::{{closure}},core::iter::traits::iterator::Iterator::for_each::call<core::sync::atomic::AtomicI64,alloc::vec::Vec<core::sync::atomic::AtomicI64>::extend_trusted<core::iter::adapters::map::Map<core::ops::range::Range<usize>,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>::new::{{closure}}>>::{{closure}}>::{{closure}}>::{{closure}}>
+523 5
+fn=core::ptr::drop_in_place<core::iter::traits::iterator::Iterator::for_each::call<core::sync::atomic::AtomicI64,alloc::vec::Vec<core::sync::atomic::AtomicI64>::extend_trusted<core::iter::adapters::map::Map<core::ops::range::Range<usize>,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>::new::{{closure}}>>::{{closure}}>::{{closure}}>
+523 5
+fn=core::ptr::drop_in_place<core::option::Option<alloc::sync::Arc<std::thread::scoped::ScopeData>>>
+523 72
+fn=core::ptr::drop_in_place<core::option::Option<alloc::vec::Vec<usize>>>
+523 24
+fn=core::ptr::drop_in_place<core::option::Option<core::result::Result<(),alloc::boxed::Box<dyn core::any::Any+core::marker::Send>>>>
+523 126
+fn=core::ptr::drop_in_place<core::pin::Pin<alloc::sync::Arc<std::thread::Inner>>>
+523 60
+fn=core::ptr::drop_in_place<core::result::Result<(),alloc::boxed::Box<dyn core::any::Any+core::marker::Send>>>
+523 72
+fn=core::ptr::drop_in_place<core::result::Result<(),std::thread::Thread>>
+523 72
+fn=core::ptr::drop_in_place<hashbrown::map::HashMap<usize,alloc::vec::Vec<usize>,std::hash::random::RandomState>>
+523 5
+fn=core::ptr::drop_in_place<hashbrown::raw::RawTable<(usize,alloc::vec::Vec<usize>)>>
+523 5
+fn=core::ptr::drop_in_place<hashbrown::scopeguard::ScopeGuard<hashbrown::raw::RawTableInner,hashbrown::raw::RawTableInner::prepare_resize<alloc::alloc::Global>::{{closure}}>>
+523 5
+fn=core::ptr::drop_in_place<multi_producer::SumTask>
+0 3
+523 27
+fn=core::ptr::drop_in_place<multi_producer::main::{{closure}}>
+523 20
+fn=core::ptr::drop_in_place<oxidator::client::client::ConsumerFactory<multi_producer::Event,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>,oxidator::coordinator::wait::YieldingWaitStrategy,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>>>
+0 2
+523 12
+fn=core::ptr::drop_in_place<oxidator::client::client::DataStorageLayer<multi_producer::Event,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>>
+523 5
+fn=core::ptr::drop_in_place<oxidator::client::client::SequencerLayer<multi_producer::Event,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>,oxidator::coordinator::wait::YieldingWaitStrategy,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>>>
+0 1
+523 9
+fn=core::ptr::drop_in_place<oxidator::client::client::WaitStrategyLayer<multi_producer::Event,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>,oxidator::coordinator::wait::YieldingWaitStrategy>>
+523 5
+fn=core::ptr::drop_in_place<oxidator::consumer::consumer::Consumer<multi_producer::Event,alloc::boxed::Box<dyn oxidator::traits::traits::Task<multi_producer::Event>+core::marker::Sync+core::marker::Send>,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>,oxidator::coordinator::barrier::DefaultSequenceBarrier<oxidator::coordinator::wait::YieldingWaitStrategy>>>
+0 6
+523 30
+fn=core::ptr::drop_in_place<oxidator::consumer::orchestrator::ConsumerWorkerHandle>
+0 1
+523 9
+fn=core::ptr::drop_in_place<oxidator::coordinator::barrier::DefaultSequenceBarrier<oxidator::coordinator::wait::YieldingWaitStrategy>>
+0 4
+523 24
+fn=core::ptr::drop_in_place<oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>>
+0 8
+523 36
+fn=core::ptr::drop_in_place<oxidator::producer::producer::Producer<multi_producer::Event,oxidator::coordinator::sequencer::MultiProducerSequencer<oxidator::coordinator::wait::YieldingWaitStrategy>,oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>>
+0 8
+523 72
+fn=core::ptr::drop_in_place<oxidator::storage::ring_buffer::RingBuffer<multi_producer::Event>>
+523 5
+fn=core::ptr::drop_in_place<std::collections::hash::map::HashMap<usize,alloc::vec::Vec<usize>>>
+523 5
+fn=core::ptr::drop_in_place<std::sync::poison::mutex::MutexGuard<multi_producer::EventCounters>>
+523 160015
+fn=core::ptr::drop_in_place<std::thread::Packet<()>>
+0 12
+523 78
+fn=core::ptr::drop_in_place<std::thread::Thread>
+523 60
+fn=core::ptr::read_volatile::precondition_check
+0 32029
+1750 64058
+fn=core::ptr::replace::precondition_check
+0 1
+1225 2
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+1582 18
+fn=std::hash::random::RandomState::new::{{closure}}
+1582 2
+fn=std::panicking::try::do_call
+1380 30
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::initialize
+1380 6
+1582 6
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+1380 40
+fn=std::thread::JoinInner<T>::join
+1380 36
+1582 36
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/mut_ptr.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+1057 16
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+1057 5
+fn=<alloc::boxed::Box<T,A> as core::clone::Clone>::clone
+48 1
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+1057 64008
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::next
+48 37
+124 37
+fn=alloc::slice::hack::into_vec
+0 32001
+48 32001
+fn=alloc::vec::Vec<T,A>::push
+1057 4181
+fn=core::ptr::non_null::NonNull<T>::sub_ptr
+0 128046
+952 64023
+fn=core::slice::iter::Iter<T>::new
+1057 62
+fn=hashbrown::map::HashMap<K,V,S,A>::get_inner
+1129 3
+1168 6
+fn=hashbrown::map::HashMap<K,V,S,A>::insert
+1129 2
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+1129 2
+1168 10
+fn=hashbrown::raw::RawTable<T,A>::find
+1057 3
+1168 15
+fn=hashbrown::raw::RawTable<T,A>::find::{{closure}}
+0 6
+1129 3
+1161 3
+1168 21
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+0 4
+1129 2
+1161 2
+1168 14
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+48 1
+fn=hashbrown::raw::RawTableInner::drop_elements
+0 2
+1129 2
+1168 5
+1492 4
+fn=hashbrown::raw::RawTableInner::drop_inner_table
+1168 4
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+1524 1
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+1057 2
+fn=hashbrown::raw::RawTableInner::new_uninitialized
+1057 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ptr/non_null.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 16
+270 16
+392 8
+489 8
+fn=<<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop::DropGuard<T,A> as core::ops::drop::Drop>::drop
+0 32004
+489 32004
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 2
+270 2
+392 2
+489 1
+fn=<alloc::alloc::Global as core::alloc::Allocator>::deallocate
+392 22
+fn=<alloc::boxed::Box<T,A> as core::ops::drop::Drop>::drop
+489 5
+fn=<alloc::sync::Arc<T,A> as core::clone::Clone>::clone
+429 40
+fn=<alloc::sync::Arc<T,A> as core::convert::AsRef<T>>::as_ref
+429 50
+fn=<alloc::sync::Arc<T,A> as core::ops::deref::Deref>::deref
+429 512055
+fn=<alloc::sync::Arc<T,A> as core::ops::drop::Drop>::drop
+429 74
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+392 16
+fn=<alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 32004
+392 32004
+489 64008
+fn=<alloc::vec::Vec<T,A> as core::ops::drop::Drop>::drop
+392 19
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+392 3
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+0 64012
+609 64012
+617 64016
+1623 128024
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::ops::drop::Drop>::drop
+392 64008
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::fold
+617 57
+1623 150
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::next
+0 46
+609 46
+617 37
+1623 230
+fn=alloc::alloc::Global::alloc_impl
+99 2
+226 6
+257 64058
+259 32029
+392 32037
+1353 32031
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+0 1
+392 1
+489 1
+fn=alloc::sync::Arc<T,A>::is_unique
+429 18
+fn=alloc::sync::Arc<T>::new
+278 10
+fn=alloc::vec::Vec<T,A>::extend_trusted
+392 1
+fn=alloc::vec::Vec<T,A>::push
+392 1045
+fn=core::ptr::non_null::NonNull<T>::new_unchecked::precondition_check
+226 192138
+fn=core::ptr::non_null::NonNull<T>::sub_ptr
+392 64023
+908 320115
+913 64023
+914 128046
+fn=core::slice::iter::Iter<T>::new
+0 62
+270 62
+392 31
+489 31
+fn=hashbrown::map::HashMap<K,V,S,A>::get_inner
+0 3
+392 3
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+0 4
+392 2
+fn=hashbrown::raw::RawTable<T,A>::find
+0 6
+392 3
+489 3
+fn=hashbrown::raw::RawTable<T,A>::find::{{closure}}
+0 9
+228 3
+392 3
+489 3
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+0 6
+228 2
+392 2
+489 2
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+228 1
+392 1
+fn=hashbrown::raw::RawTableInner::drop_elements
+0 3
+392 3
+489 1
+fn=hashbrown::raw::RawTableInner::drop_inner_table
+228 1
+392 1
+fn=hashbrown::raw::RawTableInner::new_uninitialized
+228 1
+392 1
+489 1
+fn=std::thread::Builder::spawn_unchecked_
+278 6
+429 24
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+429 12
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/result.rs
+fn=<multi_producer::SumTask as oxidator::traits::traits::Task<multi_producer::Event>>::execute_task
+0 32000
+1107 64000
+1108 160000
+fn=<oxidator::consumer::orchestrator::ConsumerWorkerHandle as oxidator::traits::traits::WorkerHandle>::join
+1107 10
+1111 2
+fn=alloc::alloc::Global::alloc_impl
+2002 96087
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+2001 7
+2002 6
+fn=core::result::Result<T,E>::expect
+0 18
+1055 54
+1059 42
+1060 36
+1063 12
+fn=core::result::Result<T,E>::is_ok
+564 64000
+566 128000
+fn=hashbrown::raw::RawTable<T,A>::reserve
+565 5
+608 1
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+0 2
+2001 7
+2002 24
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+2001 7
+2002 21
+fn=multi_producer::SumTask::get_counters
+1107 2
+1108 5
+fn=multi_producer::SumTask::get_max_values
+1107 2
+1108 5
+fn=multi_producer::SumTask::get_producer_sums
+1107 2
+1108 5
+fn=multi_producer::main
+1107 20
+1111 4
+fn=std::sync::poison::mutex::Mutex<T>::lock
+565 32003
+608 32003
+fn=std::thread::Builder::spawn_unchecked
+0 12
+2001 42
+2002 72
+fn=std::thread::Builder::spawn_unchecked_
+0 6
+2001 12
+2002 24
+fn=std::thread::local::LocalKey<T>::try_with
+2002 3
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/slice/index.rs
+fn=<alloc::vec::Vec<T,A> as core::ops::index::Index<I>>::index
+16 96006
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+27 3
+fn=<usize as core::slice::index::SliceIndex<[T]>>::get_unchecked
+90 192000
+242 864000
+258 192000
+fn=<usize as core::slice::index::SliceIndex<[T]>>::get_unchecked::precondition_check
+246 192000
+fn=<usize as core::slice::index::SliceIndex<[T]>>::index
+0 192012
+272 768048
+274 384023
+275 192012
+fn=<usize as core::slice::index::SliceIndex<[T]>>::index_mut
+0 6
+278 24
+280 9
+281 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/slice/iter.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 8
+102 8
+104 8
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 2
+102 1
+104 3
+fn=core::slice::iter::Iter<T>::new
+0 31
+96 124
+97 31
+102 31
+104 31
+106 31
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/slice/iter/macros.rs
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::fold
+0 87
+25 60
+28 19
+33 98
+44 120
+57 95
+212 150
+224 22
+226 57
+227 19
+229 19
+232 190
+236 76
+237 57
+241 38
+242 101
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::next
+0 74
+14 37
+21 111
+25 92
+33 92
+44 138
+99 46
+100 74
+108 111
+156 92
+162 9
+163 9
+165 37
+168 92
+443 74
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/slice/mod.rs
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::write
+741 5
+fn=core::slice::<impl [T]>::get_unchecked
+656 768000
+663 96000
+664 192000
+fn=core::slice::<impl [T]>::is_empty
+134 16
+135 16
+136 16
+fn=core::slice::<impl [T]>::iter
+1050 93
+1051 31
+1052 62
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+772 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/slice/raw.rs
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+192 6
+fn=core::slice::raw::from_raw_parts::precondition_check
+0 192024
+135 576072
+136 192024
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+0 4
+189 12
+190 4
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+192 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/sync/atomic.rs
+fn=<alloc::sync::Arc<T,A> as core::clone::Clone>::clone
+2956 80
+2958 40
+3760 80
+3764 160
+fn=<alloc::sync::Arc<T,A> as core::ops::drop::Drop>::drop
+2986 148
+2988 74
+3777 148
+3783 148
+4075 74
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+2986 32
+2988 16
+3777 32
+3783 32
+4075 16
+fn=<core::sync::atomic::AtomicBool as core::convert::From<bool>>::from
+429 2
+2355 4
+2357 2
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::drop::Drop>::drop
+2753 64006
+2755 32003
+3743 64006
+3749 64006
+fn=alloc::sync::Arc<T,A>::is_unique
+2698 6
+2700 30
+2725 12
+2727 42
+2872 6
+2873 6
+2874 6
+2875 6
+2877 60
+fn=alloc::sync::Arc<T>::new
+2472 20
+2473 10
+fn=core::sync::atomic::AtomicBool::load
+623 88
+626 110
+627 66
+fn=core::sync::atomic::AtomicBool::store
+651 8
+655 5
+657 2
+fn=core::sync::atomic::AtomicI32::fetch_add
+0 128000
+2956 192000
+2958 32000
+2959 64000
+3763 160000
+3764 96000
+fn=core::sync::atomic::AtomicI32::load
+2698 4
+2700 3
+2701 2
+fn=core::sync::atomic::AtomicI32::new
+2472 1
+2473 1
+2474 2
+fn=core::sync::atomic::AtomicI64::compare_exchange
+2871 448000
+2877 320000
+2878 128000
+fn=core::sync::atomic::AtomicI64::load
+2698 512208
+2700 384156
+2701 256104
+fn=core::sync::atomic::AtomicI64::new
+2472 1029
+2473 1029
+2474 2058
+fn=core::sync::atomic::AtomicI64::store
+2725 320030
+2727 192018
+2728 128012
+fn=core::sync::atomic::atomic_compare_exchange
+0 576054
+3793 960090
+3801 672063
+3802 864081
+3806 224063
+3815 448000
+3822 384036
+3823 384036
+fn=core::sync::atomic::atomic_load
+0 672288
+3727 1120480
+3730 1120480
+3731 288114
+3732 288174
+3733 64000
+3738 672288
+fn=core::sync::atomic::atomic_store
+0 256056
+3712 448099
+3715 320070
+3716 2
+3717 24
+3718 64001
+3723 128028
+fn=std::sync::poison::Flag::done
+651 64006
+2698 32003
+2700 160015
+fn=std::sync::poison::Flag::guard
+623 32003
+626 96009
+2698 32003
+2700 160015
+fn=std::sync::poison::mutex::Mutex<T>::lock
+2872 32003
+2873 32003
+2874 32003
+2875 32003
+2877 256024
+fn=std::sync::poison::mutex::Mutex<T>::new
+429 1
+2473 1
+fn=std::thread::Builder::spawn_unchecked_
+2472 12
+2473 6
+2956 24
+2958 12
+3760 24
+3764 48
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+2698 6
+2700 42
+2725 18
+2727 5
+2956 12
+2958 6
+3760 12
+3764 24
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ub_checks.rs
+fn=<&alloc::vec::Vec<T,A> as core::iter::traits::collect::IntoIterator>::into_iter
+0 16
+75 24
+fn=<T as alloc::slice::hack::ConvertVec>::to_vec
+0 4
+75 3
+fn=<alloc::boxed::Box<T,A> as core::clone::Clone>::clone
+0 1
+75 1
+fn=<alloc::boxed::Box<T,A> as core::ops::drop::Drop>::drop
+0 14
+75 7
+fn=<alloc::sync::Weak<T,A> as core::ops::drop::Drop>::drop
+0 64
+74 16
+75 16
+fn=<alloc::vec::Vec<T,A> as core::clone::Clone>::clone
+0 3
+75 3
+fn=<alloc::vec::Vec<T,A> as core::ops::index::Index<I>>::index
+0 384024
+75 288018
+fn=<alloc::vec::Vec<T,A> as core::ops::index::IndexMut<I>>::index_mut
+0 12
+75 9
+fn=<core::hash::sip::Hasher<S> as core::hash::Hasher>::write
+0 10
+74 5
+75 25
+fn=<core::slice::iter::Iter<T> as core::iter::traits::iterator::Iterator>::fold
+0 19
+75 38
+fn=<usize as core::iter::range::Step>::forward_unchecked
+0 68120
+75 34060
+fn=<usize as core::slice::index::SliceIndex<[T]>>::get_unchecked
+0 192000
+75 96000
+fn=<usize as core::slice::index::SliceIndex<[T]>>::get_unchecked::precondition_check
+66 288000
+72 192000
+fn=alloc::alloc::Global::alloc_impl
+0 192176
+74 32031
+75 64060
+fn=alloc::alloc::alloc
+75 128116
+fn=alloc::alloc::exchange_malloc
+0 64058
+75 32029
+fn=alloc::boxed::Box<T,A>::new_uninit_in
+75 3
+fn=alloc::boxed::Box<T,A>::try_new_uninit_in
+0 1
+75 4
+fn=alloc::raw_vec::RawVecInner<A>::with_capacity_in
+75 9
+fn=alloc::slice::hack::into_vec
+0 160005
+75 32001
+fn=alloc::vec::Vec<T,A>::as_slice
+0 192018
+75 288027
+fn=core::alloc::layout::Layout::from_size_align_unchecked::precondition_check
+0 32054
+66 96162
+72 64108
+fn=core::core_arch::x86::sse2::_mm_loadu_si128
+75 40
+fn=core::hash::sip::u8to64_le
+0 10
+fn=core::hint::assert_unchecked::precondition_check
+66 15
+72 6
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+0 10
+66 110
+72 20
+127 110
+fn=core::num::<impl usize>::unchecked_add::precondition_check
+66 102237
+72 68158
+fn=core::ptr::const_ptr::<impl *const T>::sub_ptr::precondition_check
+66 192069
+72 128046
+fn=core::ptr::non_null::NonNull<T>::new_unchecked::precondition_check
+66 192138
+72 192138
+fn=core::ptr::non_null::NonNull<T>::sub_ptr
+75 64023
+fn=core::ptr::read_volatile::precondition_check
+66 320290
+72 64058
+127 192174
+fn=core::ptr::replace::precondition_check
+66 10
+72 2
+127 6
+fn=core::slice::raw::from_raw_parts::precondition_check
+0 384048
+66 2112264
+72 384048
+119 192024
+127 576072
+134 2496312
+135 192024
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+0 8
+66 44
+72 8
+119 4
+127 12
+134 52
+135 4
+fn=core::ub_checks::maybe_is_nonoverlapping::runtime
+0 10
+159 30
+167 20
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::initialize
+0 1
+75 3
+fn=std::thread::Builder::spawn_unchecked_
+0 6
+75 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/collections/hash/map.rs
+fn=std::collections::hash::map::HashMap<K,V,S>::get
+894 9
+899 3
+900 9
+fn=std::collections::hash::map::HashMap<K,V,S>::insert
+0 2
+1189 10
+1190 2
+1191 4
+fn=std::collections::hash::map::HashMap<K,V>::new
+249 3
+251 2
+301 4
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/env.rs
+fn=std::env::var_os
+0 4
+254 5
+255 9
+256 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/ffi/os_str.rs
+fn=std::ffi::os_str::<impl core::convert::AsRef<std::ffi::os_str::OsStr> for str>::as_ref
+1647 4
+1649 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/hash/random.rs
+fn=<std::hash::random::DefaultHasher as core::hash::Hasher>::finish
+142 10
+143 5
+144 10
+fn=<std::hash::random::DefaultHasher as core::hash::Hasher>::write
+132 20
+133 5
+134 10
+fn=<std::hash::random::RandomState as core::hash::BuildHasher>::build_hasher
+85 20
+86 40
+87 10
+fn=std::collections::hash::map::HashMap<K,V>::new
+72 5
+fn=std::hash::random::RandomState::new::KEYS::__init
+69 4
+fn=std::hash::random::RandomState::new::{{closure}}
+72 1
+76 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/panicking.rs
+fn=<std::thread::Packet<T> as core::ops::drop::Drop>::drop
+537 6
+539 12
+550 48
+551 24
+fn=std::panicking::try::do_call
+581 30
+584 12
+586 12
+587 18
+589 24
+fn=std::sync::poison::Flag::done
+470 192018
+fn=std::sync::poison::Flag::guard
+0 32003
+470 224021
+480 32003
+622 96009
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+0 6
+537 24
+539 12
+550 48
+551 6
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/process.rs
+fn=<() as std::process::Termination>::report
+2429 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/rt.rs
+fn=std::rt::lang_start
+192 8
+198 4
+199 1
+204 2
+fn=std::rt::lang_start::{{closure}}
+199 8
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sync/poison.rs
+fn=std::sync::poison::Flag::done
+132 128012
+133 96009
+136 64006
+fn=std::sync::poison::Flag::guard
+0 32003
+122 96009
+123 64006
+127 192018
+128 128012
+145 32003
+fn=std::sync::poison::map_result
+0 64006
+400 320030
+404 160015
+405 448042
+409 64006
+fn=std::sync::poison::mutex::Mutex<T>::new
+108 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sync/poison/mutex.rs
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::deref::Deref>::deref
+656 64003
+657 64003
+658 64003
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::deref::DerefMut>::deref_mut
+663 67328
+664 67328
+665 67328
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::drop::Drop>::drop
+671 128012
+673 160015
+674 96009
+676 64006
+fn=std::sync::poison::mutex::Mutex<T>::lock
+435 224021
+437 32003
+440 64006
+648 288027
+fn=std::sync::poison::mutex::Mutex<T>::new
+298 3
+299 9
+300 2
+fn=std::sync::poison::mutex::MutexGuard<T>::new::{{closure}}
+648 224021
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/backtrace.rs
+fn=std::sys::backtrace::__rust_begin_short_backtrace
+148 18
+152 13
+158 26
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/pal/unix/process/process_common.rs
+fn=std::rt::lang_start::{{closure}}
+636 1
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/sync/mutex/futex.rs
+fn=<std::sync::poison::mutex::MutexGuard<T> as core::ops::drop::Drop>::drop
+84 128012
+fn=std::sync::poison::mutex::Mutex<T>::lock
+0 32003
+28 192018
+fn=std::sync::poison::mutex::Mutex<T>::new
+18 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/thread_local/native/lazy.rs
+fn=<! as std::sys::thread_local::native::lazy::DestroyedState>::register_dtor
+11 2
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::get_or_init
+0 3
+51 5
+52 1
+53 4
+56 4
+58 3
+fn=std::sys::thread_local::native::lazy::Storage<T,D>::initialize
+0 3
+61 4
+64 2
+66 7
+67 2
+71 2
+78 9
+79 3
+81 4
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/thread_local/native/mod.rs
+fn=std::hash::random::RandomState::new::KEYS::__init
+83 1
+85 2
+fn=std::hash::random::RandomState::new::KEYS::{{constant}}::{{closure}}
+97 3
+101 4
+102 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/thread/local.rs
+fn=std::thread::local::LocalKey<T>::try_with
+0 6
+305 4
+309 10
+310 8
+311 3
+fn=std::thread::local::LocalKey<T>::with
+270 3
+274 4
+275 4
+278 2
+fl=/home/akshay_kumar/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/thread/mod.rs
+fn=<std::thread::Packet<T> as core::ops::drop::Drop>::drop
+0 6
+1701 18
+1705 36
+1716 54
+1720 18
+1722 48
+1729 12
+fn=<std::thread::Packet<T> as core::ops::drop::Drop>::drop::{{closure}}
+0 6
+1716 12
+1717 78
+1718 12
+fn=std::thread::Builder::spawn_unchecked
+461 22
+467 132
+468 18
+fn=std::thread::Builder::spawn_unchecked_
+0 66
+471 32
+481 102
+501 30
+502 66
+504 12
+507 36
+510 12
+512 30
+513 12
+514 6
+517 6
+526 40
+542 46
+543 120
+574 60
+578 80
+582 24
+584 54
+598 60
+599 6
+600 6
+602 18
+1395 12
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}
+0 42
+483 6
+486 24
+488 10
+491 4
+497 3
+498 2
+499 23
+532 24
+543 12
+544 108
+550 24
+552 90
+556 46
+557 114
+565 108
+569 18
+572 24
+1395 6
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}}
+0 6
+557 12
+558 50
+559 44
+560 12
+fn=std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}}::{{closure}}
+558 78
+fn=std::thread::JoinHandle<T>::join
+1886 6
+1887 42
+1888 12
+fn=std::thread::JoinInner<T>::join
+0 12
+1740 12
+1741 24
+1742 36
+1743 60
+fn=std::thread::spawn
+0 4
+290 78
+399 20
+723 30
+729 36
+730 12
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/samples/multi_producer_sample.rs
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+0 64000
+fn=<multi_producer::Event as core::clone::Clone>::clone
+7 64000
+9 32000
+10 32000
+fn=<multi_producer::Event as core::default::Default>::default
+7 3072
+fn=<multi_producer::PrinterTask as core::clone::Clone>::clone
+13 2
+fn=<multi_producer::PrinterTask as oxidator::traits::traits::Task<multi_producer::Event>>::clone_box
+20 2
+21 4
+22 3
+fn=<multi_producer::PrinterTask as oxidator::traits::traits::Task<multi_producer::Event>>::execute_task
+17 192000
+18 32000
+fn=<multi_producer::SumTask as core::clone::Clone>::clone
+0 2
+32 12
+34 6
+35 8
+fn=<multi_producer::SumTask as oxidator::traits::traits::Task<multi_producer::Event>>::clone_box
+89 2
+90 5
+91 3
+fn=<multi_producer::SumTask as oxidator::traits::traits::Task<multi_producer::Event>>::execute_task
+0 720640
+74 288000
+75 288000
+77 256000
+78 128000
+79 192000
+80 384000
+81 352000
+82 29952
+84 448000
+86 192000
+87 96000
+fn=<oxidator::coordinator::wait::YieldingWaitStrategy as oxidator::traits::traits::WaitStrategy>::wait_for
+0 84
+fn=core::intrinsics::copy_nonoverlapping::precondition_check
+0 60
+fn=core::slice::raw::from_raw_parts::precondition_check
+0 192024
+fn=core::slice::raw::from_raw_parts_mut::precondition_check
+0 4
+fn=hashbrown::raw::RawTable<T,A>::find
+0 3
+fn=hashbrown::raw::RawTableInner::drop_elements
+0 1
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+0 4
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+0 4
+fn=hashbrown::raw::RawTableInner::new_uninitialized
+0 1
+fn=hashbrown::raw::TableLayout::calculate_layout_for
+0 22
+fn=hashbrown::raw::capacity_to_buckets
+0 1
+fn=multi_producer::SumTask::get_counters
+0 2
+57 7
+58 8
+59 6
+60 5
+fn=multi_producer::SumTask::get_max_values
+0 2
+62 7
+63 8
+64 6
+65 5
+fn=multi_producer::SumTask::get_producer_sums
+0 2
+67 7
+68 8
+69 5
+70 5
+fn=multi_producer::SumTask::get_sum
+53 2
+54 5
+55 2
+fn=multi_producer::SumTask::new
+0 2
+39 4
+40 1
+41 10
+42 5
+43 25
+44 5
+46 3
+47 5
+51 2
+fn=multi_producer::main
+0 221
+95 1
+96 4
+97 1
+98 1
+100 22
+101 8
+103 28
+109 1
+110 17
+111 7
+112 38
+114 2
+115 5
+117 4
+119 66
+120 76
+122 36
+139 28
+142 94
+143 28
+144 4
+146 8
+147 9
+149 8
+150 4
+152 12
+154 10
+155 10
+156 10
+158 1
+159 1
+160 1
+162 57
+163 20
+164 28
+166 20
+167 28
+169 48
+170 48
+172 12
+173 92
+177 36
+179 84
+186 88
+189 44
+196 7
+197 13
+199 8
+200 13
+201 13
+202 13
+203 13
+204 13
+205 47
+211 9
+212 2
+213 6
+218 9
+219 2
+220 6
+225 2
+227 8
+228 77
+229 77
+238 8
+239 12
+fn=multi_producer::main::{{closure}}
+0 576024
+122 8
+123 4
+125 384068
+126 512000
+127 128000
+129 64000
+132 640000
+136 192000
+138 12
+fn=multi_producer::main::{{closure}}::{{closure}}
+132 288000
+133 128000
+134 64000
+fn=oxidator::coordinator::sequencer::MultiProducerSequencer<W>::buffer_has_capacity
+0 32000
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/client/client.rs
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::add_task
+0 20
+187 12
+188 14
+189 12
+190 4
+191 24
+193 4
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::create_consumer
+0 2
+195 38
+207 2
+208 4
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::init_consumers
+0 80
+210 5
+211 10
+212 2
+214 71
+215 4
+216 70
+217 12
+218 4
+219 28
+220 68
+222 14
+223 36
+224 6
+226 6
+227 43
+228 12
+231 9
+232 7
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::is_cyclic
+0 2
+140 13
+147 5
+148 5
+149 5
+151 12
+152 13
+162 4
+163 1
+164 5
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::new
+0 2
+132 5
+133 16
+134 3
+135 2
+136 2
+138 2
+fn=oxidator::client::client::ConsumerFactory<T,D,W,S>::validate_dependencies
+0 19
+166 16
+167 40
+168 6
+173 14
+174 16
+176 48
+177 10
+182 4
+183 16
+fn=oxidator::client::client::DataStorageLayer<T,D>::new
+52 1
+53 1
+54 2
+55 2
+57 2
+fn=oxidator::client::client::DataStorageLayer<T,D>::set_wait_strategy
+59 2
+60 1
+61 2
+fn=oxidator::client::client::DataStorageLayer<T,D>::with_yielding_wait_strategy
+0 1
+71 2
+72 12
+73 2
+fn=oxidator::client::client::DisruptorClient::init_data_storage
+45 3
+46 2
+47 2
+48 2
+fn=oxidator::client::client::DisruptorClient::new
+41 1
+42 1
+43 2
+fn=oxidator::client::client::SequencerLayer<T,D,W,S>::build
+0 43
+107 8
+111 8
+113 2
+114 46
+115 20
+116 24
+117 24
+118 12
+119 4
+123 6
+126 21
+128 4
+fn=oxidator::client::client::SequencerLayer<T,D,W,S>::new
+0 2
+100 5
+101 1
+102 1
+103 2
+105 2
+fn=oxidator::client::client::WaitStrategyLayer<T,D,W>::new
+77 2
+82 1
+fn=oxidator::client::client::WaitStrategyLayer<T,D,W>::set_sequencer
+84 2
+85 1
+86 2
+fn=oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer
+0 6
+93 2
+94 11
+95 17
+96 2
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/consumer/consumer.rs
+fn=<oxidator::consumer::consumer::Consumer<T,F,D,S> as oxidator::traits::traits::EventConsumer<T>>::get_consumer_cursor
+67 4
+68 4
+69 4
+fn=<oxidator::consumer::consumer::Consumer<T,F,D,S> as oxidator::traits::traits::EventConsumer<T>>::init_concurrent_task
+0 8
+51 14
+58 26
+59 30
+60 10
+61 6
+62 14
+63 4
+65 4
+fn=<oxidator::consumer::consumer::Consumer<T,F,D,S> as oxidator::traits::traits::Worker>::run
+0 640096
+14 6
+17 8
+18 24
+20 2
+22 72
+24 18
+25 704120
+27 512000
+28 576000
+32 36
+33 30
+35 18
+42 8
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/consumer/orchestrator.rs
+fn=<oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start
+0 9
+17 4
+18 7
+20 72
+24 8
+29 14
+30 4
+32 9
+33 5
+fn=<oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start::{{closure}}
+24 24
+fn=<oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::with_workers
+0 3
+9 4
+10 12
+11 4
+12 6
+14 2
+fn=<oxidator::consumer::orchestrator::ConsumerWorkerHandle as core::ops::drop::Drop>::drop
+58 2
+59 1
+60 2
+fn=<oxidator::consumer::orchestrator::ConsumerWorkerHandle as oxidator::traits::traits::WorkerHandle>::join
+0 8
+49 6
+50 4
+51 78
+52 14
+53 4
+54 4
+fn=oxidator::consumer::orchestrator::ConsumerWorkerHandle::new
+41 1
+42 6
+45 1
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/coordinator/barrier.rs
+fn=<oxidator::coordinator::barrier::DefaultSequenceBarrier<W> as oxidator::traits::traits::SequenceBarrier>::signal
+33 12
+34 24
+35 12
+fn=<oxidator::coordinator::barrier::DefaultSequenceBarrier<W> as oxidator::traits::traits::SequenceBarrier>::wait_for
+25 40
+26 112
+31 16
+fn=<oxidator::coordinator::barrier::DefaultSequenceBarrier<W> as oxidator::traits::traits::SequenceBarrier>::wait_for::{{closure}}
+26 44
+27 220
+29 66
+fn=oxidator::coordinator::barrier::DefaultSequenceBarrier<W>::new
+12 6
+16 16
+21 2
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/coordinator/sequencer.rs
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as core::clone::Clone>::clone
+0 9
+175 7
+176 21
+177 4
+178 4
+179 2
+180 5
+181 5
+182 9
+183 4
+185 2
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::add_gating_sequence
+266 6
+267 4
+268 4
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::create_barrier
+0 20
+257 16
+258 20
+259 12
+260 12
+261 12
+262 8
+263 4
+264 4
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::drain
+274 3
+275 8
+276 4
+277 2
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::get_cursor
+270 2
+271 2
+272 2
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::next
+0 288000
+191 192000
+193 192000
+194 96000
+195 160000
+196 192000
+197 128000
+202 64000
+fn=<oxidator::coordinator::sequencer::MultiProducerSequencer<W> as oxidator::traits::traits::Sequencer>::publish
+0 960000
+204 160000
+205 96000
+207 832000
+208 512000
+209 224000
+210 384000
+214 192000
+217 128000
+218 192000
+219 64000
+221 192000
+222 544000
+223 224000
+224 352000
+229 64000
+230 64000
+231 192000
+237 96000
+238 256000
+239 1056000
+240 480000
+241 224000
+242 416000
+245 160000
+255 64000
+fn=oxidator::coordinator::sequencer::MultiProducerSequencer<W>::buffer_has_capacity
+0 32000
+151 160000
+152 64000
+156 96000
+157 32000
+171 128000
+fn=oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new
+0 14
+135 5
+136 21
+137 3
+138 2
+140 13
+141 8
+142 4
+143 9
+145 2
+fn=oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new::{{closure}}
+143 12288
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/coordinator/wait.rs
+fn=<oxidator::coordinator::wait::YieldingWaitStrategy as oxidator::traits::traits::WaitStrategy>::new
+97 2
+fn=<oxidator::coordinator::wait::YieldingWaitStrategy as oxidator::traits::traits::WaitStrategy>::signal
+127 64014
+fn=<oxidator::coordinator::wait::YieldingWaitStrategy as oxidator::traits::traits::WaitStrategy>::wait_for
+0 100
+99 120
+105 48
+110 112
+111 56
+112 12
+115 130
+116 8
+117 4
+120 4
+123 80
+125 32
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/lib.rs
+fn=<alloc::vec::into_iter::IntoIter<T,A> as core::iter::traits::iterator::Iterator>::next
+0 10
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/producer/producer.rs
+fn=<oxidator::producer::producer::Producer<T,S,D> as core::clone::Clone>::clone
+0 4
+56 12
+57 4
+58 12
+59 16
+62 8
+fn=<oxidator::producer::producer::Producer<T,S,D> as oxidator::traits::traits::EventProducer>::drain
+50 2
+51 3
+52 2
+fn=<oxidator::producer::producer::Producer<T,S,D> as oxidator::traits::traits::EventProducer>::write
+0 768000
+23 96000
+30 192000
+31 128000
+34 416000
+37 928000
+39 192000
+41 320000
+42 352000
+44 96000
+47 160000
+48 96000
+fn=oxidator::producer::producer::Producer<T,S,D>::new
+12 12
+13 8
+14 4
+15 4
+16 8
+18 8
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/storage/ring_buffer.rs
+fn=<oxidator::storage::ring_buffer::RingBuffer<T> as oxidator::traits::traits::DataStorage<T>>::capacity
+39 1
+40 1
+41 1
+fn=<oxidator::storage::ring_buffer::RingBuffer<T> as oxidator::traits::traits::DataStorage<T>>::get_data
+0 256000
+27 320000
+28 576000
+29 512000
+30 384000
+31 128000
+fn=<oxidator::storage::ring_buffer::RingBuffer<T> as oxidator::traits::traits::DataStorage<T>>::get_data_mut
+0 128000
+33 160000
+34 288000
+35 256000
+36 192000
+37 64000
+fn=oxidator::storage::ring_buffer::RingBuffer<T>::new
+0 9228
+11 5
+12 10
+13 6
+15 8206
+16 9216
+19 7
+20 6
+23 2
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/traits/traits.rs
+fn=<alloc::boxed::Box<dyn oxidator::traits::traits::Task<T>+core::marker::Sync+core::marker::Send> as oxidator::traits::traits::Task<T>>::execute_task
+159 512000
+160 384000
+161 128000
+fn=<oxidator::traits::traits::AtomicSequence as core::convert::From<i64>>::from
+53 35
+54 35
+55 20
+56 25
+58 10
+fn=<oxidator::traits::traits::AtomicSequence as core::default::Default>::default
+62 6
+63 6
+64 4
+fn=oxidator::traits::traits::AtomicSequence::compare_exchange
+47 256000
+48 640000
+49 192000
+fn=oxidator::traits::traits::AtomicSequence::load
+39 192104
+40 288156
+41 192104
+fn=oxidator::traits::traits::AtomicSequence::store
+43 18
+44 18
+45 12
+fl=/home/akshay_kumar/Code/OSS/rust/oxidater/src/utils/helpers.rs
+fn=oxidator::utils::helpers::min_sequence
+3 90
+4 300
+5 60
+fn=oxidator::utils::helpers::min_sequence::{{closure}}
+4 539
+fl=/rust/deps/hashbrown-0.15.2/src/control/bitmask.rs
+fn=hashbrown::raw::RawIterRange<T>::new
+31 2
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+0 2
+38 6
+50 16
+51 4
+80 2
+113 4
+114 6
+115 4
+fn=hashbrown::raw::RawTable<T,A>::find
+0 3
+38 9
+50 24
+51 6
+113 6
+114 12
+115 6
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+31 2
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+50 18
+51 4
+80 2
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+44 8
+50 12
+53 8
+113 4
+fl=/rust/deps/hashbrown-0.15.2/src/control/group/sse2.rs
+fn=hashbrown::raw::RawIterRange<T>::new
+60 1
+61 5
+111 10
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+60 2
+fn=hashbrown::raw::RawTable<T,A>::find
+0 9
+52 15
+76 3
+86 42
+87 18
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+0 3
+60 1
+61 6
+111 6
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+111 8
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+52 14
+76 2
+86 52
+87 16
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+60 2
+fl=/rust/deps/hashbrown-0.15.2/src/control/tag.rs
+fn=hashbrown::raw::RawTable<T,A>::find
+48 9
+49 3
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+30 6
+48 2
+49 4
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+79 1
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+48 4
+49 6
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+17 10
+fl=/rust/deps/hashbrown-0.15.2/src/lib.rs
+fn=<Q as hashbrown::Equivalent<K>>::equivalent
+164 18
+165 18
+166 9
+fl=/rust/deps/hashbrown-0.15.2/src/map.rs
+fn=hashbrown::map::HashMap<K,V,S,A>::get_inner
+0 6
+224 3
+258 15
+1347 15
+1351 12
+1354 6
+1355 3
+1357 9
+fn=hashbrown::map::HashMap<K,V,S,A>::insert
+0 14
+258 8
+1790 18
+1791 12
+1792 6
+1794 4
+1796 30
+1798 4
+1801 6
+1812 12
+1815 6
+fn=hashbrown::map::equivalent_key::{{closure}}
+224 24
+fn=std::collections::hash::map::HashMap<K,V,S>::get
+1309 27
+1310 12
+fn=std::collections::hash::map::HashMap<K,V>::new
+458 10
+fl=/rust/deps/hashbrown-0.15.2/src/raw/alloc.rs
+fn=hashbrown::raw::RawTableInner::new_uninitialized
+0 1
+15 10
+16 5
+fl=/rust/deps/hashbrown-0.15.2/src/raw/mod.rs
+fn=<hashbrown::raw::RawTable<T,A> as core::ops::drop::Drop>::drop
+3306 2
+3315 3
+3316 2
+3318 2
+fn=hashbrown::map::HashMap<K,V,S,A>::get_inner
+385 3
+390 9
+523 3
+1181 30
+1182 18
+fn=hashbrown::map::HashMap<K,V,S,A>::insert
+0 6
+fn=hashbrown::raw::RawIterRange<T>::new
+3397 8
+3398 1
+3399 1
+3405 2
+3408 4
+3414 2
+fn=hashbrown::raw::RawIterRange<T>::next_impl
+0 2
+439 2
+440 2
+444 6
+447 4
+3464 6
+3466 12
+3467 4
+3485 6
+fn=hashbrown::raw::RawTable<T,A>::find
+0 21
+282 3
+291 6
+681 6
+759 3
+1156 15
+1164 6
+1166 27
+1169 6
+1171 15
+1175 9
+1881 12
+1883 15
+1886 21
+1888 18
+1889 6
+1899 15
+2302 6
+2305 3
+2478 3
+fn=hashbrown::raw::RawTable<T,A>::find::{{closure}}
+290 3
+291 9
+523 3
+681 6
+759 3
+1166 42
+fn=hashbrown::raw::RawTable<T,A>::find_or_find_insert_slot
+0 10
+759 4
+1109 20
+1115 4
+1125 20
+1127 4
+1131 10
+1134 8
+fn=hashbrown::raw::RawTable<T,A>::insert_in_slot
+290 2
+291 6
+681 4
+759 2
+1145 20
+1146 8
+1147 2
+1150 4
+1151 2
+1152 4
+2312 6
+2314 6
+2444 2
+2447 2
+2448 2
+2478 6
+fn=hashbrown::raw::RawTable<T,A>::reserve
+0 6
+896 14
+897 10
+902 10
+911 6
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+0 26
+129 2
+132 1
+940 10
+954 14
+955 2
+957 2
+961 2
+967 2
+2475 1
+2478 2
+2551 11
+2559 11
+2607 3
+2608 3
+2611 3
+2612 5
+2637 2
+2639 5
+2645 6
+2682 4
+2685 3
+2690 1
+2749 24
+2754 11
+2794 7
+2795 3
+2803 1
+2805 1
+2806 5
+3790 2
+fn=hashbrown::raw::RawTableInner::drop_elements
+0 1
+261 1
+282 1
+290 1
+291 2
+390 6
+2020 9
+2022 5
+2023 1
+2063 3
+2066 3
+2070 31
+2073 4
+2076 2
+2292 2
+2489 2
+3664 6
+3670 6
+3674 6
+3676 2
+fn=hashbrown::raw::RawTableInner::drop_inner_table
+0 1
+2124 9
+2125 2
+2128 4
+2135 2
+2489 2
+2950 1
+2980 4
+2981 6
+2986 2
+fn=hashbrown::raw::RawTableInner::fallible_with_capacity
+0 1
+1465 14
+1474 3
+1481 7
+1484 21
+1488 2
+1490 16
+1493 3
+2484 1
+2505 4
+fn=hashbrown::raw::RawTableInner::find_insert_slot_in_group
+1600 12
+1601 4
+1603 4
+1606 20
+1610 8
+fn=hashbrown::raw::RawTableInner::find_or_find_insert_slot_inner
+0 4
+1648 16
+1653 8
+1674 6
+1676 6
+1686 4
+1687 10
+1701 14
+1707 8
+2302 4
+2305 2
+fn=hashbrown::raw::RawTableInner::fix_insert_slot
+1563 8
+1565 6
+1589 2
+1590 4
+2475 2
+2478 2
+2500 2
+fn=hashbrown::raw::RawTableInner::new_uninitialized
+0 6
+129 2
+132 1
+1428 23
+1440 8
+1441 9
+1446 2
+1452 13
+1454 3
+1458 3
+fn=hashbrown::raw::RawTableInner::prepare_resize::{{closure}}
+2559 5
+2560 3
+2567 2
+fn=hashbrown::raw::TableLayout::calculate_layout_for
+162 18
+165 4
+168 24
+169 12
+173 10
+177 18
+181 6
+fn=hashbrown::raw::capacity_to_buckets
+101 3
+102 1
+106 2
+110 6
+123 4
+fn=std::collections::hash::map::HashMap<K,V>::new
+583 8
+fl=/rust/deps/hashbrown-0.15.2/src/scopeguard.rs
+fn=<hashbrown::scopeguard::ScopeGuard<T,F> as core::ops::drop::Drop>::drop
+69 2
+70 3
+71 2
+fn=hashbrown::raw::RawTable<T,A>::reserve_rehash
+21 8
+60 1
+fl=/rust/deps/hashbrown-0.15.2/src/util.rs
+fn=hashbrown::raw::RawTableInner::drop_elements
+12 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/alloc.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+0 22
+fn=alloc::sync::Arc<T,A>::drop_slow
+116 42
+fn=core::ptr::drop_in_place<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>
+116 9
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+0 35
+fn=std::sync::once_lock::OnceLock<T>::initialize
+116 1
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+96 3
+fn=std::sys::pal::unix::thread::Thread::new
+96 18
+192 12
+349 12
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+116 36
+fn=std::sys::pal::unix::weak::DlsymWeak<F>::initialize
+116 2
+fn=std::thread::Thread::new
+96 18
+188 12
+192 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/boxed.rs
+fn=std::sys::pal::unix::thread::Thread::new
+274 18
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+0 6
+1683 12
+1976 24
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/raw_vec.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+508 62
+513 118
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+508 136
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+0 2
+476 2
+fn=std::sys::pal::unix::os::getenv::{{closure}}
+0 1
+fn=std::sys::thread_local::guard::key::enable::run
+523 12
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+523 12
+fn=std::thread::spawnhook::run_spawn_hooks
+0 24
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/rc.rs
+fn=alloc::sync::Arc<T,A>::drop_slow
+3059 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/sync.rs
+fn=alloc::sync::Arc<T,A>::drop_slow
+1899 24
+1905 6
+1910 6
+3070 6
+3219 6
+fn=alloc::sync::arcinner_layout_for_value_layout
+368 6
+fn=std::io::stdio::print_to_buffer_if_capture_used
+0 22
+fn=std::sys::thread_local::guard::key::enable::run
+2554 6
+fn=std::thread::Thread::new
+0 12
+1950 18
+fn=std::thread::current::set_current
+1612 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/vec/into_iter.rs
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+218 6
+504 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/alloc/src/vec/mod.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+0 17
+1575 101
+1898 219
+2681 22
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+2681 18
+fn=std::sys::thread_local::guard::key::enable::run
+2504 18
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/alloc/layout.rs
+fn=alloc::sync::arcinner_layout_for_value_layout
+105 6
+111 12
+318 48
+438 12
+fn=core::alloc::layout::Layout::is_size_align_valid
+78 64108
+80 64108
+84 64108
+105 32054
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/cell.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+544 66
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+0 202
+1822 202
+fn=std::rt::lang_start_internal
+544 3
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+544 3
+1822 2
+fn=std::sys::sync::once::futex::Once::call
+544 2
+fn=std::sys::thread_local::guard::key::enable::run
+0 18
+544 24
+1822 12
+fn=std::thread::current::set_current
+544 30
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+544 24
+fn=std::thread::spawnhook::run_spawn_hooks
+544 24
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/clone.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+337 7
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/cmp.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+1041 15
+fn=core::num::bignum::Big32x40::mul_pow2
+1824 22
+fn=core::num::flt2dec::strategy::dragon::format_exact
+1002 16
+1824 1
+1837 28
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+1002 3
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+1002 21
+fn=std::sys::pal::unix::thread::Thread::new
+1002 18
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+1002 18
+fn=std::thread::Thread::cname
+1740 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ffi/c_str.rs
+fn=core::ffi::c_str::CStr::from_bytes_with_nul
+0 3
+362 8
+365 6
+368 6
+373 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/fmt/float.rs
+fn=core::fmt::float::<impl core::fmt::Display for f64>::fmt
+89 9
+90 9
+210 9
+211 3
+fn=core::fmt::float::float_to_decimal_common_exact
+28 30
+48 3
+49 24
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/fmt/mod.rs
+fn=core::fmt::Formatter::pad_formatted_parts
+1774 30
+1775 6
+1813 30
+fn=core::fmt::Formatter::pad_integral
+0 374
+1599 408
+1603 68
+1606 68
+1611 68
+1628 68
+1632 306
+1633 136
+2095 136
+fn=core::fmt::Formatter::pad_integral::write_prefix
+0 34
+1620 306
+1621 68
+1624 68
+1625 204
+fn=core::fmt::Formatter::write_formatted_parts
+0 22
+1820 33
+1826 21
+1829 9
+1832 3
+1833 38
+1834 1
+1837 2
+1841 2
+1842 5
+1858 14
+1864 24
+fn=core::fmt::float::<impl core::fmt::Display for f64>::fmt
+2095 6
+fn=core::fmt::write
+0 118
+548 132
+1431 176
+1435 88
+1438 19
+1442 128
+1443 160
+1449 96
+1451 32
+1454 3
+1461 20
+1462 25
+1466 10
+1467 5
+1473 22
+1474 154
+1478 176
+1481 10
+1482 10
+1483 10
+1487 20
+1488 18
+1495 5
+1499 5
+1503 43
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/fmt/num.rs
+fn=core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt
+222 18
+225 30
+fn=core::fmt::num::imp::<impl core::fmt::Display for i64>::fmt
+222 48
+225 96
+fn=core::fmt::num::imp::<impl core::fmt::Display for u64>::fmt
+208 36
+211 48
+fn=core::fmt::num::imp::<impl u32>::_fmt
+0 38
+236 60
+247 33
+254 7
+259 42
+260 28
+262 7
+264 14
+269 12
+285 18
+292 2
+297 2
+310 30
+311 36
+fn=core::fmt::num::imp::<impl u64>::_fmt
+0 144
+236 280
+247 167
+254 37
+259 222
+260 148
+262 37
+264 74
+269 56
+285 84
+292 16
+297 32
+310 140
+311 168
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/fmt/rt.rs
+fn=core::fmt::write
+0 10
+177 74
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/intrinsics/mod.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+4441 354
+fn=std::env::_var_os
+4441 3
+fn=std::rt::lang_start_internal
+1521 1
+4627 17
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+4627 65
+fn=std::sys::pal::unix::thread::Thread::new
+4627 36
+fn=std::thread::ThreadId::new
+1521 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/iter/adapters/zip.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+309 26
+313 2
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/iter/range.rs
+fn=core::num::bignum::Big32x40::mul_pow2
+764 5
+806 21
+fn=core::num::flt2dec::strategy::dragon::format_exact
+764 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/iter/traits/double_ended.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+237 10
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/iter/traits/iterator.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+3612 7
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/macros/mod.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 3
+538 13
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/mem/manually_drop.rs
+fn=std::sys::pal::unix::thread::Thread::new
+199 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/mem/maybe_uninit.rs
+fn=core::fmt::num::imp::<impl u32>::_fmt
+511 23
+fn=core::fmt::num::imp::<impl u64>::_fmt
+511 127
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+511 7
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/mem/mod.rs
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+395 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/bignum.rs
+fn=core::num::bignum::Big32x40::mul_pow2
+0 28
+88 8
+216 24
+226 4
+227 61
+230 3
+234 4
+235 12
+237 40
+238 8
+242 4
+243 6
+244 27
+246 8
+250 4
+252 28
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 1
+49 28
+51 74
+94 10
+96 2
+103 6
+108 14
+115 2
+129 4
+150 3
+153 2
+154 2
+157 2
+161 1
+188 4
+189 2
+192 2
+193 1
+203 2
+204 2
+207 2
+211 1
+328 1
+330 7
+333 14
+334 14
+404 25
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+200 1
+203 2
+204 2
+207 2
+211 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/dec2flt/float.rs
+fn=core::fmt::float::float_to_decimal_common_exact
+197 9
+198 27
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/diy_float.rs
+fn=core::num::flt2dec::strategy::grisu::format_exact_opt
+26 4
+27 2
+28 2
+29 2
+30 4
+31 2
+32 2
+33 2
+34 12
+35 14
+36 4
+44 18
+48 16
+52 16
+56 16
+60 14
+64 16
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/f64.rs
+fn=core::fmt::float::float_to_decimal_common_exact
+0 1
+652 31
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/flt2dec/decoder.rs
+fn=core::fmt::float::float_to_decimal_common_exact
+0 11
+77 20
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/flt2dec/estimator.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+13 7
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/flt2dec/mod.rs
+fn=core::fmt::float::float_to_decimal_common_exact
+0 33
+310 51
+495 12
+604 18
+606 15
+618 3
+620 3
+621 4
+638 4
+643 18
+644 2
+645 4
+668 12
+fn=core::num::flt2dec::digits_to_dec_str
+0 4
+181 4
+187 4
+188 4
+189 4
+204 4
+219 2
+220 6
+222 2
+223 8
+224 8
+225 4
+248 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/flt2dec/strategy/dragon.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 16
+64 15
+66 6
+68 3
+262 8
+267 3
+268 3
+269 3
+270 1
+271 1
+274 1
+279 2
+280 3
+286 4
+287 4
+298 1
+306 3
+312 9
+318 2
+322 4
+324 3
+326 8
+333 3
+336 2
+354 1
+358 5
+389 9
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+30 6
+33 2
+60 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/flt2dec/strategy/grisu.rs
+fn=core::fmt::float::float_to_decimal_common_exact
+772 12
+773 4
+774 3
+fn=core::num::flt2dec::strategy::grisu::format_exact_opt
+0 16
+124 22
+125 14
+145 3
+152 2
+153 7
+471 18
+476 6
+477 6
+478 4
+482 2
+486 2
+487 12
+488 4
+502 8
+524 4
+529 2
+543 9
+563 30
+564 4
+566 16
+570 8
+571 4
+574 13
+580 6
+588 9
+758 17
+fn=core::num::flt2dec::strategy::grisu::format_exact_opt::possibly_round
+0 5
+648 10
+673 3
+689 2
+714 10
+757 8
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/int_macros.rs
+fn=core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt
+2193 18
+fn=core::fmt::num::imp::<impl core::fmt::Display for i64>::fmt
+2193 48
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/mod.rs
+fn=core::slice::memchr::memrchr
+1244 332
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/num/uint_macros.rs
+fn=core::num::bignum::Big32x40::mul_pow2
+762 9
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 1
+33 4
+136 6
+494 1
+659 1
+2408 4
+2766 6
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+2766 8
+fn=std::rt::lang_start_internal
+494 1
+498 1
+fn=std::thread::ThreadId::new
+494 6
+498 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ops/control_flow.rs
+fn=core::num::flt2dec::strategy::dragon::format_exact
+194 14
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ops/function.rs
+fn=std::rt::lang_start_internal
+284 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/option.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+1021 44
+fn=<std::thread::spawnhook::SpawnHooks as core::ops::drop::Drop>::drop
+1451 38
+fn=std::env::_var_os
+0 1
+fn=std::rt::lang_start_internal
+1021 2
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+976 2
+1021 2
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+976 2
+fn=std::thread::Thread::cname
+2189 12
+fn=std::thread::Thread::new
+1118 12
+fn=std::thread::spawnhook::run_spawn_hooks
+707 6
+2038 12
+2487 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/alignment.rs
+fn=alloc::sync::arcinner_layout_for_value_layout
+159 18
+fn=core::alloc::layout::Layout::is_size_align_valid
+0 32054
+58 160270
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/const_ptr.rs
+fn=std::sys::thread_local::guard::key::enable::run
+1078 6
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+802 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/metadata.rs
+fn=std::rt::lang_start_internal
+127 1
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+127 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/mod.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+523 22
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+1582 202
+fn=<std::thread::spawnhook::SpawnHooks as core::ops::drop::Drop>::drop
+1380 19
+1582 19
+fn=alloc::sync::Arc<T,A>::drop_slow
+523 12
+fn=core::ffi::c_str::CStr::from_bytes_with_nul
+1947 3
+fn=core::ptr::drop_in_place<[alloc::boxed::Box<dyn core::ops::function::FnOnce<()>+Output = ()+core::marker::Send>]>
+523 108
+fn=core::ptr::drop_in_place<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>
+523 14
+fn=core::slice::memchr::memrchr
+1947 202
+1948 101
+fn=std::env::_var_os
+1582 1
+fn=std::rt::lang_start_internal
+1582 7
+fn=std::sync::once_lock::OnceLock<T>::initialize
+523 4
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+1582 3
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+1380 1
+1582 1
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+1582 18
+fn=std::sys::pal::unix::weak::DlsymWeak<F>::initialize
+523 4
+fn=std::sys::thread_local::guard::key::enable::run
+1582 30
+fn=std::sys::thread_local::native::eager::destroy
+523 28
+1582 7
+fn=std::thread::Thread::new
+1582 36
+fn=std::thread::current::set_current
+1582 42
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+523 24
+1380 24
+1582 30
+fn=std::thread::spawnhook::run_spawn_hooks
+0 6
+523 24
+1380 30
+1582 31
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/mut_ptr.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+1057 118
+fn=std::sync::once_lock::OnceLock<T>::initialize
+533 1
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+1168 1
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+1057 7
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+1168 6
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+1057 18
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/ptr/non_null.rs
+fn=core::fmt::Formatter::write_formatted_parts
+1623 19
+fn=core::fmt::write
+1623 133
+fn=core::num::flt2dec::strategy::dragon::format_exact
+1623 43
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+1623 5
+fn=core::slice::memchr::memrchr
+1623 808
+fn=std::thread::Thread::cname
+429 6
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+1623 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/result.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+0 44
+2001 51
+fn=core::fmt::Formatter::write_formatted_parts
+0 3
+2001 2
+fn=std::env::_var_os
+0 1
+659 3
+660 2
+fn=std::sys::random::linux::hashmap_random_keys
+1554 2
+fn=std::thread::Thread::new
+1461 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/slice/index.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+90 10
+560 15
+fn=core::fmt::num::imp::<impl u32>::_fmt
+90 12
+407 6
+fn=core::fmt::num::imp::<impl u64>::_fmt
+90 56
+407 28
+fn=core::fmt::write
+90 5
+228 66
+fn=core::num::flt2dec::digits_to_dec_str
+90 2
+407 2
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 5
+97 1
+436 14
+448 20
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+448 2
+fn=core::num::flt2dec::strategy::grisu::format_exact_opt::possibly_round
+436 2
+fn=core::slice::memchr::memrchr
+0 83
+436 166
+560 101
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+90 17
+407 51
+860 34
+fn=std::sys::random::linux::getrandom
+97 4
+569 2
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/slice/iter/macros.rs
+fn=core::fmt::Formatter::write_formatted_parts
+0 24
+25 11
+fn=core::fmt::write
+0 135
+25 94
+fn=core::num::flt2dec::strategy::dragon::format_exact
+0 1
+25 76
+267 8
+268 8
+fn=core::num::flt2dec::strategy::dragon::mul_pow10
+0 2
+25 7
+fn=core::slice::memchr::memrchr
+0 44
+25 808
+359 404
+360 258
+361 1422
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/slice/memchr.rs
+fn=core::ffi::c_str::CStr::from_bytes_with_nul
+0 8
+20 6
+28 4
+40 46
+41 44
+45 19
+72 1
+82 4
+86 1
+87 1
+92 4
+96 1
+fn=core::slice::memchr::memrchr
+0 286
+20 259
+112 606
+129 202
+133 776
+143 240
+147 74
+151 37
+152 37
+153 148
+161 516
+162 642
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/slice/mod.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+280 158
+2116 44
+fn=core::slice::memchr::memrchr
+3932 707
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/core/src/sync/atomic.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+3716 66
+3731 22
+3749 22
+3806 44
+fn=alloc::sync::Arc<T,A>::drop_slow
+3783 6
+fn=std::io::stdio::_print
+3732 22
+fn=std::io::stdio::print_to_buffer_if_capture_used
+3731 22
+fn=std::rt::lang_start_internal
+3716 8
+3717 1
+3731 5
+3732 1
+3838 1
+fn=std::sync::once_lock::OnceLock<T>::initialize
+3732 1
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+3716 3
+3731 3
+3732 1
+3749 1
+3806 2
+fn=std::sys::exit_guard::unique_thread_exit
+3731 4
+3749 1
+3806 2
+fn=std::sys::pal::unix::args::imp::ARGV_INIT_ARRAY::init_wrapper
+3716 2
+fn=std::sys::pal::unix::os::getenv::{{closure}}
+3731 2
+3783 1
+3841 1
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+3731 7
+3732 7
+fn=std::sys::pal::unix::thread::Thread::new
+3731 12
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+3731 6
+fn=std::sys::pal::unix::weak::DlsymWeak<F>::initialize
+3717 1
+fn=std::sys::random::linux::getrandom
+3731 2
+fn=std::sys::sync::once::futex::Once::call
+0 3
+3732 8
+3749 2
+3842 3
+fn=std::sys::thread_local::guard::key::enable
+3732 6
+3810 2
+fn=std::sys::thread_local::guard::key::enable::run
+3783 6
+fn=std::thread::Thread::cname
+3731 12
+fn=std::thread::ThreadId::new
+3731 12
+3838 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/alloc.rs
+fn=__rdl_alloc
+396 32053
+fn=__rdl_alloc_zeroed
+428 24
+fn=__rdl_dealloc
+406 64114
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/env.rs
+fn=std::env::_var_os
+258 10
+260 9
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/buffered/bufwriter.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+0 118
+447 118
+453 140
+546 236
+fn=core::ptr::drop_in_place<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>
+0 3
+683 2
+685 2
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+0 68
+195 144
+216 34
+221 35
+228 17
+234 36
+235 17
+237 17
+239 85
+252 144
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/buffered/linewriter.rs
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+110 4
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/buffered/linewritershim.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+47 124
+269 404
+278 22
+280 110
+290 17
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/error/repr_bitpacked.rs
+fn=std::sync::once_lock::OnceLock<T>::initialize
+258 3
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/mod.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+0 44
+1889 66
+1890 132
+fn=<std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str
+1878 707
+1879 707
+1886 606
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+0 37
+1755 25
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/io/stdio.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+727 22
+791 176
+792 66
+793 176
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+817 808
+818 123
+819 808
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+190 119
+fn=std::io::stdio::_print
+766 88
+1117 66
+1122 110
+1232 176
+1234 88
+fn=std::io::stdio::print_to_buffer_if_capture_used
+1127 176
+1128 44
+1138 176
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+685 1
+691 2
+697 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/os/fd/owned.rs
+fn=std::sys::pal::unix::weak::DlsymWeak<F>::initialize
+182 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/panicking.rs
+fn=std::sys::exit_guard::unique_thread_exit
+0 1
+470 5
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/rt.rs
+fn=std::rt::lang_start_internal
+145 13
+178 1
+183 1
+188 9
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sync/once_lock.rs
+fn=std::io::stdio::_print
+393 22
+396 2
+fn=std::sync::once_lock::OnceLock<T>::initialize
+532 3
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+393 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sync/poison/once.rs
+fn=std::rt::lang_start_internal
+150 1
+154 2
+155 8
+fn=std::sync::once_lock::OnceLock<T>::initialize
+209 1
+213 5
+214 2
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+155 13
+fn=std::sync::poison::once::Once::call_once_force::{{closure}}
+214 9
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sync/reentrant_lock.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+0 88
+103 22
+286 22
+292 22
+410 22
+411 22
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+386 101
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+0 2
+103 1
+333 1
+336 1
+410 1
+411 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/alloc/unix.rs
+fn=__rdl_alloc
+13 192318
+14 64106
+fn=__rdl_alloc_zeroed
+35 24
+36 28
+fn=__rdl_dealloc
+48 64114
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/exit_guard.rs
+fn=std::sys::exit_guard::unique_thread_exit
+32 6
+33 3
+38 2
+43 2
+61 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/common/small_c_string.rs
+fn=std::env::_var_os
+0 1
+25 2
+47 7
+48 3
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/args.rs
+fn=std::sys::pal::unix::args::imp::ARGV_INIT_ARRAY::init_wrapper
+156 2
+162 1
+164 2
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/fd.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+304 15
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+304 102
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/mod.rs
+fn=<std::io::stdio::StdoutLock as std::io::Write>::write_all
+308 20
+fn=std::io::buffered::bufwriter::BufWriter<W>::flush_buf
+298 51
+308 17
+fn=std::rt::lang_start_internal
+0 3
+85 7
+91 6
+108 6
+179 5
+190 4
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/os.rs
+fn=std::rt::lang_start_internal
+699 2
+fn=std::sys::pal::unix::os::getenv::{{closure}}
+0 1
+664 10
+666 2
+668 2
+669 2
+676 9
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/stack_overflow.rs
+fn=std::rt::lang_start_internal
+0 1
+139 6
+141 4
+142 4
+145 2
+149 2
+150 6
+152 6
+328 4
+329 2
+331 4
+332 5
+333 2
+336 4
+351 10
+352 5
+393 2
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+246 2
+249 4
+259 2
+262 4
+269 2
+fn=std::sys::pal::unix::stack_overflow::imp::make_handler
+0 7
+188 42
+190 7
+196 14
+199 28
+200 14
+211 42
+212 14
+216 14
+225 14
+227 14
+230 28
+231 14
+233 7
+237 49
+269 14
+518 24
+519 12
+520 18
+521 24
+522 12
+533 24
+534 24
+536 6
+549 24
+555 24
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+12 12
+246 12
+249 24
+259 12
+262 24
+269 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/thread.rs
+fn=std::sys::pal::unix::thread::Thread::join
+314 24
+316 12
+317 12
+318 24
+fn=std::sys::pal::unix::thread::Thread::new
+49 60
+53 24
+69 24
+85 42
+89 30
+91 12
+97 12
+110 48
+758 2
+760 12
+fn=std::sys::pal::unix::thread::Thread::new::thread_start
+0 6
+100 48
+109 48
+fn=std::thread::yield_now
+113 40
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/pal/unix/weak.rs
+fn=std::sys::pal::unix::thread::Thread::new
+0 6
+95 26
+fn=std::sys::pal::unix::weak::DlsymWeak<F>::initialize
+125 3
+133 2
+137 1
+138 1
+141 1
+fn=std::sys::random::linux::getrandom
+169 3
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/random/linux.rs
+fn=std::sys::random::linux::getrandom
+0 8
+72 11
+89 2
+91 1
+96 6
+106 2
+158 8
+fn=std::sys::random::linux::hashmap_random_keys
+164 3
+165 3
+166 3
+170 3
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/sync/mutex/futex.rs
+fn=<&std::io::stdio::Stdout as std::io::Write>::write_fmt
+28 22
+84 44
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+84 2
+fn=std::sys::exit_guard::unique_thread_exit
+0 1
+28 1
+84 2
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/sync/once/futex.rs
+fn=std::io::stdio::_print
+80 22
+fn=std::rt::lang_start_internal
+80 1
+fn=std::sync::once_lock::OnceLock<T>::initialize
+80 1
+fn=std::sync::poison::once::Once::call_once::{{closure}}
+80 1
+fn=std::sys::sync::once::futex::Once::call
+0 2
+60 4
+139 22
+142 4
+143 4
+144 6
+152 3
+153 2
+170 10
+172 2
+176 2
+203 16
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/sync/rwlock/futex.rs
+fn=std::sys::pal::unix::os::getenv::{{closure}}
+54 2
+97 1
+99 1
+111 1
+118 4
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/destructors/linux_like.rs
+fn=std::sys::thread_local::destructors::linux_like::register
+18 63
+43 14
+45 70
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/destructors/list.rs
+fn=std::sys::thread_local::guard::key::enable::run
+39 24
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/guard/key.rs
+fn=std::sys::thread_local::guard::key::enable
+9 30
+31 30
+fn=std::sys::thread_local::guard::key::enable::run
+20 30
+30 30
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/key/racy.rs
+fn=std::sys::thread_local::guard::key::enable
+39 12
+55 1
+56 2
+59 1
+65 3
+66 1
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/key/unix.rs
+fn=std::sys::thread_local::guard::key::enable
+27 4
+28 9
+29 2
+34 12
+46 2
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/sys/thread_local/native/eager.rs
+fn=std::sys::thread_local::native::eager::destroy
+62 35
+73 28
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+33 6
+47 30
+fn=std::thread::spawnhook::run_spawn_hooks
+33 16
+47 6
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/thread/current.rs
+fn=std::sys::thread_local::guard::key::enable::run
+268 12
+271 6
+fn=std::thread::current::set_current
+115 42
+116 12
+120 12
+128 6
+131 36
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/thread/local.rs
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+329 12
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/thread/mod.rs
+fn=std::rt::lang_start_internal
+1208 1
+fn=std::thread::Thread::cname
+1611 12
+1612 18
+1614 18
+1619 12
+fn=std::thread::Thread::new
+1420 60
+1438 48
+fn=std::thread::ThreadId::new
+1208 6
+1231 12
+fn=std::thread::current::set_current
+1511 6
+fn=std::thread::yield_now
+765 40
+fl=/rustc/05f9846f893b09a1be1fc8560e33fc3c815cfecb/library/std/src/thread/spawnhook.rs
+fn=<std::thread::spawnhook::SpawnHooks as core::ops::drop::Drop>::drop
+22 152
+28 133
+fn=std::thread::spawnhook::ChildSpawnHooks::run
+142 54
+143 6
+144 42
+147 48
+fn=std::thread::spawnhook::run_spawn_hooks
+113 60
+116 6
+119 6
+127 24
+128 54
+fl=/usr/src/debug/gcc-14.2.1-7.fc41.x86_64/obj-x86_64-redhat-linux/gcc/include/cpuid.h
+fn=__cpu_indicator_init@GCC_4.8.0
+310 4
+331 4
+334 9
+fl=/usr/src/debug/gcc-14.2.1-7.fc41.x86_64/obj-x86_64-redhat-linux/x86_64-redhat-linux/libgcc/../../../libgcc/../gcc/common/config/i386/cpuinfo.h
+fn=__cpu_indicator_init@GCC_4.8.0
+66 1
+75 2
+92 17
+101 22
+103 13
+350 13
+452 2
+454 1
+736 2
+738 3
+744 2
+747 4
+749 1
+751 6
+754 5
+755 3
+756 1
+762 2
+764 2
+766 2
+768 2
+770 2
+772 2
+775 2
+777 3
+779 2
+781 2
+783 2
+785 2
+787 2
+789 2
+791 2
+793 2
+795 2
+797 2
+799 2
+801 2
+803 2
+805 2
+807 2
+812 2
+816 4
+817 2
+819 2
+821 2
+823 2
+825 2
+827 2
+829 2
+831 2
+834 2
+836 2
+838 2
+840 2
+842 2
+844 2
+846 2
+848 2
+851 2
+853 2
+855 2
+857 2
+859 2
+861 2
+863 2
+865 2
+867 2
+871 2
+873 2
+875 2
+877 2
+879 2
+881 2
+890 2
+928 2
+984 2
+986 3
+987 2
+989 2
+991 2
+996 2
+1046 3
+1050 2
+1052 2
+1054 2
+1056 2
+1058 3
+1060 2
+1062 2
+1064 2
+1066 2
+1068 2
+1071 2
+1073 2
+1075 2
+1078 2
+1080 2
+1082 2
+1087 2
+1089 2
+1090 2
+1092 2
+1112 4
+1113 1
+1125 2
+1139 3
+1140 3
+1141 4
+1148 2
+1151 2
+1157 3
+1164 3
+1205 2
+1206 2
+1211 2
+1212 2
+1213 2
+1214 2
+1220 4
+1221 2
+1222 2
+1223 2
+1226 3
+1234 3
+1238 3
+fl=/usr/src/debug/gcc-14.2.1-7.fc41.x86_64/obj-x86_64-redhat-linux/x86_64-redhat-linux/libgcc/../../../libgcc/config/i386/cpuinfo.c
+fn=__cpu_indicator_init@GCC_4.8.0
+60 7
+62 1
+64 7
+fl=/usr/src/debug/gcc-14.2.1-7.fc41.x86_64/obj-x86_64-redhat-linux/x86_64-redhat-linux/libgcc/../../../libgcc/unwind-dw2-btree.h
+fn=btree_destroy
+356 8
+359 4
+360 4
+364 6
+370 8
+fl=/usr/src/debug/gcc-14.2.1-7.fc41.x86_64/obj-x86_64-redhat-linux/x86_64-redhat-linux/libgcc/../../../libgcc/unwind-dw2-fde.c
+fn=release_registered_frames
+58 2
+61 2
+62 2
+63 1
+64 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/csu/../csu/libc-start.c
+fn=__libc_start_main@@GLIBC_2.34
+128 2
+134 3
+135 7
+138 1
+139 2
+142 3
+143 2
+144 18
+145 8
+242 13
+311 3
+312 3
+337 6
+340 2
+343 2
+350 2
+352 2
+360 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/csu/../sysdeps/nptl/libc_start_call_main.h
+fn=(below main)
+29 6
+44 5
+46 2
+51 2
+52 2
+55 2
+58 6
+74 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/csu/init-first.c
+fn=_init_first
+46 6
+51 2
+55 5
+61 1
+62 1
+63 2
+71 2
+72 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/ctype/ctype-info.c
+fn=__ctype_init
+29 7
+31 49
+33 28
+35 28
+36 7
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/ifunc-memmove.h
+fn=__memcpy_chk
+56 2
+57 3
+60 3
+61 2
+74 2
+77 2
+85 2
+93 2
+96 5
+fn=__memmove_chk
+56 2
+57 3
+60 3
+61 2
+74 2
+77 2
+85 2
+93 2
+96 5
+fn=__mempcpy_chk
+56 2
+57 3
+60 3
+61 2
+74 2
+77 2
+85 2
+93 2
+96 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/ifunc-memset.h
+fn=__memset_chk
+54 5
+57 3
+58 2
+64 2
+73 2
+75 2
+85 2
+93 2
+96 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/memcpy_chk.c
+fn=__memcpy_chk
+29 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/memmove_chk.c
+fn=__memmove_chk
+29 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/mempcpy_chk.c
+fn=__mempcpy_chk
+29 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/debug/../sysdeps/x86_64/multiarch/memset_chk.c
+fn=__memset_chk
+29 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/dlfcn/dlerror.c
+fn=_dlerror_run
+113 13
+114 2
+115 2
+121 1
+138 5
+143 1
+145 3
+151 2
+156 2
+198 11
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/dlfcn/dlsym.c
+fn=dlsym@@GLIBC_2.34
+47 1
+48 1
+49 1
+52 3
+54 6
+56 2
+64 6
+65 6
+68 1
+69 9
+fn=dlsym_doit
+37 6
+40 5
+41 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/dlfcn/libc_dlerror_result.c
+fn=__libc_dlerror_result_free
+29 30
+30 24
+39 18
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../bits/stdlib-bsearch.h
+fn=intel_check_word.constprop.0
+27 96
+28 48
+29 744
+31 648
+32 348
+35 264
+37 120
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../elf/dl-tls.c
+fn=_dl_add_to_slotinfo
+1128 24
+1129 12
+1137 3
+1140 3
+1141 3
+1145 9
+1181 6
+1184 6
+1185 9
+1187 6
+1190 3
+1191 18
+fn=_dl_allocate_tls
+670 18
+671 24
+673 12
+674 6
+fn=_dl_allocate_tls_init
+563 77
+564 14
+568 14
+571 7
+574 14
+577 21
+589 7
+594 168
+600 56
+603 63
+604 42
+610 63
+611 42
+613 175
+616 42
+617 42
+620 42
+621 84
+623 42
+624 42
+633 21
+643 42
+645 231
+648 42
+649 3
+653 21
+659 14
+662 14
+665 63
+fn=_dl_allocate_tls_storage
+88 1
+94 1
+442 7
+444 1
+455 1
+459 1
+460 2
+471 6
+472 1
+476 305
+495 1
+497 2
+498 2
+503 6
+fn=_dl_assign_tls_modid
+150 6
+153 6
+206 2
+208 2
+211 2
+212 4
+fn=_dl_count_modids
+217 1
+219 2
+220 1
+235 2
+fn=_dl_determine_tlsoffset
+241 9
+242 1
+243 1
+244 1
+247 4
+250 3
+284 1
+286 26
+288 9
+290 9
+291 6
+293 6
+295 15
+306 3
+311 24
+313 6
+314 3
+319 3
+326 1
+327 7
+329 2
+379 1
+380 8
+fn=_dl_tls_initial_modid_limit_setup
+1090 1
+1091 1
+1093 13
+1095 12
+1096 8
+1099 6
+1102 1
+1103 1
+fn=_dl_tls_static_surplus_init
+108 3
+122 8
+125 6
+126 5
+127 3
+129 4
+132 1
+134 1
+136 3
+137 6
+fn=allocate_dtv
+385 35
+390 7
+394 7
+395 7
+396 14
+399 7
+405 21
+411 28
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../include/list.h
+fn=__tls_init_tp
+43 2
+44 2
+45 1
+47 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../include/rtld-malloc.h
+fn=__minimal_calloc
+56 10
+fn=_dl_allocate_tls_storage
+56 1
+fn=_dl_check_map_versions
+44 12
+fn=_dl_find_object_init
+56 2
+fn=_dl_important_hwcaps
+56 4
+fn=_dl_init_paths
+56 3
+fn=_dl_map_object_deps
+56 8
+fn=_dl_new_object
+44 12
+56 9
+fn=allocate_dtv
+44 14
+fn=init_tls
+44 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../include/scratch_buffer.h
+fn=_dl_map_object_deps
+77 2
+78 1
+85 3
+131 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../misc/sbrk.c
+fn=sbrk
+37 6
+40 1
+58 2
+62 2
+78 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../nptl/nptl-stack.h
+fn=__libc_early_init
+61 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/_itoa.h
+fn=_dl_check_map_versions
+76 15
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-cache.h
+fn=_dl_load_cache_lookup
+194 1
+195 5
+fn=search_cache
+125 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-call_tls_init_tp.h
+fn=init_tls
+31 8
+33 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-debug.h
+fn=dl_main
+29 3
+30 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-hash.h
+fn=__rtld_malloc_init_real
+43 7
+44 1
+45 19
+48 18
+62 24
+67 1
+72 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-new-hash.h
+fn=_dl_lookup_symbol_x
+69 235
+70 470
+74 1788
+77 3576
+80 1658
+81 3316
+87 105
+88 105
+89 210
+90 105
+99 1553
+101 1553
+102 3106
+104 1553
+105 1553
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/dl-protected.h
+fn=do_lookup_x
+29 920
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/generic/ldsodefs.h
+fn=_dl_new_object
+1328 48
+fn=_dl_relocate_object
+79 31
+140 708
+fn=_dl_start
+79 6
+fn=do_lookup_x
+139 450
+140 675
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/nptl/dl-mutex.c
+fn=__rtld_mutex_init
+30 7
+37 1
+40 7
+44 2
+45 9
+47 6
+51 2
+52 7
+53 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/nptl/dl-tls_init_tp.c
+fn=__tls_init_tp
+66 5
+67 1
+70 1
+73 4
+74 2
+75 1
+80 2
+85 4
+88 1
+91 3
+103 4
+113 2
+120 2
+121 3
+fn=__tls_pre_init_tp
+51 3
+54 10
+59 2
+60 1
+62 1
+fn=rtld_mutex_dummy
+42 10
+44 20
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/nptl/pthread_early_init.h
+fn=__libc_early_init
+33 6
+34 1
+38 5
+45 2
+46 1
+48 2
+52 5
+53 1
+54 1
+56 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/posix/dl-fileid.h
+fn=_dl_map_object_from_fd
+37 15
+40 6
+49 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/brk.c
+fn=brk
+36 1
+37 1
+38 2
+44 1
+45 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/brk_call.h
+fn=brk
+24 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/dl-osinfo.h
+fn=dl_main
+39 2
+52 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/dl-parse_auxv.h
+fn=_dl_sysdep_parse_arguments
+32 2
+33 1
+34 1
+41 93
+42 44
+43 44
+45 1
+46 2
+47 3
+48 2
+49 2
+50 2
+51 2
+52 2
+53 2
+54 2
+56 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/dl-sysdep.c
+fn=_dl_sysdep_parse_arguments
+79 9
+80 2
+81 2
+82 3
+83 88
+84 178
+87 2
+91 56
+94 2
+95 2
+96 2
+97 8
+fn=_dl_sysdep_start
+103 6
+104 1
+107 2
+111 2
+114 1
+116 2
+123 3
+124 2
+126 5
+138 3
+141 5
+144 4
+fn=_dl_sysdep_start_cleanup
+148 1
+149 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/dl-vdso-setup.h
+fn=dl_main
+30 1
+33 1
+36 1
+39 1
+45 1
+54 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/dl-vdso.h
+fn=dl_main
+40 2
+41 5
+55 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/rseq-internal.h
+fn=__tls_init_tp
+41 3
+50 4
+58 1
+59 1
+60 1
+61 1
+63 6
+65 2
+70 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/x86/dl-hwcap2.h
+fn=update_active.constprop.0
+25 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/unix/sysv/linux/x86/dl-minsigstacksize.h
+fn=get_common_indices.constprop.0
+24 2
+27 2
+28 2
+65 3
+72 1
+74 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86/cpu-features.c
+fn=get_common_indices.constprop.0
+467 3
+471 4
+474 5
+478 1
+479 4
+480 4
+481 4
+482 3
+483 2
+490 2
+492 9
+497 8
+504 2
+505 7
+511 2
+526 3
+fn=init_cpu_features.constprop.0
+445 3
+446 2
+447 6
+452 2
+453 6
+458 2
+459 7
+751 8
+754 1
+755 1
+756 1
+759 1
+768 3
+771 6
+772 1
+775 1
+777 6
+782 1
+784 3
+786 9
+790 7
+843 3
+850 2
+868 1
+908 2
+942 4
+945 3
+946 1
+954 2
+961 2
+963 2
+967 2
+973 2
+1097 3
+1098 2
+1101 2
+1102 2
+1108 1
+1109 1
+1110 1
+1111 2
+1115 4
+1118 4
+1124 3
+1128 1
+1137 2
+1138 3
+1177 1
+1178 2
+1182 3
+1199 2
+1200 3
+1202 3
+1203 2
+1205 4
+1206 1
+1209 2
+1223 4
+1225 4
+1229 4
+1232 6
+1235 1
+1238 1
+1270 4
+1277 8
+fn=update_active.constprop.0
+87 8
+91 1
+99 3
+100 3
+101 2
+109 3
+110 1
+118 3
+119 1
+124 4
+127 5
+128 1
+131 5
+132 2
+136 5
+137 3
+138 3
+139 2
+143 4
+144 5
+145 3
+148 6
+160 1
+162 2
+166 5
+167 3
+169 3
+173 2
+175 1
+176 1
+179 2
+181 2
+185 1
+186 1
+193 4
+195 5
+201 4
+203 4
+205 3
+210 4
+259 2
+260 3
+276 4
+292 2
+296 1
+297 1
+300 4
+304 2
+308 3
+309 2
+313 1
+314 1
+317 2
+319 1
+322 2
+425 2
+429 3
+438 1
+439 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86/dl-cacheinfo.h
+fn=get_common_cache_info.constprop.0
+571 11
+586 1
+589 1
+590 1
+596 1
+598 15
+601 2
+613 1
+618 4
+622 2
+627 1
+630 23
+636 8
+637 8
+640 26
+645 2
+649 3
+650 1
+654 2
+658 3
+661 4
+662 1
+667 4
+673 4
+681 8
+683 3
+685 9
+687 7
+690 2
+691 8
+693 4
+696 2
+701 1
+703 11
+704 3
+705 1
+708 3
+711 2
+715 2
+718 1
+720 4
+721 2
+726 2
+731 2
+732 1
+733 3
+734 2
+735 2
+759 3
+770 4
+771 5
+775 2
+782 1
+783 1
+784 1
+785 7
+fn=handle_intel.constprop.0
+250 108
+255 24
+261 12
+262 12
+267 48
+271 24
+276 24
+279 60
+281 24
+284 60
+286 24
+305 96
+fn=init_cpu_features.constprop.0
+792 1
+793 1
+794 1
+808 2
+810 7
+811 4
+812 1
+815 3
+817 3
+818 1
+820 3
+822 3
+824 3
+826 3
+828 3
+831 3
+833 3
+835 3
+837 6
+893 2
+894 2
+895 2
+896 2
+897 2
+898 1
+899 2
+900 1
+901 1
+902 1
+903 2
+904 1
+906 1
+909 3
+923 3
+924 7
+929 2
+930 7
+931 2
+939 8
+940 2
+960 6
+969 2
+970 2
+975 3
+978 1
+979 2
+988 2
+989 3
+993 1
+994 2
+995 2
+996 1
+997 2
+1003 3
+1010 5
+1012 2
+1015 5
+1017 2
+1020 5
+1021 5
+1025 5
+1026 5
+1030 5
+1031 3
+1037 7
+1039 3
+1045 12
+1046 10
+1047 13
+1050 11
+1053 13
+1055 10
+1063 1
+1064 2
+1065 2
+1066 2
+1067 2
+1068 2
+1069 1
+fn=intel_check_word.constprop.0
+110 648
+113 324
+119 216
+123 48
+125 12
+129 120
+131 144
+133 60
+135 120
+143 120
+152 24
+155 111
+158 99
+162 64
+164 192
+165 24
+167 104
+168 96
+169 84
+170 72
+172 11
+174 22
+176 12
+177 16
+178 12
+179 20
+180 14
+181 12
+183 8
+184 12
+187 21
+190 2
+194 192
+202 168
+216 48
+246 144
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86/dl-get-cpu-features.c
+fn=__x86_cpu_features
+39 3
+76 3
+fn=_dl_x86_init_cpu_features
+37 1
+39 3
+41 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86/dl-prop.h
+fn=_dl_map_object_from_fd
+149 12
+fn=_dl_process_pt_gnu_property
+95 28
+97 4
+102 10
+115 10
+118 5
+252 4
+253 2
+254 6
+255 3
+257 20
+258 6
+260 5
+fn=dl_main
+36 1
+37 18
+40 6
+49 28
+53 24
+71 2
+149 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86/get-isa-level.h
+fn=_dl_hwcaps_subdirs_active
+30 4
+31 1
+32 3
+36 3
+39 4
+40 4
+45 4
+48 2
+51 5
+53 4
+54 2
+55 2
+58 4
+fn=update_active.constprop.0
+28 1
+30 4
+31 1
+32 3
+36 3
+38 1
+39 3
+40 4
+45 4
+47 1
+48 2
+51 5
+53 4
+54 2
+55 2
+57 1
+58 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86_64/dl-cet.c
+fn=_dl_cet_check
+361 1
+362 1
+fn=_dl_cet_setup_features
+331 1
+334 2
+350 1
+fn=dl_cet_check
+269 9
+275 2
+276 1
+277 2
+282 4
+283 3
+285 2
+293 5
+318 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86_64/dl-hwcaps-subdirs.c
+fn=_dl_hwcaps_subdirs_active
+29 1
+38 3
+43 1
+48 1
+52 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86_64/dl-machine.h
+fn=_dl_fixup
+223 1
+fn=_dl_relocate_object
+78 8
+84 4
+88 3
+94 1
+103 3
+126 2
+262 504
+269 504
+273 504
+282 2521
+285 226
+286 1156
+287 33
+290 22
+291 33
+302 22
+309 44
+312 1512
+315 80
+318 80
+367 3
+377 5
+386 2
+387 3
+388 2
+395 48
+397 64
+401 48
+410 32
+418 473
+471 94
+472 141
+473 47
+474 47
+493 3579
+494 1193
+498 2386
+499 2386
+509 6
+513 6
+516 9
+517 3
+725 25
+729 8
+fn=_dl_start
+273 3
+282 10
+286 4
+312 4
+fn=_dl_sysdep_start
+209 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86_64/dl-runtime.h
+fn=_dl_fixup
+28 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/../sysdeps/x86_64/dl-trampoline.h
+fn=_dl_runtime_resolve_xsave
+39 1
+44 1
+47 1
+49 1
+59 1
+65 1
+66 1
+67 1
+68 1
+69 1
+70 1
+71 1
+75 1
+76 1
+79 1
+80 1
+82 1
+83 1
+84 1
+85 1
+86 1
+87 1
+89 1
+96 1
+97 1
+98 1
+99 1
+104 1
+105 1
+106 1
+108 1
+109 1
+110 1
+111 1
+112 1
+113 1
+114 1
+116 1
+118 1
+122 1
+124 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-find_object.h
+fn=_dl_find_object_from_map
+95 10
+96 10
+97 5
+103 25
+104 151
+105 104
+107 15
+112 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-hwcaps.h
+fn=_dl_important_hwcaps
+43 6
+45 5
+46 1
+77 5
+78 5
+79 3
+fn=copy_hwcaps
+43 2
+45 2
+77 2
+78 2
+79 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-load.h
+fn=_dl_map_object_from_fd
+91 24
+92 8
+93 12
+94 8
+96 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-main.h
+fn=dl_main
+109 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-map-segments.h
+fn=_dl_map_object_from_fd
+28 9
+29 27
+81 3
+101 3
+102 9
+105 9
+106 6
+108 6
+125 3
+135 72
+137 36
+139 81
+149 48
+155 6
+156 3
+157 9
+158 6
+160 9
+165 6
+168 6
+176 18
+182 6
+186 16
+189 4
+194 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./dl-sym-post.h
+fn=do_sym
+24 3
+25 2
+41 2
+53 4
+60 1
+fn=lookup_malloc_symbol
+41 8
+53 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./get-dynamic-info.h
+fn=_dl_start
+45 75
+49 36
+51 10
+52 5
+54 20
+55 16
+56 5
+59 4
+62 4
+64 4
+68 18
+72 3
+84 4
+85 3
+86 4
+87 4
+88 5
+89 3
+90 4
+91 4
+103 10
+110 3
+123 3
+129 3
+130 3
+133 2
+134 3
+139 5
+142 5
+fn=dl_main
+39 3
+43 1
+45 115
+49 56
+51 12
+52 6
+54 25
+55 21
+56 5
+59 4
+62 4
+64 4
+68 28
+72 5
+84 3
+85 4
+86 4
+87 4
+88 3
+89 4
+90 4
+91 4
+103 8
+110 3
+115 2
+122 2
+123 3
+129 3
+147 3
+152 2
+154 2
+156 2
+158 2
+159 1
+162 3
+164 3
+165 2
+174 2
+175 3
+180 2
+181 2
+184 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/./setup-vdso.h
+fn=dl_main
+24 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-audit.c
+fn=_dl_audit_activity_map
+29 10
+30 1
+31 3
+37 8
+fn=_dl_audit_activity_nsid
+41 3
+45 12
+47 9
+51 3
+fn=_dl_audit_objclose
+97 5
+98 20
+fn=_dl_audit_objopen
+77 3
+78 12
+fn=_dl_audit_preinit
+118 1
+119 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-cache.c
+fn=_dl_cache_libcmp
+341 24
+342 384
+344 378
+346 256
+352 6
+353 6
+354 8
+356 8
+358 4
+364 248
+366 248
+367 44
+370 102
+371 102
+374 6
+fn=_dl_load_cache_lookup
+387 12
+389 4
+392 6
+395 6
+403 6
+404 8
+407 6
+408 1
+415 1
+416 2
+461 3
+466 6
+469 12
+484 4
+488 4
+496 6
+497 32
+498 8
+499 2
+500 6
+fn=_dl_unload_cache
+509 3
+510 4
+512 2
+513 1
+517 1
+519 2
+fn=search_cache
+187 44
+199 22
+200 4
+207 44
+209 110
+210 54
+214 44
+215 26
+218 88
+219 44
+227 20
+229 4
+232 4
+234 12
+236 8
+246 4
+256 6
+257 8
+264 4
+273 22
+282 4
+287 4
+314 6
+330 20
+331 12
+333 8
+337 18
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-call-libc-early-init.c
+fn=_dl_call_libc_early_init
+27 7
+29 2
+33 5
+37 2
+39 4
+40 2
+41 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-call_fini.c
+fn=_dl_call_fini
+24 40
+28 10
+32 5
+34 5
+35 10
+38 6
+39 9
+42 28
+43 4
+47 5
+48 10
+49 9
+50 27
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-catch.c
+fn=_dl_catch_error
+258 24
+260 4
+261 4
+262 4
+263 4
+265 12
+fn=_dl_catch_exception
+58 21
+59 12
+62 2
+69 14
+70 31
+73 4
+208 56
+211 14
+218 7
+232 14
+233 14
+239 42
+241 21
+243 28
+252 21
+fn=_dl_receive_error
+58 2
+59 1
+69 2
+70 2
+190 7
+192 1
+196 1
+198 1
+201 1
+202 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-debug.c
+fn=_dl_debug_initialize
+56 3
+57 1
+59 2
+61 2
+63 3
+64 1
+85 3
+90 3
+91 2
+92 1
+95 3
+96 6
+99 2
+107 2
+fn=_dl_debug_state
+116 2
+117 2
+fn=_dl_debug_update
+38 4
+40 8
+41 4
+44 8
+48 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-deps.c
+fn=_dl_map_object_deps
+128 3
+129 5
+130 6
+132 2
+136 8
+143 14
+144 20
+160 9
+161 1
+164 2
+182 1
+183 6
+184 1
+188 11
+190 14
+193 5
+197 15
+198 32
+201 12
+205 6
+208 18
+210 15
+215 6
+216 3
+217 6
+218 6
+219 3
+221 365
+222 172
+228 54
+230 5
+232 25
+233 10
+242 5
+244 10
+249 21
+252 3
+253 3
+254 3
+255 6
+256 3
+257 3
+259 12
+263 15
+264 6
+266 243
+417 10
+419 15
+422 6
+423 12
+429 3
+430 18
+431 15
+434 3
+435 6
+439 15
+441 5
+442 22
+448 5
+449 1
+452 4
+463 6
+465 5
+470 5
+471 1
+472 1
+474 21
+478 15
+484 10
+485 10
+490 5
+495 3
+532 2
+533 2
+536 1
+547 9
+552 9
+553 5
+557 1
+559 2
+560 1
+561 3
+568 3
+571 2
+574 8
+fn=openaux
+61 30
+64 55
+65 5
+68 5
+69 15
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-environ.c
+fn=_dl_next_ld_env_entry
+28 2
+29 2
+32 268
+34 176
+35 26
+37 1
+40 2
+42 1
+45 87
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-find_object.c
+fn=_dl_find_object_init
+562 5
+565 1
+567 2
+568 3
+580 2
+581 3
+583 2
+586 2
+591 1
+592 1
+595 3
+597 2
+600 6
+602 1
+605 4
+fn=_dlfo_process_initial
+475 8
+476 2
+478 2
+479 4
+505 22
+506 26
+507 10
+509 36
+512 32
+514 24
+516 8
+517 8
+518 16
+530 2
+532 8
+fn=_dlfo_sort_mappings
+537 1
+538 2
+541 16
+545 6
+546 36
+547 30
+549 3
+550 3
+554 12
+555 15
+556 6
+558 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-fini.c
+fn=_dl_fini
+26 11
+43 1
+46 13
+49 2
+51 1
+54 2
+56 5
+61 1
+63 4
+68 18
+73 19
+75 10
+77 10
+79 10
+80 5
+81 5
+85 5
+87 6
+88 6
+94 6
+103 2
+108 21
+110 5
+112 10
+114 20
+117 25
+122 5
+126 5
+132 6
+134 1
+138 2
+145 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-hwcaps.c
+fn=_dl_important_hwcaps
+52 16
+54 2
+55 4
+56 2
+57 2
+100 5
+102 3
+105 1
+108 1
+112 5
+125 12
+127 10
+128 4
+129 4
+130 2
+133 3
+142 14
+143 13
+145 8
+151 5
+155 4
+156 2
+157 3
+161 1
+162 2
+163 2
+172 14
+174 2
+175 3
+185 1
+186 3
+189 3
+193 2
+194 2
+202 4
+203 7
+204 6
+208 2
+209 1
+213 2
+216 9
+fn=copy_hwcaps
+74 18
+77 16
+79 2
+80 16
+84 2
+85 2
+86 6
+87 4
+88 4
+90 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-hwcaps_split.c
+fn=_dl_hwcaps_contains
+66 6
+67 12
+68 6
+77 6
+fn=_dl_hwcaps_split
+25 75
+26 45
+27 6
+30 36
+34 84
+35 12
+36 24
+41 27
+42 18
+43 21
+45 18
+46 9
+47 60
+fn=_dl_hwcaps_split_masked
+51 66
+54 56
+56 9
+57 27
+58 54
+62 33
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-init.c
+fn=_dl_init
+81 13
+82 1
+83 1
+86 3
+88 1
+89 3
+94 2
+105 1
+119 1
+120 20
+121 30
+127 8
+fn=call_init
+27 72
+29 12
+35 30
+37 12
+43 15
+46 15
+47 2
+51 8
+59 12
+60 12
+63 4
+64 8
+70 9
+72 6
+73 39
+74 24
+76 48
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-load.c
+fn=_dl_dst_count
+227 54
+230 12
+233 12
+234 6
+253 54
+fn=_dl_init_paths
+695 13
+709 4
+714 1
+716 3
+723 3
+724 2
+728 4
+730 4
+736 1
+737 1
+745 3
+747 3
+748 2
+750 4
+751 2
+756 3
+757 9
+759 4
+765 1
+766 1
+771 1
+774 3
+776 4
+778 3
+795 1
+797 3
+811 2
+814 2
+845 1
+846 8
+fn=_dl_map_object
+1903 72
+1905 3
+1911 12
+1912 18
+1915 111
+1920 126
+1922 90
+1926 30
+1927 45
+1930 30
+1931 18
+1932 30
+1946 12
+1947 9
+1955 9
+1970 3
+1972 15
+1976 8
+1978 4
+1985 8
+1989 2
+1990 2
+1994 10
+1995 16
+1997 22
+2004 12
+2009 4
+2010 14
+2011 26
+2020 4
+2035 4
+2042 4
+2043 16
+2051 4
+2053 6
+2057 6
+2059 4
+2063 4
+2071 4
+2094 20
+2098 4
+2099 2
+2116 4
+2122 1
+2123 4
+2124 2
+2125 2
+2129 10
+2132 2
+2144 12
+2189 6
+2190 49
+2192 57
+fn=_dl_map_object_from_fd
+933 42
+948 12
+978 57
+979 18
+997 6
+1025 12
+1035 6
+1042 24
+1043 6
+1054 6
+1055 9
+1056 6
+1058 9
+1059 12
+1060 4
+1063 17
+1064 6
+1075 3
+1077 3
+1079 66
+1080 3
+1081 3
+1082 3
+1083 3
+1089 129
+1090 312
+1096 6
+1103 8
+1104 9
+1105 30
+1110 2
+1111 1
+1116 93
+1124 60
+1125 78
+1126 60
+1127 12
+1128 24
+1130 84
+1132 24
+1145 51
+1151 12
+1152 123
+1165 6
+1169 8
+1170 2
+1174 10
+1175 4
+1178 2
+1183 8
+1198 6
+1199 3
+1202 9
+1207 21
+1217 63
+1218 24
+1224 6
+1234 12
+1241 21
+1257 12
+1258 9
+1264 6
+1265 6
+1267 15
+1277 9
+1296 6
+1298 18
+1316 9
+1317 4
+1323 98
+1324 173
+1330 49
+1335 12
+1348 6
+1350 12
+1352 6
+1368 6
+1372 6
+1373 6
+1390 6
+1391 1
+1394 6
+1399 6
+1404 6
+1416 24
+1417 9
+1418 18
+1419 6
+1420 5
+1426 6
+1427 8
+1432 4
+1439 9
+1442 6
+1446 9
+1447 9
+1465 6
+1469 21
+1470 12
+1474 27
+fn=_dl_process_pt_gnu_property
+857 8
+858 8
+859 4
+865 8
+871 20
+874 12
+875 8
+876 8
+879 12
+880 12
+884 4
+885 8
+889 14
+890 7
+893 14
+896 7
+897 28
+903 4
+907 9
+909 12
+919 2
+fn=cache_rpath
+670 12
+671 18
+672 6
+688 12
+fn=expand_dynamic_string_token
+374 8
+384 2
+387 2
+388 2
+399 5
+fn=open_verify.constprop.0
+1527 36
+1559 9
+1578 15
+1580 6
+1588 3
+1589 9
+1594 21
+1596 6
+1598 9
+1600 6
+1606 6
+1623 42
+1685 6
+1690 6
+1696 12
+1702 6
+1708 12
+1709 12
+1713 16
+1714 5
+1735 27
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-lookup-direct.c
+fn=_dl_lookup_direct
+74 39
+75 3
+76 6
+78 21
+79 6
+81 9
+84 25
+86 9
+87 18
+90 6
+93 6
+115 3
+116 27
+fn=check_match
+31 33
+32 15
+33 9
+35 6
+36 6
+40 9
+48 9
+51 6
+53 15
+57 6
+58 18
+59 9
+64 27
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-lookup.c
+fn=_dl_lookup_symbol_x
+772 3055
+774 940
+776 2115
+778 235
+782 912
+784 249
+785 470
+791 1930
+792 5630
+797 470
+799 60
+816 470
+817 30
+820 470
+821 1560
+856 2025
+870 675
+871 2
+873 450
+880 40
+892 2115
+fn=check_match
+70 3510
+73 1872
+78 10
+86 1170
+89 1284
+93 234
+94 468
+96 460
+115 460
+116 1840
+117 1105
+118 18
+119 18
+144 8
+146 24
+147 16
+150 2
+151 7
+153 4
+161 224
+162 1872
+fn=do_lookup_x
+347 3290
+348 235
+353 235
+354 235
+358 1848
+361 1848
+365 2788
+386 1848
+390 1848
+396 2772
+400 924
+401 924
+404 4620
+405 2772
+408 924
+409 1848
+411 924
+412 1848
+413 924
+416 3696
+419 6468
+422 456
+423 684
+424 456
+426 452
+429 2405
+431 702
+432 5536
+433 468
+436 702
+439 791
+448 14
+453 1792
+470 5
+472 2
+476 450
+483 1652
+487 111
+499 450
+500 225
+501 225
+518 2097
+521 10
+522 1880
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-minimal-malloc.c
+fn=__minimal_calloc
+80 50
+84 10
+87 10
+88 30
+fn=__minimal_malloc
+36 208
+37 78
+42 3
+43 2
+44 2
+48 103
+51 174
+56 8
+57 8
+59 2
+60 16
+62 4
+64 8
+65 6
+67 6
+70 26
+71 28
+73 156
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-minimal.c
+fn=__rtld_malloc_init_real
+76 10
+86 2
+87 1
+89 1
+91 6
+92 5
+93 5
+94 4
+99 1
+100 1
+101 1
+102 1
+103 8
+fn=__rtld_malloc_init_stubs
+42 1
+43 2
+44 2
+45 2
+46 2
+47 1
+fn=lookup_malloc_symbol
+61 36
+63 4
+64 28
+68 28
+69 28
+71 4
+72 28
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-misc.c
+fn=_dl_name_match_p
+68 273
+69 156
+70 8
+72 39
+74 156
+75 235
+80 39
+82 31
+83 156
+fn=_dl_sysdep_read_whole_file
+36 11
+39 3
+40 2
+42 6
+44 2
+47 2
+49 8
+60 3
+63 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-object.c
+fn=_dl_add_to_namespace_list
+31 36
+33 12
+35 35
+38 36
+40 3
+42 3
+45 2
+46 12
+47 8
+48 8
+50 8
+51 20
+fn=_dl_new_object
+59 60
+62 8
+64 2
+66 3
+67 2
+71 6
+77 2
+80 3
+83 19
+87 6
+92 3
+95 8
+98 4
+99 4
+100 8
+103 8
+104 28
+106 4
+119 18
+123 3
+125 1
+127 28
+130 8
+131 8
+132 4
+136 4
+139 78
+141 16
+149 8
+150 4
+153 1
+155 24
+157 12
+160 10
+164 12
+168 21
+176 1
+179 8
+189 16
+191 12
+195 9
+199 6
+200 6
+208 3
+212 3
+245 12
+250 114
+251 114
+255 6
+256 3
+259 3
+263 36
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-open.c
+fn=_dl_find_dso_for_object
+214 56
+218 40
+219 32
+220 32
+221 16
+224 16
+228 56
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-reloc.c
+fn=_dl_protect_relro
+355 30
+356 30
+359 10
+363 10
+364 25
+370 15
+fn=_dl_relocate_object
+170 1196
+171 472
+174 2530
+175 91
+177 7
+178 21
+182 458
+183 229
+184 229
+186 1838
+187 452
+188 1115
+189 223
+190 1649
+193 229
+194 1603
+196 7
+207 66
+208 12
+220 10
+221 20
+224 10
+226 15
+228 5
+229 15
+251 25
+252 10
+253 6
+255 10
+262 15
+301 10464
+304 25
+328 5
+331 10
+348 10
+349 10
+350 48
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-runtime.c
+fn=_dl_fixup
+46 11
+48 5
+49 3
+54 1
+55 4
+56 7
+58 2
+63 2
+67 2
+69 1
+71 3
+84 1
+85 3
+87 1
+88 1
+95 11
+99 5
+100 4
+109 10
+124 4
+133 3
+159 3
+162 2
+163 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-setup_hash.c
+fn=_dl_setup_hash
+25 10
+28 15
+31 15
+32 10
+33 5
+34 5
+36 15
+37 5
+38 15
+40 5
+41 10
+43 5
+45 15
+50 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-sort-maps.c
+fn=_dl_sort_maps
+140 50
+181 2
+182 4
+183 40
+184 20
+211 34
+216 4
+218 2
+219 10
+221 30
+223 10
+226 30
+244 8
+263 10
+276 8
+283 2
+298 26
+306 6
+310 18
+fn=_dl_sort_maps_init
+289 4
+290 4
+291 1
+292 3
+293 2
+fn=dfs_traversal.part.0
+135 90
+140 30
+143 10
+145 30
+147 88
+156 35
+171 30
+172 10
+173 60
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-sym.c
+fn=_dl_sym
+194 1
+195 3
+fn=do_sym
+51 2
+87 14
+88 1
+95 2
+104 2
+105 4
+146 11
+157 3
+162 3
+168 6
+170 1
+174 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-tunables.c
+fn=__GI___tunable_set_val
+162 6
+163 36
+165 6
+fn=__GI___tunables_init
+43 445
+46 88
+49 8313
+53 176
+57 352
+294 11
+300 3
+304 32
+317 2464
+319 4752
+320 2376
+322 2376
+340 6
+343 27
+346 27
+355 8
+fn=__tunable_get_val
+438 74
+441 438
+450 49
+451 15
+460 28
+467 222
+469 37
+fn=do_tunable_update_val
+70 12
+73 30
+83 6
+94 24
+95 30
+98 12
+101 30
+105 12
+112 12
+113 12
+116 6
+117 6
+118 6
+119 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-tunables.h
+fn=__GI___tunables_init
+160 1442
+161 3924
+fn=do_tunable_update_val
+142 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/dl-version.c
+fn=_dl_check_all_versions
+392 7
+394 2
+396 20
+397 5
+398 30
+401 7
+fn=_dl_check_map_versions
+36 72
+37 16
+38 110
+56 96
+64 72
+70 72
+86 24
+87 48
+89 24
+94 842
+108 722
+110 24
+113 192
+120 1011
+124 337
+155 50
+156 5
+164 8
+170 15
+172 25
+174 5
+175 5
+177 10
+180 9
+184 27
+198 2
+200 15
+208 15
+213 15
+215 19
+217 96
+218 219
+221 48
+224 72
+228 10
+231 96
+234 72
+239 19
+243 15
+248 2
+257 20
+260 6
+263 265
+266 201
+270 61
+274 12
+279 4
+280 16
+281 12
+291 4
+294 22
+296 8
+299 15
+301 2
+303 15
+306 72
+308 96
+310 120
+311 48
+312 72
+313 72
+316 72
+321 19
+324 15
+329 2
+334 8
+337 6
+341 61
+343 128
+347 61
+348 305
+349 183
+350 61
+353 192
+357 61
+365 6
+366 6
+367 6
+368 2
+370 4
+372 124
+373 60
+375 2
+376 7
+387 45
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/do-rel.h
+fn=_dl_relocate_object
+48 10
+49 40
+51 5
+53 90
+72 5
+73 6
+80 30
+83 19
+85 12
+96 2
+97 2
+114 27
+123 3601
+124 2386
+126 27
+129 32
+131 1196
+133 1465
+134 1172
+135 879
+136 1172
+138 879
+141 188
+142 47
+143 47
+147 246
+150 818
+151 240
+164 24
+165 220
+166 198
+169 141
+171 188
+172 47
+173 94
+180 32
+182 42
+183 12
+185 18
+193 6
+196 18
+211 5
+fn=_dl_start
+48 2
+49 8
+51 1
+53 16
+56 4
+61 7
+63 3
+64 2
+65 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/get-dynamic-info.h
+fn=_dl_map_object_from_fd
+39 6
+43 3
+45 329
+49 160
+51 40
+52 20
+53 3
+54 71
+55 59
+56 15
+59 12
+62 12
+64 12
+68 80
+72 12
+84 10
+85 12
+86 12
+87 12
+88 11
+89 12
+90 11
+91 12
+103 24
+110 9
+115 6
+122 6
+123 9
+129 9
+130 6
+147 9
+152 4
+154 4
+156 4
+158 4
+159 2
+162 9
+164 9
+165 6
+174 6
+175 9
+180 6
+181 4
+184 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/libc_early_init.c
+fn=__libc_early_init
+34 8
+36 1
+39 2
+42 2
+47 2
+50 4
+52 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/elf/rtld.c
+fn=_dl_start
+85 8
+458 2
+476 3
+477 1
+478 2
+488 1
+494 4
+496 2
+517 16
+543 1
+546 2
+547 4
+563 222
+565 1
+578 1
+585 9
+fn=dl_main
+85 16
+92 12
+93 2
+101 8
+197 2
+199 1
+224 2
+225 4
+226 5
+296 3
+302 1
+303 1
+839 1
+841 1
+850 1
+852 1
+857 1
+1117 1
+1118 1
+1120 1
+1124 2
+1126 1
+1127 1
+1142 1
+1145 50
+1146 128
+1150 4
+1155 3
+1156 9
+1165 3
+1166 2
+1168 1
+1175 3
+1193 1
+1201 8
+1202 16
+1203 8
+1204 1
+1206 12
+1207 14
+1211 8
+1212 8
+1213 4
+1217 16
+1223 3
+1229 4
+1230 1
+1235 4
+1236 2
+1237 1
+1240 2
+1245 2
+1249 3
+1255 28
+1256 66
+1262 18
+1268 3
+1270 2
+1271 2
+1273 2
+1348 13
+1353 1
+1354 1
+1360 1
+1376 3
+1377 4
+1640 10
+1642 2
+1643 1
+1644 2
+1645 3
+1649 3
+1650 2
+1675 3
+1676 6
+1677 3
+1678 3
+1681 1
+1683 1
+1684 1
+1686 2
+1687 2
+1691 2
+1693 2
+1701 3
+1708 2
+1711 2
+1736 4
+1738 1
+1743 2
+1746 4
+1747 4
+1748 2
+1749 1
+1750 1
+1751 1
+1762 2
+1763 2
+1765 2
+1767 1
+1768 3
+1773 5
+1774 5
+1776 3
+1782 2
+1791 2
+1795 1
+1796 2
+1820 2
+1826 1
+1827 1
+1828 1
+1832 3
+1837 3
+1839 1
+1841 2
+1845 5
+1850 2
+1866 6
+1942 4
+1946 19
+1947 1
+1950 3
+1951 1
+1952 2
+1953 2
+1958 3
+1968 8
+1974 23
+1975 15
+1978 3
+1979 2
+1980 1
+1982 18
+1983 8
+1987 2
+1993 1
+1995 3
+1996 3
+1998 2
+2000 2
+2002 4
+2003 3
+2016 2
+2017 2
+2018 3
+2029 4
+2030 4
+2031 5
+2041 2
+2042 2
+2043 4
+2045 2
+2050 3
+2249 2
+2253 2
+2259 2
+2262 2
+2270 2
+2282 3
+2285 3
+2287 3
+2288 6
+2295 1
+2296 26
+2298 10
+2303 10
+2305 12
+2307 1
+2308 1
+2311 5
+2313 10
+2314 32
+2318 16
+2319 9
+2328 2
+2332 4
+2334 1
+2341 3
+2344 2
+2348 3
+2350 2
+2360 1
+2365 2
+2368 1
+2374 1
+2375 5
+2383 3
+2390 1
+2393 3
+2397 3
+2398 1
+2399 1
+2400 1
+2404 1
+2409 8
+2541 1
+2612 1
+2614 2
+2616 10
+2618 1
+2620 42
+2621 7
+2629 8
+2654 2
+2664 4
+2666 2
+2667 1
+2741 5
+2764 5
+fn=do_preload
+806 8
+808 1
+812 1
+813 1
+814 1
+816 1
+818 6
+819 3
+827 3
+833 6
+fn=handle_preload_list
+183 3
+871 13
+872 2
+876 5
+879 4
+880 3
+882 6
+883 2
+889 1
+891 2
+893 2
+894 5
+897 9
+fn=init_tls
+734 4
+736 2
+740 3
+746 2
+749 1
+750 1
+751 1
+755 1
+757 1
+761 2
+762 7
+763 13
+764 5
+765 10
+769 9
+771 3
+773 3
+776 2
+779 1
+786 2
+787 2
+791 1
+795 2
+799 1
+802 5
+fn=map_doit
+641 6
+643 4
+644 6
+646 3
+fn=version_check_doit
+674 6
+676 6
+680 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/access.c
+fn=access
+25 1
+27 7
+31 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/close_nocancel.c
+fn=__GI___close_nocancel
+25 4
+26 16
+27 4
+fn=__close_nocancel
+25 1
+26 4
+27 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/fstat64.c
+fn=fstat
+30 5
+39 20
+72 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/lseek64.c
+fn=lseek
+28 2
+40 8
+42 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/open64_nocancel.c
+fn=__open_nocancel
+28 21
+31 37
+39 35
+41 13
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/poll.c
+fn=poll
+27 1
+29 6
+43 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/pread64_nocancel.c
+fn=__pread64_nocancel
+25 4
+26 8
+27 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/read_nocancel.c
+fn=__read_nocancel
+25 7
+26 28
+27 7
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/io/../sysdeps/unix/sysv/linux/write.c
+fn=write
+25 148
+26 321
+27 43
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/../include/printf_buffer.h
+fn=__vsnprintf_internal
+124 18
+127 6
+128 6
+137 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/../string/bits/string_fortified.h
+fn=getdelim
+29 184
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/filedoalloc.c
+fn=_IO_file_doallocate
+78 10
+84 9
+86 4
+97 4
+101 3
+102 2
+104 4
+105 1
+106 9
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/fileops.c
+fn=_IO_file_close
+1225 1
+1228 2
+fn=_IO_file_close_it@@GLIBC_2.2.5
+129 7
+130 1
+131 3
+134 2
+135 4
+137 2
+151 2
+152 6
+157 7
+158 2
+165 2
+167 4
+169 2
+173 2
+176 7
+179 3
+187 5
+188 4
+191 2
+192 1
+193 1
+194 1
+196 2
+197 7
+fn=_IO_file_finish@@GLIBC_2.2.5
+202 6
+203 2
+209 3
+210 3
+fn=_IO_file_fopen@@GLIBC_2.2.5
+247 12
+248 2
+256 2
+258 5
+261 1
+262 1
+271 1
+279 5
+281 39
+302 7
+303 1
+305 1
+306 7
+307 1
+315 5
+318 2
+321 4
+322 2
+391 12
+fn=_IO_file_open
+216 12
+218 2
+219 4
+223 2
+225 1
+226 6
+229 3
+239 2
+240 1
+241 6
+fn=_IO_file_read
+1191 4
+1193 8
+1194 8
+fn=_IO_file_seek
+1200 2
+1201 4
+fn=_IO_file_seekoff@@GLIBC_2.2.5
+890 2
+892 2
+894 2
+899 4
+909 2
+910 2
+923 4
+926 5
+928 2
+931 4
+941 1
+943 2
+954 12
+962 2
+1108 11
+fn=_IO_file_stat
+1207 1
+1208 2
+fn=_IO_file_underflow@@GLIBC_2.2.5
+496 40
+500 12
+503 8
+509 12
+512 8
+515 3
+520 2
+524 10
+540 8
+546 12
+547 4
+548 8
+549 4
+551 20
+553 8
+560 12
+569 12
+571 8
+572 32
+fn=_IO_new_file_init_internal
+107 6
+111 1
+112 1
+114 1
+115 1
+116 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/genops.c
+fn=_IO_cleanup
+811 6
+812 13
+815 12
+819 3
+820 51
+828 6
+830 9
+833 9
+835 6
+855 3
+857 36
+858 3
+862 9
+863 2
+883 12
+884 2
+896 12
+fn=_IO_default_finish
+68 2
+629 6
+631 3
+637 3
+640 3
+652 3
+fn=_IO_doallocbuf
+371 8
+372 2
+374 3
+375 5
+378 6
+fn=_IO_enable_locks
+546 1
+549 3
+551 1
+552 11
+553 21
+554 1
+1088 1
+1102 3
+fn=_IO_flush_all
+714 12
+715 1
+719 6
+720 13
+723 12
+725 3
+726 51
+728 18
+735 9
+736 12
+743 36
+744 3
+748 9
+749 2
+753 12
+fn=_IO_link_in
+109 14
+110 10
+112 2
+114 7
+115 9
+116 1
+117 10
+119 2
+122 2
+123 2
+124 2
+126 1
+128 8
+129 1
+130 6
+131 2
+134 19
+fn=_IO_no_init
+591 484
+592 44
+593 44
+594 88
+596 1
+600 6
+607 1
+609 1
+614 86
+615 44
+616 264
+fn=_IO_old_init
+559 44
+560 88
+562 220
+567 352
+572 44
+578 132
+583 132
+584 2
+586 44
+fn=_IO_setb
+357 495
+358 182
+359 1
+360 45
+361 45
+363 272
+366 270
+fn=_IO_sputbackc
+663 1204
+666 1032
+667 344
+669 344
+670 172
+675 172
+676 344
+679 860
+fn=_IO_switch_to_get_mode
+192 24
+193 12
+196 12
+200 8
+201 8
+204 4
+206 8
+208 8
+209 4
+210 16
+fn=_IO_un_link
+67 2
+68 4
+104 2
+fn=_IO_unsave_markers
+978 6
+980 2
+985 2
+987 3
+fn=__GI__IO_un_link.part.0
+66 9
+72 6
+73 9
+74 1
+75 3
+77 4
+81 1
+82 1
+83 1
+84 2
+85 1
+96 4
+98 3
+99 1
+100 8
+101 2
+104 9
+fn=__underflow
+297 24
+298 19
+303 8
+306 12
+308 8
+314 8
+319 8
+321 16
+322 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/iofclose.c
+fn=fclose@@GLIBC_2.2.5
+34 8
+48 3
+49 1
+51 3
+52 2
+53 3
+57 4
+58 3
+71 2
+76 7
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/iofopen.c
+fn=__fopen_internal
+37 2
+57 12
+65 2
+67 3
+70 2
+72 7
+73 2
+74 2
+75 7
+81 9
+fn=fopen@@GLIBC_2.2.5
+85 1
+86 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/iogetdelim.c
+fn=getdelim
+41 645
+47 129
+48 86
+54 172
+62 255
+64 2
+65 4
+66 2
+74 129
+75 86
+77 4
+82 4
+89 230
+91 184
+92 184
+100 92
+101 184
+105 5
+107 94
+108 3
+114 2
+115 2
+117 47
+118 46
+119 3
+120 150
+122 9
+124 129
+130 387
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/libioP.h
+fn=_IO_cleanup
+1026 2
+fn=_IO_doallocbuf
+1026 3
+1027 2
+fn=_IO_file_close_it@@GLIBC_2.2.5
+1026 8
+1027 6
+fn=_IO_file_doallocate
+1026 3
+1027 2
+fn=_IO_file_seekoff@@GLIBC_2.2.5
+1026 3
+1027 2
+fn=_IO_file_underflow@@GLIBC_2.2.5
+1026 12
+1027 8
+fn=_IO_flush_all
+1026 2
+fn=__underflow
+1026 12
+1027 8
+fn=fclose@@GLIBC_2.2.5
+952 4
+953 4
+959 2
+980 5
+981 9
+1026 3
+1027 2
+fn=getdelim
+980 172
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/stdfiles.c
+fn=_IO_stdfiles_init
+64 1
+66 2
+67 12
+68 3
+69 3
+70 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/strops.c
+fn=_IO_str_init_static_internal
+36 688
+40 86
+41 129
+46 215
+50 430
+51 215
+64 43
+65 344
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/vsnprintf.c
+fn=__vsnprintf_internal
+63 12
+66 6
+75 18
+76 6
+87 12
+93 72
+96 18
+98 36
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/libio/vtables.c
+fn=check_stdfiles_vtables
+545 1
+546 4
+547 3
+548 3
+550 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/../string/bits/string_fortified.h
+fn=_int_realloc
+29 2
+fn=calloc
+59 39
+fn=tcache_init.part.0
+59 616
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/../sysdeps/unix/sysv/linux/not-cancel.h
+fn=ptmalloc_init.part.0
+100 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/arena.c
+fn=__malloc_arena_thread_freeres
+893 42
+899 12
+900 6
+902 12
+904 24
+907 18
+908 18
+910 12
+911 6
+913 24
+915 36
+fn=alloc_new_heap
+49 12
+55 6
+380 27
+387 9
+389 6
+390 3
+395 21
+402 9
+404 12
+405 1
+406 5
+414 16
+415 4
+417 2
+418 6
+420 6
+421 5
+423 3
+424 10
+441 18
+448 12
+453 6
+455 3
+456 3
+458 27
+fn=arena_get2.part.0
+619 6
+638 12
+640 6
+649 9
+651 3
+653 9
+656 3
+657 3
+658 6
+659 6
+660 3
+661 12
+663 3
+664 6
+665 3
+666 3
+668 12
+671 6
+676 3
+678 12
+680 12
+682 12
+694 12
+818 24
+828 9
+830 9
+832 9
+853 9
+855 21
+865 21
+fn=calloc
+55 24
+147 144
+153 48
+fn=free
+55 32061
+147 192366
+153 128493
+fn=get_free_list
+619 6
+703 36
+704 6
+705 3
+706 12
+708 12
+709 3
+710 6
+712 6
+715 6
+716 3
+720 9
+724 3
+725 12
+726 3
+731 42
+fn=malloc
+55 13
+147 78
+153 168
+264 1
+fn=new_heap
+462 9
+463 9
+470 12
+471 3
+fn=ptmalloc_init.part.0
+262 8
+267 1
+292 2
+296 3
+300 4
+301 4
+302 4
+303 4
+304 4
+305 4
+306 4
+308 4
+309 4
+310 4
+313 4
+314 4
+316 2
+326 8
+fn=realloc
+153 7
+fn=tcache_init.part.0
+824 12
+825 21
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/malloc.c
+fn=__malloc_arena_thread_freeres
+3213 12
+3215 12
+3217 12
+3221 6
+3225 1170
+3227 1302
+3230 100
+3233 200
+3234 50
+3238 24
+fn=_int_free
+1792 64
+1992 150
+3163 64162
+3165 128324
+3166 32081
+3167 64162
+4495 225015
+4499 96435
+4505 128580
+4506 64290
+4510 160725
+4517 64178
+4518 192758
+4521 32087
+4527 96261
+4547 160435
+4550 32081
+4561 128
+4572 200
+4574 150
+4593 50
+4595 50
+4596 50
+4597 150
+4600 150
+4602 100
+4616 100
+4619 200
+4621 200
+4622 100
+4628 200
+4637 28
+4640 28
+4643 28
+4644 56
+4646 28
+4649 56
+4658 192870
+fn=_int_free_create_chunk
+4713 140
+4714 28
+4720 28
+4724 14
+4732 14
+4733 56
+4734 28
+4736 14
+4738 28
+4740 4
+4743 14
+4744 14
+4746 42
+4747 14
+4763 84
+fn=_int_free_merge_chunk
+1992 42
+4665 112
+4666 14
+4670 84
+4673 32
+4675 6
+4678 42
+4681 28
+4682 28
+4683 28
+4689 28
+4700 84
+4702 112
+4776 28
+fn=_int_malloc
+1326 186
+1345 372
+1794 88
+1985 36
+3163 16
+3165 54
+3166 8
+3167 24
+3168 24
+3846 930
+3887 186
+3914 201
+3916 244
+3917 6
+3919 71
+3921 132
+3923 12
+3926 12
+3929 104
+3930 180
+3932 12
+3933 12
+3939 12
+3940 36
+3945 14
+3946 70
+3948 16
+3950 24
+3954 124
+3977 54
+3979 266
+3980 168
+3982 252
+3984 3
+3985 6
+3987 3
+3988 3
+3989 3
+3991 9
+3992 3
+3997 6
+3998 18
+4003 12
+4004 15
+4020 3
+4039 30
+4040 9
+4058 238
+4059 252
+4060 252
+4069 6
+4070 429
+4072 6
+4073 12
+4074 6
+4076 12
+4077 18
+4079 6
+4080 24
+4082 24
+4084 12
+4085 12
+4087 12
+4098 24
+4099 6
+4121 3
+4127 6
+4128 6
+4132 12
+4134 6
+4135 9
+4136 3
+4140 6
+4161 6
+4163 6
+4164 12
+4165 3
+4218 324
+4221 18
+4222 3
+4223 3
+4224 3
+4225 3
+4230 6
+4231 9
+4240 9
+4257 243
+4259 12
+4262 9
+4263 81
+4330 81
+4331 162
+4332 162
+4333 162
+4334 486
+4339 336
+4343 936
+4346 1155
+4353 42
+4355 18
+4357 36
+4361 3
+4364 6
+4366 15
+4367 3
+4368 3
+4443 81
+4444 162
+4446 162
+4449 243
+4451 80
+4452 80
+4453 80
+4454 640
+4456 160
+4459 80
+4460 80
+4466 4
+4481 4
+4482 2
+4483 486
+4487 837
+fn=_int_realloc
+4914 8
+4925 4
+4926 5
+4927 4
+4933 2
+4935 2
+4936 3
+4938 4
+4941 2
+4951 2
+4963 2
+4964 2
+4965 1
+4975 5
+4976 2
+4979 1
+4985 3
+4992 1
+4993 7
+4997 4
+4999 1
+5030 9
+fn=alloc_new_heap
+2008 12
+fn=alloc_perturb
+1985 243
+1987 81
+fn=arena_get2.part.0
+1946 1155
+1949 1143
+1953 9
+1955 3
+1958 3
+fn=calloc
+3699 216
+3709 216
+3717 48
+3720 72
+3722 48
+3725 144
+3732 24
+3733 54
+3740 54
+3743 48
+3754 72
+3756 228
+3759 54
+3768 24
+3769 60
+3784 42
+3787 72
+3796 72
+3799 120
+3807 24
+3809 48
+3811 48
+3816 22
+3818 11
+3819 22
+3821 7
+3823 14
+3837 179
+fn=free
+3248 224
+3359 225020
+3363 64312
+3371 64288
+3373 32144
+3375 96432
+3392 96432
+3398 96432
+3401 32144
+3402 192876
+fn=malloc
+1326 64140
+1345 160349
+3178 64018
+3182 64018
+3186 128036
+3190 64018
+3191 32009
+3248 28
+3294 256560
+3301 64140
+3311 64138
+3313 128280
+3316 64140
+3317 35
+3318 96204
+3326 122
+3328 112
+3329 140
+3334 264
+3336 99
+3339 66
+3347 132
+3351 178
+3354 192420
+fn=ptmalloc_init.part.0
+1946 386
+1949 381
+1957 1
+1958 1
+1960 1
+3143 2
+fn=realloc
+1326 2
+1345 6
+3407 165
+3413 30
+3417 30
+3424 30
+3425 28
+3433 1
+3441 2
+3443 1
+3444 2
+3456 3
+3464 4
+3465 2
+3475 2
+3506 2
+3508 7
+3509 7
+3538 107
+5238 3
+5239 3
+5240 2
+5241 1
+fn=sysmalloc
+2008 8
+2017 3
+2532 12
+2552 2
+2553 1
+2563 2
+2564 2
+2588 1
+2589 3
+2590 1
+2599 5
+2608 3
+2669 2
+2678 4
+2691 3
+2699 5
+2707 2
+2709 6
+2710 5
+2712 1
+2715 2
+2744 2
+2745 2
+2746 5
+2752 2
+2755 4
+2782 6
+2783 3
+2795 3
+2817 2
+2818 6
+2820 1
+2821 4
+2833 3
+2875 1
+2876 5
+2877 2
+2888 2
+2921 2
+2922 1
+2927 1
+2930 4
+2932 1
+2933 1
+2934 1
+2935 8
+2936 2
+2938 1
+2944 11
+fn=tcache_init.part.0
+3242 28
+3251 32
+3252 24
+3253 14
+3260 6
+3261 28
+3268 6
+3270 14
+3274 21
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/morecore.c
+fn=__glibc_morecore
+25 6
+26 4
+29 2
+30 4
+34 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/scratch_buffer_set_array_size.c
+fn=__libc_scratch_buffer_set_array_size
+30 39
+34 3
+35 6
+45 6
+46 3
+63 18
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/malloc/thread-freeres.c
+fn=__libc_thread_freeres
+31 18
+33 6
+35 6
+36 6
+37 6
+41 6
+42 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/syscall-template.S
+fn=madvise
+117 30
+122 6
+fn=mprotect
+117 105
+122 21
+fn=munmap
+117 55
+122 11
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/brk.c
+fn=brk
+36 2
+37 4
+38 4
+44 2
+45 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/brk_call.h
+fn=brk
+24 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/clone-internal.c
+fn=__clone3_internal
+74 9
+80 18
+82 3
+83 5
+84 6
+86 1
+90 6
+91 1
+92 12
+fn=__clone_internal
+53 12
+62 12
+64 48
+97 72
+99 12
+100 6
+101 24
+106 6
+109 12
+110 48
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/getpagesize.c
+fn=getpagesize
+27 26
+28 104
+30 26
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/mmap64.c
+fn=mmap
+47 231
+50 66
+53 177
+58 198
+60 132
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/setvmaname.c
+fn=__set_vma_name
+33 116
+35 82
+40 14
+47 2
+48 1
+49 144
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/x86_64/clone.S
+fn=clone
+52 6
+54 6
+55 6
+56 6
+59 6
+60 6
+63 6
+65 6
+69 6
+72 6
+73 6
+74 6
+75 6
+76 6
+81 6
+83 12
+84 12
+85 12
+87 6
+95 6
+98 6
+99 6
+100 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S
+fn=__clone3
+42 1
+44 1
+45 1
+46 1
+47 1
+48 1
+52 1
+55 1
+60 1
+62 1
+63 1
+86 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/getauxval.c
+fn=getauxval
+30 28
+32 14
+35 28
+42 1288
+43 616
+56 14
+62 28
+63 14
+64 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/init-misc.c
+fn=__init_misc
+30 5
+31 6
+33 3
+37 5
+38 3
+40 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/misc/sbrk.c
+fn=sbrk
+37 16
+40 4
+43 4
+58 4
+59 4
+62 4
+63 2
+66 4
+74 3
+78 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../include/list.h
+fn=__nptl_deallocate_stack
+43 12
+44 12
+45 6
+47 6
+55 18
+56 6
+fn=__nptl_stack_list_add
+43 30
+45 6
+47 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../nptl/descr.h
+fn=__pthread_enable_asynccancel
+444 46
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../string/bits/string_fortified.h
+fn=pthread_attr_init@@GLIBC_2.2.5
+59 65
+fn=pthread_attr_setaffinity_np@@GLIBC_2.32
+29 28
+fn=pthread_getaffinity_np@@GLIBC_2.32
+59 14
+fn=pthread_getattr_np@@GLIBC_2.32
+29 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/nptl/futex-internal.h
+fn=start_thread
+146 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/nptl/pthreadP.h
+fn=pthread_attr_setstacksize@@GLIBC_2.34
+707 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/unix/sysv/linux/internal-signals.h
+fn=pthread_create@@GLIBC_2.34
+81 42
+89 36
+fn=start_thread
+89 30
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/unix/sysv/linux/internal-sigset.h
+fn=pthread_create@@GLIBC_2.34
+34 6
+102 6
+103 6
+fn=start_thread
+102 18
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/unix/sysv/linux/rseq-internal.h
+fn=start_thread
+41 12
+70 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/unix/sysv/linux/sigsetops.h
+fn=pthread_create@@GLIBC_2.34
+54 1
+104 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/unix/sysv/linux/x86/elision-conf.c
+fn=__lll_elision_init
+92 5
+96 7
+98 4
+100 4
+102 4
+104 4
+107 3
+108 1
+109 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/../sysdeps/x86/nptl/tls-setup.h
+fn=pthread_create@@GLIBC_2.34
+22 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/./nptl-stack.h
+fn=__pthread_get_minstack
+61 54
+fn=pthread_create@@GLIBC_2.34
+61 60
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/allocatestack.c
+fn=name_stack_maps
+589 72
+591 60
+595 24
+597 24
+598 42
+601 6
+602 12
+603 18
+605 60
+607 84
+fn=pthread_create@@GLIBC_2.34
+66 24
+74 30
+99 30
+168 12
+172 36
+221 24
+225 18
+230 18
+240 12
+330 12
+331 36
+335 24
+345 36
+349 36
+353 12
+354 18
+355 6
+368 84
+371 24
+376 24
+382 12
+387 12
+388 6
+397 12
+409 12
+410 6
+413 12
+418 12
+421 6
+428 6
+431 30
+444 30
+447 36
+449 30
+456 18
+479 18
+508 30
+534 6
+539 6
+544 6
+547 6
+549 24
+560 24
+565 12
+fn=start_thread
+191 12
+193 30
+194 12
+195 12
+196 30
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/cancellation.c
+fn=__pthread_disable_asynccancel
+63 23
+66 69
+71 69
+74 46
+76 69
+83 69
+fn=__pthread_enable_asynccancel
+31 23
+32 23
+33 46
+37 46
+39 46
+42 92
+45 46
+56 46
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/cleanup_compat.c
+fn=_pthread_cleanup_pop@@GLIBC_2.34
+40 6
+43 12
+47 12
+49 6
+fn=_pthread_cleanup_push@@GLIBC_2.34
+25 6
+28 6
+29 6
+30 12
+32 6
+33 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/futex-internal.c
+fn=__futex_abstimed_wait_cancelable64
+138 2
+139 4
+fn=__futex_abstimed_wait_common
+56 4
+57 40
+71 14
+77 4
+80 4
+83 6
+84 4
+103 16
+113 2
+121 10
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/libc-cleanup.c
+fn=__libc_cleanup_pop_restore
+54 47
+55 47
+57 94
+59 47
+60 141
+71 47
+fn=__libc_cleanup_push_defer
+24 47
+25 47
+27 94
+29 94
+32 94
+46 141
+48 47
+49 47
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/nptl-stack.c
+fn=__nptl_deallocate_stack
+29 6
+37 6
+44 18
+52 6
+104 18
+105 18
+112 36
+113 30
+117 6
+123 12
+129 24
+130 24
+fn=__nptl_stack_list_add
+43 6
+44 24
+52 6
+53 6
+fn=__pthread_get_minstack
+143 6
+145 12
+146 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/nptl_deallocate_tsd.c
+fn=__nptl_deallocate_tsd
+23 60
+28 24
+39 6
+41 786
+45 192
+47 420
+51 768
+54 192
+56 384
+59 6
+67 18
+71 18
+73 12
+81 24
+94 558
+98 186
+99 372
+108 6
+110 48
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/nptl_free_tcb.c
+fn=__nptl_free_tcb
+25 36
+27 12
+31 18
+42 12
+44 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_destroy.c
+fn=pthread_attr_destroy
+26 48
+36 39
+38 14
+39 14
+44 40
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_extension.c
+fn=__pthread_attr_extension
+25 42
+26 14
+27 7
+28 28
+29 14
+32 21
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_getguardsize.c
+fn=pthread_attr_getguardsize@@GLIBC_2.34
+23 6
+28 12
+31 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_getstack.c
+fn=pthread_attr_getstack@@GLIBC_2.34
+24 14
+31 28
+35 7
+38 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_init.c
+fn=pthread_attr_init@@GLIBC_2.2.5
+32 78
+46 39
+49 52
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_setaffinity.c
+fn=pthread_attr_setaffinity_np@@GLIBC_2.32
+29 56
+34 35
+45 7
+46 14
+49 21
+51 28
+52 14
+55 14
+56 7
+62 7
+63 49
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_attr_setstacksize.c
+fn=pthread_attr_setstacksize@@GLIBC_2.34
+30 6
+38 6
+40 6
+42 6
+43 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_create.c
+fn=create_thread
+237 84
+241 18
+245 12
+248 12
+249 12
+288 66
+291 6
+298 24
+299 12
+304 6
+310 12
+322 12
+333 6
+334 66
+fn=pthread_create@@GLIBC_2.34
+82 2
+83 1
+84 4
+91 6
+614 24
+631 96
+637 12
+640 1
+643 3
+646 6
+648 6
+649 6
+650 24
+668 1
+679 6
+682 6
+688 12
+689 12
+690 6
+693 6
+694 24
+695 18
+699 6
+700 24
+705 24
+708 24
+713 12
+714 12
+718 12
+723 12
+735 12
+736 12
+756 12
+757 3
+760 18
+762 6
+772 6
+777 12
+785 18
+796 12
+841 42
+848 12
+888 12
+898 12
+902 12
+906 78
+fn=start_thread
+339 66
+346 12
+368 24
+371 6
+374 18
+378 6
+389 30
+406 24
+420 12
+424 36
+427 12
+430 12
+432 12
+434 6
+438 12
+444 6
+445 6
+448 12
+449 6
+453 6
+456 6
+459 6
+462 18
+493 12
+495 12
+509 36
+516 30
+517 12
+518 24
+555 18
+557 12
+558 18
+561 18
+578 18
+583 24
+604 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_getaffinity.c
+fn=pthread_getaffinity_np@@GLIBC_2.32
+30 35
+33 42
+35 14
+39 28
+41 7
+42 14
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_getattr_np.c
+fn=pthread_getattr_np@@GLIBC_2.32
+33 91
+37 21
+38 14
+43 49
+49 21
+52 7
+55 14
+59 14
+62 21
+66 24
+69 12
+85 5
+86 3
+91 7
+102 2
+103 11
+105 1
+108 4
+112 51
+114 1
+115 1
+117 3
+120 94
+122 258
+127 344
+129 172
+130 129
+133 1
+135 4
+140 2
+141 2
+144 2
+145 1
+158 42
+162 4
+165 6
+169 7
+171 2
+178 7
+180 35
+181 14
+188 28
+191 28
+193 49
+194 49
+198 14
+201 42
+203 14
+207 84
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_join.c
+fn=pthread_join@@GLIBC_2.34
+23 6
+24 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_join_common.c
+fn=__pthread_clockjoin_ex
+39 72
+43 24
+48 30
+52 6
+55 6
+57 12
+58 12
+74 30
+84 12
+89 36
+94 30
+102 10
+104 8
+111 24
+114 6
+118 6
+121 12
+125 18
+130 6
+133 66
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_key_create.c
+fn=pthread_key_create@@GLIBC_2.34
+25 2
+27 10
+29 3
+31 12
+33 6
+37 6
+40 2
+43 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_key_delete.c
+fn=pthread_key_delete@@GLIBC_2.34
+25 1
+28 2
+30 5
+32 2
+33 4
+36 1
+40 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_mutex_conf.c
+fn=__pthread_tunables_init
+55 5
+56 7
+58 4
+60 4
+62 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_mutex_lock.c
+fn=pthread_mutex_lock@@GLIBC_2.2.5
+44 15
+45 66
+46 2
+48 52
+77 75
+80 45
+82 15
+84 30
+88 30
+97 30
+108 60
+112 15
+115 30
+124 15
+130 45
+131 30
+179 15
+182 15
+184 15
+187 15
+190 45
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_mutex_unlock.c
+fn=__pthread_mutex_unlock_usercnt
+39 15
+40 60
+41 2
+43 52
+48 60
+51 45
+52 30
+57 30
+62 15
+63 30
+65 30
+70 15
+72 15
+74 30
+80 60
+84 45
+87 30
+104 30
+fn=pthread_mutex_unlock@@GLIBC_2.2.5
+367 15
+368 30
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_self.c
+fn=pthread_self
+23 8
+25 16
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/nptl/pthread_setspecific.c
+fn=pthread_setspecific@@GLIBC_2.34
+25 48
+36 12
+39 48
+41 6
+43 18
+46 12
+66 6
+81 6
+86 12
+87 6
+90 36
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../malloc/dynarray-skeleton.c
+fn=__unregister_atfork
+243 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../sysdeps/posix/sysconf.c
+fn=sysconf
+60 14
+221 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../sysdeps/unix/syscall-template.S
+fn=sched_yield
+120 100
+122 20
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../sysdeps/unix/sysv/linux/_exit.c
+fn=_Exit
+27 2
+30 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../sysdeps/unix/sysv/linux/x86/../sysconf.c
+fn=sysconf
+49 10
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/../sysdeps/unix/sysv/linux/x86/sysconf.c
+fn=sysconf
+32 9
+33 5
+37 10
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/posix/register-atfork.c
+fn=__unregister_atfork
+71 6
+82 18
+83 12
+109 12
+110 9
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/resolv/res-close.c
+fn=__res_thread_freeres
+131 30
+132 6
+134 30
+142 18
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/resolv/resolv_context.c
+fn=__resolv_context_freeres
+242 54
+244 12
+245 6
+246 12
+252 48
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/resource/../sysdeps/unix/sysv/linux/getrlimit64.c
+fn=getrlimit
+38 4
+39 14
+40 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/setjmp/../sysdeps/x86_64/bsd-_setjmp.S
+fn=_setjmp
+28 7
+30 7
+32 7
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/setjmp/../sysdeps/x86_64/setjmp.S
+fn=__sigsetjmp
+31 14
+33 14
+42 14
+43 28
+44 14
+48 14
+49 14
+50 14
+51 14
+52 14
+54 28
+56 14
+57 14
+58 14
+60 28
+62 14
+67 7
+68 7
+70 7
+73 7
+74 7
+81 7
+82 7
+85 7
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/setjmp/sigjmp.c
+fn=__sigjmp_save
+28 42
+29 7
+30 14
+34 28
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../string/bits/string_fortified.h
+fn=__libc_sigaction
+29 112
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../sysdeps/posix/signal.c
+fn=signal
+30 4
+34 7
+35 2
+41 1
+44 4
+45 6
+48 1
+49 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../sysdeps/unix/syscall-template.S
+fn=sigaltstack
+120 105
+122 21
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../sysdeps/unix/sysv/linux/internal-signals.h
+fn=sigaction
+53 5
+fn=signal
+53 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../sysdeps/unix/sysv/linux/libc_sigaction.c
+fn=__libc_sigaction
+43 48
+48 12
+50 8
+53 20
+58 58
+63 24
+65 6
+67 6
+68 6
+71 36
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/../sysdeps/unix/sysv/linux/sigsetops.h
+fn=signal
+96 1
+102 2
+104 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/signal/sigaction.c
+fn=sigaction
+26 5
+27 25
+33 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/../include/printf_buffer.h
+fn=__printf_buffer
+163 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/../include/scratch_buffer.h
+fn=__vfscanf_internal
+77 86
+78 43
+85 129
+113 688
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/../libio/strfile.h
+fn=__isoc23_sscanf
+87 43
+88 301
+89 86
+90 215
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/../string/bits/string_fortified.h
+fn=__printf_buffer_write
+29 36
+fn=__vfscanf_internal
+59 43
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/Xprintf_buffer_done.c
+fn=__printf_buffer_done
+25 6
+26 18
+31 12
+33 66
+40 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/Xprintf_buffer_write.c
+fn=__printf_buffer_write
+27 144
+28 54
+31 84
+33 60
+36 12
+37 24
+40 36
+41 12
+44 108
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/_itoa.c
+fn=_itoa_word
+169 6
+172 24
+174 12
+183 540
+192 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/getline.c
+fn=getline
+27 86
+28 86
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/isoc23_sscanf.c
+fn=__isoc23_sscanf
+24 774
+30 258
+31 215
+36 387
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/printf-parse.h
+fn=__printf_buffer
+82 54
+fn=__vfscanf_internal
+55 688
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/snprintf.c
+fn=snprintf
+26 72
+30 36
+31 18
+35 30
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/vfprintf-internal.c
+fn=__printf_buffer
+600 84
+627 30
+631 6
+634 6
+638 24
+642 6
+653 18
+654 12
+655 18
+659 12
+663 54
+683 6
+684 6
+685 6
+686 6
+687 6
+690 12
+691 6
+692 6
+693 6
+694 6
+695 6
+698 6
+699 6
+705 84
+784 6
+891 6
+1018 6
+1024 6
+1028 18
+1029 12
+1031 12
+1044 66
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/vfprintf-process-arg.c
+fn=__printf_buffer
+66 6
+67 6
+92 6
+93 6
+94 12
+126 12
+128 12
+130 12
+131 42
+136 12
+138 6
+155 90
+161 48
+164 18
+170 42
+174 6
+186 12
+187 36
+195 36
+197 18
+199 30
+201 18
+208 36
+211 12
+230 6
+236 12
+240 30
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdio-common/vfscanf-internal.c
+fn=__vfscanf_internal
+206 258
+214 172
+222 344
+223 172
+231 86
+260 3028
+263 2442
+278 559
+282 43
+283 215
+284 43
+288 215
+289 86
+293 43
+313 43
+325 43
+326 43
+327 43
+328 43
+332 43
+339 172
+345 215
+348 215
+352 86
+359 86
+365 43
+367 172
+372 473
+381 688
+419 258
+443 473
+444 258
+447 215
+454 387
+462 86
+470 86
+483 172
+489 516
+505 86
+506 258
+530 258
+533 946
+546 258
+554 86
+660 258
+664 86
+665 430
+669 258
+670 86
+676 1548
+679 344
+680 344
+681 602
+685 1290
+1450 602
+1455 344
+1464 344
+1467 224
+1470 392
+1472 448
+1484 112
+1494 112
+1498 60
+1501 258
+1742 344
+1813 2290
+1815 1516
+1817 3876
+1877 672
+1879 2688
+1881 4704
+1884 172
+1891 172
+1892 172
+1920 1032
+1924 172
+1941 172
+1942 258
+1945 172
+1948 258
+1951 344
+1970 172
+1971 1032
+1980 344
+3095 172
+3105 301
+3109 86
+3126 86
+3132 516
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/../stdlib/strtol.c
+fn=__strtoul_internal
+107 86
+108 344
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/../stdlib/strtol_l.c
+fn=____strtoul_l_internal
+238 1118
+257 86
+258 30
+264 172
+292 86
+295 344
+304 516
+306 172
+310 86
+311 172
+316 86
+317 258
+320 258
+322 392
+327 112
+332 280
+335 60
+342 60
+387 60
+390 232
+391 370
+393 86
+394 86
+395 56
+449 1456
+451 3118
+453 2184
+460 110
+477 196
+478 196
+481 2184
+484 2912
+489 900
+490 2184
+495 172
+500 258
+501 86
+513 172
+524 516
+546 774
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/../sysdeps/unix/sysv/linux/getrandom.c
+fn=__getrandom_early_init
+238 8
+241 6
+278 6
+fn=__getrandom_vdso_release
+303 6
+308 12
+324 6
+fn=getrandom
+351 1
+353 2
+fn=getrandom_vdso
+31 2
+32 10
+187 15
+188 3
+233 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/cxa_atexit.c
+fn=__cxa_atexit
+67 1
+68 2
+fn=__internal_atexit
+36 8
+41 2
+43 8
+44 2
+46 2
+52 3
+53 1
+54 1
+55 1
+56 1
+57 4
+58 1
+59 7
+fn=__new_exitfn
+80 5
+81 1
+86 2
+91 10
+93 4
+101 1
+122 1
+123 1
+134 1
+136 1
+137 1
+141 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/cxa_finalize.c
+fn=__cxa_finalize
+45 30
+48 15
+51 21
+55 21
+108 21
+112 18
+119 6
+120 6
+121 12
+122 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/cxa_thread_atexit_impl.c
+fn=__call_tls_dtors
+148 35
+149 56
+153 21
+155 14
+156 14
+162 14
+163 14
+165 28
+fn=__cxa_thread_atexit_impl
+102 63
+103 21
+106 21
+107 14
+110 14
+111 7
+112 21
+113 7
+117 21
+120 14
+124 14
+128 35
+136 7
+137 14
+139 14
+142 49
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/exit.c
+fn=__run_exit_handlers
+38 12
+40 2
+41 2
+43 6
+54 1
+56 2
+60 1
+64 6
+66 2
+67 1
+69 7
+101 1
+102 1
+103 1
+104 3
+107 4
+108 3
+109 4
+113 3
+119 2
+120 2
+126 4
+128 2
+129 2
+131 2
+fn=exit
+137 3
+138 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/stdlib/getenv.c
+fn=getenv
+28 10
+32 1
+45 2
+46 4
+47 1
+49 3
+50 89
+52 89
+53 178
+58 264
+72 3
+157 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../include/rtld-malloc.h
+fn=strdup
+56 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../string/strcspn.c
+fn=strcspn
+32 6
+33 3
+34 2
+39 6
+40 4
+41 4
+42 4
+44 1
+47 9
+48 6
+51 4
+52 4
+53 4
+54 4
+56 4
+61 12
+62 24
+63 24
+64 24
+65 12
+67 72
+69 1
+70 4
+71 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../string/strstr.c
+fn=__GI_strstr
+45 1
+77 13
+82 3
+84 5
+85 2
+161 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/unix/sysv/linux/tls-internal.c
+fn=__glibc_tls_internal_free
+24 30
+25 6
+26 12
+27 12
+28 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86/cacheinfo.c
+fn=__x86_cacheinfo
+86 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86/cacheinfo.h
+fn=__x86_cacheinfo
+62 1
+65 3
+67 3
+68 1
+74 3
+76 3
+77 1
+81 2
+84 2
+86 2
+87 2
+88 2
+90 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/../multiarch/memcmp-sse2.S
+fn=bcmp
+59 1
+71 1
+72 1
+94 1
+95 1
+140 1
+141 1
+143 1
+144 1
+146 1
+147 1
+149 1
+150 1
+197 1
+198 1
+199 1
+200 1
+201 1
+202 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/../multiarch/memset-vec-unaligned-erms.S
+fn=memset
+137 25
+138 125
+143 25
+144 25
+147 15
+148 15
+236 15
+237 15
+249 15
+252 15
+253 15
+265 15
+266 15
+279 15
+280 15
+282 15
+285 1
+288 2
+291 35
+292 35
+293 35
+294 35
+295 35
+296 35
+297 35
+300 15
+301 15
+302 15
+303 15
+308 15
+354 10
+356 10
+357 10
+396 10
+397 10
+399 10
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/../multiarch/strchr-sse2.S
+fn=index
+32 18
+33 18
+34 18
+35 18
+36 18
+37 18
+38 18
+39 18
+40 18
+41 18
+42 18
+43 18
+44 18
+45 18
+46 18
+47 18
+48 18
+49 18
+50 15
+54 15
+55 15
+56 15
+57 15
+59 15
+63 3
+64 3
+65 3
+66 3
+67 3
+68 3
+69 3
+70 3
+71 3
+72 3
+73 3
+74 3
+75 3
+76 3
+77 3
+78 3
+79 3
+80 3
+81 3
+82 3
+83 3
+84 3
+85 3
+86 3
+138 3
+142 3
+143 3
+144 3
+145 3
+147 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/../multiarch/strcmp-sse2.S
+fn=strcmp
+98 482
+131 482
+132 482
+134 482
+135 482
+156 482
+157 482
+158 383
+159 383
+160 311
+161 311
+162 311
+163 311
+180 311
+181 311
+182 311
+183 311
+184 311
+185 311
+186 311
+191 37
+192 111
+201 208
+202 208
+203 208
+204 208
+205 208
+206 208
+207 208
+208 208
+209 198
+210 140
+211 140
+212 140
+214 198
+215 198
+216 198
+217 198
+218 198
+219 198
+229 10
+230 10
+231 10
+233 10
+239 10
+240 10
+241 10
+242 10
+243 10
+248 10
+250 4
+251 4
+252 8
+260 4
+261 4
+264 4
+265 4
+266 4
+267 4
+268 4
+269 4
+424 1
+425 1
+426 1
+427 1
+428 1
+430 1
+431 1
+432 1
+433 1
+434 1
+435 1
+436 1
+437 1
+440 1
+441 1
+442 1
+448 1
+449 1
+450 2
+454 1
+455 1
+458 1
+459 1
+460 1
+462 1
+463 1
+464 1
+468 1
+469 1
+470 1
+471 1
+472 1
+473 1
+542 13
+543 13
+544 13
+545 13
+546 13
+548 13
+549 13
+550 13
+551 13
+552 13
+553 13
+554 13
+661 5
+662 5
+663 5
+664 5
+665 5
+667 5
+668 5
+669 5
+670 5
+671 5
+672 5
+673 5
+780 15
+781 15
+782 15
+783 15
+784 15
+786 15
+787 15
+788 15
+789 15
+790 15
+791 15
+792 15
+793 7
+797 7
+798 7
+799 7
+805 7
+806 7
+807 14
+811 7
+812 7
+815 7
+816 7
+817 7
+819 7
+820 7
+821 7
+825 7
+826 7
+827 7
+828 7
+829 7
+830 7
+899 3
+900 3
+901 3
+902 3
+903 3
+905 3
+906 3
+907 3
+908 3
+909 3
+910 3
+911 3
+912 3
+916 3
+917 3
+918 3
+924 3
+925 3
+926 6
+930 3
+931 3
+934 3
+935 3
+936 3
+938 3
+939 3
+940 3
+944 3
+945 3
+946 3
+947 3
+948 3
+949 3
+956 1
+957 1
+959 1
+960 1
+962 1
+963 1
+964 1
+966 1
+967 1
+968 1
+972 1
+973 1
+974 1
+975 1
+976 1
+977 1
+1018 18
+1019 18
+1020 18
+1021 18
+1022 18
+1024 18
+1025 18
+1026 18
+1027 18
+1028 18
+1029 18
+1030 18
+1031 16
+1035 16
+1036 16
+1037 16
+1043 16
+1044 16
+1045 32
+1049 16
+1050 16
+1053 16
+1054 16
+1055 16
+1057 16
+1058 16
+1059 16
+1063 16
+1064 16
+1065 16
+1066 16
+1067 16
+1068 16
+1075 1
+1076 1
+1078 1
+1079 1
+1081 1
+1082 1
+1083 1
+1085 1
+1086 1
+1087 1
+1091 1
+1092 1
+1093 1
+1094 1
+1095 1
+1096 1
+1137 52
+1138 52
+1139 52
+1140 52
+1141 52
+1143 52
+1144 52
+1145 52
+1146 52
+1147 52
+1148 52
+1149 52
+1150 50
+1154 50
+1155 50
+1156 50
+1162 50
+1163 50
+1164 100
+1168 50
+1169 50
+1172 50
+1173 50
+1174 50
+1176 50
+1177 50
+1178 50
+1182 50
+1183 50
+1184 50
+1185 50
+1186 50
+1187 50
+1194 2
+1195 2
+1197 2
+1198 2
+1200 2
+1201 2
+1202 2
+1204 2
+1205 2
+1206 2
+1210 2
+1211 2
+1212 2
+1213 2
+1214 2
+1215 2
+1256 9
+1257 9
+1258 9
+1259 9
+1260 9
+1262 9
+1263 9
+1264 9
+1265 9
+1266 9
+1267 9
+1268 9
+1269 5
+1273 5
+1274 5
+1275 5
+1281 5
+1282 5
+1283 10
+1287 5
+1288 5
+1291 5
+1292 5
+1293 5
+1295 5
+1296 5
+1297 5
+1301 5
+1302 5
+1303 5
+1304 5
+1305 5
+1306 5
+1313 1
+1314 1
+1316 1
+1317 1
+1319 1
+1320 1
+1321 1
+1323 1
+1324 1
+1325 1
+1329 1
+1330 1
+1331 1
+1332 1
+1333 1
+1334 1
+1375 4
+1376 4
+1377 4
+1378 4
+1379 4
+1381 4
+1382 4
+1383 4
+1384 4
+1385 4
+1386 4
+1387 4
+1388 4
+1392 4
+1393 4
+1394 4
+1400 4
+1401 4
+1402 8
+1406 4
+1407 4
+1410 4
+1411 4
+1412 4
+1414 4
+1415 4
+1416 4
+1420 4
+1421 4
+1422 4
+1423 4
+1424 4
+1425 4
+1432 1
+1433 1
+1435 1
+1436 1
+1438 1
+1439 1
+1440 1
+1442 1
+1443 1
+1444 1
+1448 1
+1449 1
+1450 1
+1451 1
+1452 1
+1453 1
+1466 1
+1467 1
+1468 1
+1469 1
+1476 1
+1477 1
+1478 1
+1494 26
+1495 26
+1496 26
+1497 26
+1498 26
+1500 26
+1501 26
+1502 26
+1503 26
+1504 26
+1505 26
+1506 26
+1507 12
+1511 12
+1512 12
+1513 12
+1519 12
+1520 12
+1521 24
+1525 12
+1526 12
+1529 12
+1530 12
+1531 12
+1533 12
+1534 12
+1535 12
+1539 12
+1540 12
+1541 12
+1542 12
+1543 12
+1544 12
+1551 1
+1552 1
+1554 1
+1555 1
+1557 1
+1558 1
+1559 1
+1561 1
+1562 1
+1563 1
+1567 1
+1568 1
+1569 1
+1570 1
+1571 1
+1572 1
+1613 11
+1614 11
+1615 11
+1616 11
+1617 11
+1619 11
+1620 11
+1621 11
+1622 11
+1623 11
+1624 11
+1625 11
+1626 4
+1630 4
+1631 4
+1632 4
+1638 4
+1639 4
+1640 8
+1644 4
+1645 4
+1648 4
+1649 4
+1650 4
+1652 4
+1653 4
+1654 4
+1658 4
+1659 4
+1660 4
+1661 4
+1662 4
+1663 4
+1732 15
+1733 15
+1734 15
+1735 15
+1736 15
+1738 15
+1739 15
+1740 15
+1741 15
+1742 15
+1743 15
+1744 15
+1745 5
+1749 5
+1750 5
+1751 5
+1757 5
+1758 5
+1759 10
+1763 5
+1764 5
+1767 5
+1768 5
+1769 5
+1771 5
+1772 5
+1773 5
+1777 5
+1778 5
+1779 5
+1780 5
+1781 5
+1782 5
+1789 1
+1790 1
+1792 1
+1793 1
+1795 1
+1796 1
+1797 1
+1799 1
+1800 1
+1801 1
+1805 1
+1806 1
+1807 1
+1808 1
+1809 1
+1810 1
+1851 16
+1852 16
+1853 16
+1854 16
+1855 16
+1857 16
+1858 16
+1859 16
+1860 16
+1861 16
+1862 16
+1863 16
+1864 12
+1868 12
+1869 12
+1870 12
+1876 12
+1877 12
+1878 24
+1882 12
+1883 12
+1886 12
+1887 12
+1888 12
+1890 12
+1891 12
+1892 12
+1896 12
+1897 12
+1898 12
+1899 12
+1900 12
+1901 12
+1908 1
+1909 1
+1911 1
+1912 1
+1914 1
+1915 1
+1916 1
+1918 1
+1919 1
+1920 1
+1924 1
+1925 1
+1926 1
+1927 1
+1928 1
+1929 1
+1970 10
+1971 10
+1972 10
+1973 10
+1974 10
+1976 10
+1977 10
+1978 10
+1979 10
+1980 10
+1981 10
+1982 10
+1984 5
+1988 5
+1989 5
+1990 5
+1996 5
+1997 5
+1999 10
+2003 5
+2004 5
+2007 5
+2008 5
+2009 5
+2011 5
+2012 5
+2013 5
+2017 5
+2018 5
+2019 5
+2020 5
+2021 5
+2022 5
+2029 1
+2030 1
+2032 1
+2033 1
+2035 1
+2036 1
+2037 1
+2039 1
+2040 1
+2041 1
+2045 1
+2046 1
+2047 1
+2048 1
+2049 1
+2050 1
+2093 128
+2095 208
+2096 208
+2097 208
+2098 208
+2099 280
+2104 482
+2110 482
+2111 482
+2119 482
+2120 482
+fn=strncmp
+98 1
+125 1
+126 1
+127 1
+128 1
+129 1
+131 1
+132 1
+134 1
+135 1
+156 1
+157 1
+158 1
+159 1
+201 1
+202 1
+203 1
+204 1
+205 1
+206 1
+207 1
+208 1
+209 1
+210 1
+211 1
+212 1
+214 1
+215 1
+216 1
+217 1
+218 1
+219 1
+1970 1
+1971 1
+1972 1
+1973 1
+1974 1
+1976 1
+1977 1
+1978 1
+1979 1
+1980 1
+1981 1
+1982 1
+2095 1
+2096 1
+2097 1
+2098 1
+2099 2
+2104 1
+2107 1
+2108 1
+2110 1
+2111 1
+2119 1
+2120 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/../multiarch/strlen-sse2.S
+fn=strlen
+57 17
+101 17
+102 17
+103 17
+104 17
+105 17
+106 17
+107 17
+109 17
+111 17
+142 17
+143 17
+144 17
+145 17
+146 17
+147 8
+149 8
+153 9
+154 9
+155 9
+156 9
+157 9
+158 9
+159 9
+160 9
+161 9
+162 9
+163 9
+164 9
+169 72
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-avx2.h
+fn=memrchr
+38 4
+40 3
+41 2
+42 3
+45 2
+46 2
+49 3
+52 6
+fn=rindex
+38 4
+40 3
+41 2
+42 3
+45 2
+46 2
+49 3
+52 6
+fn=strchrnul
+38 4
+40 3
+41 2
+42 3
+45 2
+46 2
+49 3
+52 6
+fn=strlen
+38 12
+40 9
+41 6
+42 9
+45 6
+46 6
+49 9
+52 18
+fn=strnlen
+38 8
+40 6
+41 4
+42 6
+45 4
+46 4
+49 6
+52 12
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-evex.h
+fn=memchr
+37 4
+38 3
+39 3
+42 2
+43 2
+45 2
+51 3
+54 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-memcmp.h
+fn=bcmp
+34 10
+35 4
+36 4
+37 6
+40 4
+41 4
+44 6
+47 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-memmove.h
+fn=memcpy@@GLIBC_2.14
+56 8
+57 12
+60 12
+61 8
+74 8
+77 8
+85 8
+93 8
+96 20
+fn=memmove
+56 6
+57 9
+60 9
+61 6
+74 6
+77 6
+85 6
+93 6
+96 15
+fn=mempcpy
+56 2
+57 3
+60 3
+61 2
+74 2
+77 2
+85 2
+93 2
+96 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-memset.h
+fn=memset
+54 20
+57 12
+58 8
+64 8
+73 8
+75 8
+85 8
+93 8
+96 20
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-sse4_2.h
+fn=strcspn
+36 5
+fn=strpbrk
+36 5
+fn=strspn
+36 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-strcasecmp.h
+fn=strcasecmp
+36 4
+37 2
+38 3
+41 2
+42 2
+45 3
+48 5
+fn=strcasecmp_l
+36 4
+37 2
+38 3
+41 2
+42 2
+45 3
+48 5
+fn=strncasecmp
+36 4
+37 2
+38 3
+41 2
+42 2
+45 3
+48 5
+fn=strncasecmp_l
+36 4
+37 2
+38 3
+41 2
+42 2
+45 3
+48 5
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-strcpy.h
+fn=stpcpy
+38 4
+39 3
+42 2
+43 2
+46 3
+49 3
+fn=strcat
+38 4
+39 3
+42 2
+43 2
+46 3
+49 3
+fn=strcpy
+38 4
+39 3
+42 2
+43 2
+46 3
+49 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/ifunc-strncpy.h
+fn=stpncpy
+35 5
+36 3
+39 2
+40 2
+43 3
+46 4
+fn=strncpy
+35 5
+36 3
+39 2
+40 2
+43 3
+46 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memchr-avx2.S
+fn=__memchr_avx2
+61 46
+68 46
+70 46
+73 46
+74 46
+76 46
+77 46
+78 46
+79 46
+82 46
+83 46
+86 46
+87 46
+89 46
+90 46
+91 1
+92 1
+94 2
+121 11
+122 11
+123 11
+124 22
+133 2
+134 2
+135 2
+136 4
+140 9
+141 9
+142 9
+143 18
+148 12
+149 12
+150 12
+151 24
+161 45
+162 45
+163 45
+165 45
+175 45
+176 45
+179 45
+180 45
+182 37
+183 37
+185 26
+186 26
+187 26
+188 26
+190 24
+191 24
+192 24
+193 24
+195 15
+196 15
+197 15
+198 15
+202 3
+203 3
+206 3
+207 3
+208 3
+209 3
+214 6
+224 3
+225 3
+226 3
+227 3
+228 3
+229 3
+230 3
+232 3
+238 3
+239 3
+257 8
+258 8
+261 7
+262 7
+266 3
+267 3
+270 1
+271 1
+272 1
+273 1
+274 1
+278 4
+286 3
+287 3
+288 3
+290 3
+291 3
+292 3
+294 2
+296 2
+297 2
+298 2
+302 2
+304 2
+305 4
+310 1
+312 1
+314 1
+315 1
+316 1
+317 1
+318 2
+321 1
+322 2
+338 4
+342 4
+344 4
+345 8
+366 4
+367 4
+368 4
+369 4
+371 1
+372 1
+375 1
+376 1
+379 1
+380 1
+401 1
+402 1
+403 1
+404 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memchr.c
+fn=memchr
+29 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memcmp.c
+fn=bcmp
+29 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memcmpeq.c
+fn=memcpy@@GLIBC_2.14
+29 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+fn=__memcpy_avx_unaligned_erms
+255 64273
+256 64273
+262 64273
+263 64273
+265 64155
+266 64155
+267 64155
+270 64093
+271 64093
+272 64093
+275 128186
+305 118
+306 118
+308 99
+309 99
+311 73
+315 73
+316 55
+317 55
+318 33
+319 33
+320 12
+321 12
+323 33
+325 55
+331 18
+332 18
+333 18
+334 18
+335 18
+342 19
+343 19
+344 19
+345 19
+347 19
+364 26
+365 26
+366 26
+367 26
+368 26
+375 47
+376 47
+377 47
+378 47
+379 47
+380 47
+381 94
+386 62
+387 62
+392 62
+393 62
+395 62
+396 62
+397 62
+399 15
+400 15
+401 15
+402 15
+403 15
+404 15
+405 15
+406 15
+407 15
+408 15
+409 15
+410 15
+411 15
+412 15
+413 30
+fn=memcpy
+210 19
+211 19
+217 45
+218 45
+220 31
+221 31
+222 31
+224 24
+225 24
+226 24
+228 24
+308 14
+309 14
+311 8
+315 8
+316 8
+317 8
+318 1
+319 1
+323 1
+325 8
+364 6
+365 6
+366 6
+367 6
+368 6
+375 7
+376 7
+377 7
+378 7
+379 7
+380 7
+381 7
+392 7
+393 7
+395 7
+396 7
+397 7
+fn=mempcpy
+197 26
+198 26
+199 26
+200 26
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memmove.c
+fn=memmove
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/mempcpy.c
+fn=mempcpy
+33 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memrchr.c
+fn=memrchr
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+fn=__memset_avx2_unaligned_erms
+198 28
+199 56
+204 28
+205 28
+206 18
+207 18
+208 18
+210 5
+211 5
+212 10
+229 13
+230 13
+236 13
+237 13
+249 13
+252 13
+253 13
+265 13
+266 13
+279 13
+280 13
+282 13
+285 6
+288 6
+291 6
+292 6
+293 6
+294 6
+295 6
+296 6
+297 12
+300 13
+301 13
+302 13
+303 13
+306 26
+341 10
+350 10
+351 10
+356 2
+357 2
+358 2
+359 2
+382 8
+383 8
+384 8
+407 2
+408 2
+413 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/memset.c
+fn=memset
+29 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/stpcpy.c
+fn=stpcpy
+33 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/stpncpy.c
+fn=stpncpy
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcasecmp.c
+fn=strcasecmp
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcasecmp_l.c
+fn=strcasecmp_l
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcat.c
+fn=strcat
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strchr-avx2.S
+fn=__strchr_avx2
+53 1
+55 1
+56 1
+57 1
+58 1
+59 1
+62 1
+63 1
+67 1
+68 1
+69 1
+70 1
+71 1
+72 1
+73 1
+74 1
+77 1
+85 1
+93 1
+94 2
+fn=__strchrnul_avx2
+53 12
+55 12
+56 12
+57 12
+58 12
+59 12
+62 12
+63 12
+67 12
+68 12
+69 12
+70 12
+71 12
+72 12
+73 12
+74 12
+87 12
+89 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strchr.c
+fn=index
+42 4
+43 2
+44 3
+47 2
+48 2
+51 3
+54 3
+65 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strchrnul.c
+fn=strchrnul
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcmp.c
+fn=strcmp
+47 4
+48 2
+49 3
+52 2
+53 2
+56 3
+59 3
+79 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcpy.c
+fn=strcpy
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strcspn.c
+fn=strcspn
+29 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strlen-avx2.S
+fn=__strlen_avx2
+52 44
+65 44
+66 44
+67 44
+70 44
+72 44
+73 44
+76 44
+77 44
+85 44
+86 44
+87 1
+92 2
+118 14
+131 14
+132 14
+133 14
+139 28
+168 14
+181 14
+182 14
+183 14
+189 28
+193 10
+206 10
+207 10
+208 10
+214 20
+221 43
+236 43
+242 43
+243 43
+244 43
+246 29
+247 29
+248 29
+249 29
+251 29
+252 29
+253 29
+254 29
+256 15
+257 15
+258 15
+259 15
+277 5
+278 10
+292 5
+293 5
+294 5
+295 5
+297 5
+298 5
+299 5
+301 5
+302 5
+303 5
+306 5
+307 5
+308 5
+309 5
+310 5
+312 5
+313 5
+314 5
+315 5
+392 5
+393 5
+394 5
+399 10
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strlen.c
+fn=strlen
+29 9
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strncase.c
+fn=strncasecmp
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strncase_l.c
+fn=strncasecmp_l
+31 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strncmp.c
+fn=strncmp
+43 4
+44 2
+45 3
+48 2
+49 2
+52 3
+55 5
+67 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strncpy.c
+fn=strncpy
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strnlen.c
+fn=strnlen
+31 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strpbrk.c
+fn=strpbrk
+29 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strrchr-avx2.S
+fn=__strrchr_avx2
+53 1
+54 1
+55 1
+57 1
+58 1
+62 1
+63 1
+64 1
+67 1
+69 1
+70 1
+71 1
+72 1
+97 1
+98 1
+99 1
+100 1
+101 1
+105 1
+106 1
+107 1
+108 1
+109 1
+110 1
+115 2
+156 1
+159 1
+160 1
+161 1
+162 1
+163 1
+164 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strrchr.c
+fn=rindex
+28 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/../sysdeps/x86_64/multiarch/strspn.c
+fn=strspn
+29 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/string/strdup.c
+fn=strdup
+40 18
+41 6
+44 6
+47 12
+48 9
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/sunrpc/rpc_thread.c
+fn=__rpc_thread_destroy
+21 30
+22 12
+24 12
+39 24
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-avx2.h
+fn=wcschr
+38 8
+40 6
+41 4
+42 6
+45 4
+46 4
+49 6
+52 12
+fn=wcscmp
+38 4
+40 3
+41 2
+42 3
+45 2
+46 2
+49 3
+52 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-evex.h
+fn=wmemchr
+37 8
+38 6
+39 6
+42 4
+43 4
+45 4
+51 6
+54 8
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-memcmp.h
+fn=wmemcmp
+34 5
+35 2
+36 2
+37 3
+40 2
+41 2
+44 3
+47 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-wcs.h
+fn=wcpncpy
+39 4
+40 3
+41 3
+44 2
+45 3
+48 4
+fn=wcscat
+39 4
+40 3
+41 3
+44 2
+45 3
+48 4
+fn=wcsncpy
+39 4
+40 3
+41 3
+44 2
+45 3
+48 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-wcslen.h
+fn=wcslen
+40 4
+41 2
+42 3
+45 2
+46 2
+49 3
+52 3
+fn=wcsnlen
+40 4
+41 2
+42 3
+45 2
+46 2
+49 3
+52 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/ifunc-wmemset.h
+fn=wmemset
+36 10
+37 6
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcpcpy.c
+fn=wcpncpy
+31 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcpncpy.c
+fn=wcpncpy
+31 1
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcscat.c
+fn=wcscat
+31 2
+fn=wcschr
+31 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcschr.c
+fn=wcschr
+31 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcscmp.c
+fn=wcscmp
+30 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcscpy.c
+fn=wcscpy
+42 4
+43 2
+44 3
+46 2
+47 3
+50 3
+60 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcslen.c
+fn=wcslen
+29 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcsncpy.c
+fn=wcsncpy
+31 2
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wcsnlen.c
+fn=wcsnlen
+30 3
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wmemchr.c
+fn=wmemchr
+31 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wmemcmp.c
+fn=wmemcmp
+29 4
+fl=/usr/src/debug/glibc-2.40-24.fc41.x86_64/wcsmbs/../sysdeps/x86_64/multiarch/wmemset.c
+fn=wmemset
+31 4
+fl=???
+fn=(below main)
+0 12
+fn=???
+0 64847
+fn=__rust_alloc
+0 32053
+fn=__rust_alloc_zeroed
+0 4
+fn=__rust_dealloc
+0 32057
+fn=__rust_try
+0 132
+fn=alloc::raw_vec::RawVecInner<A>::deallocate
+0 704457
+fn=alloc::raw_vec::RawVecInner<A>::grow_amortized
+0 603
+fn=alloc::raw_vec::RawVecInner<A>::try_allocate_in
+0 317
+fn=alloc::raw_vec::finish_grow
+0 297
+fn=main
+0 10
+summary: 118011807

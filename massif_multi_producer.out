@@ -1,0 +1,1108 @@
+desc: --massif-out-file=massif_multi_producer.out
+cmd: ./target/debug/examples/multi_producer
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1592848
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=3610448
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=6354384
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=7726352
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=9663248
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=11680848
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=13698448
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=15716048
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=17733648
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=19751248
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=detailed
+n5: 28548 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 24576 0x15C6C7: alloc::raw_vec::RawVecInner<A>::try_allocate_in (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n2: 24576 0x120380: alloc::raw_vec::RawVecInner<A>::with_capacity_in (raw_vec.rs:418)
+   n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (mod.rs:803)
+     n1: 16384 0x10B25F: alloc::vec::Vec<T>::with_capacity (mod.rs:483)
+      n1: 16384 0x118423: oxidator::storage::ring_buffer::RingBuffer<T>::new (ring_buffer.rs:13)
+       n1: 16384 0x1135F3: oxidator::client::client::DisruptorClient::init_data_storage (client.rs:46)
+        n1: 16384 0x111362: multi_producer::main (multi_producer_sample.rs:103)
+         n1: 16384 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+          n1: 16384 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+           n1: 16384 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+            n1: 16384 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+             n1: 16384 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+              n1: 16384 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+               n1: 16384 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                n1: 16384 0x1459DF: {closure#0} (rt.rs:168)
+                 n1: 16384 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                  n1: 16384 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                   n1: 16384 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                    n1: 16384 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                     n1: 16384 0x110186: std::rt::lang_start (rt.rs:198)
+                      n0: 16384 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (mod.rs:803)
+     n1: 8192 0x10B117: with_capacity<core::sync::atomic::AtomicI64> (mod.rs:483)
+      n1: 8192 0x10B117: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter (spec_from_iter_nested.rs:54)
+       n1: 8192 0x10C4F9: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter (spec_from_iter.rs:34)
+        n1: 8192 0x10C4AB: <alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter (mod.rs:3424)
+         n1: 8192 0x10DD70: core::iter::traits::iterator::Iterator::collect (iterator.rs:1971)
+          n1: 8192 0x121815: oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new (sequencer.rs:143)
+           n1: 8192 0x1137F1: oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer (client.rs:95)
+            n1: 8192 0x111372: multi_producer::main (multi_producer_sample.rs:103)
+             n1: 8192 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 8192 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 8192 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 8192 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 8192 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 8192 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 8192 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 8192 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 8192 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 8192 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 8192 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 8192 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 8192 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 8192 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1204 0x11C8B1: alloc::alloc::alloc (alloc.rs:96)
+  n2: 1204 0x11C9B9: alloc::alloc::Global::alloc_impl (alloc.rs:192)
+   n1: 1040 0x11C7FD: allocate (alloc.rs:254)
+    n1: 1040 0x11C7FD: alloc::alloc::exchange_malloc (alloc.rs:349)
+     n0: 1040 in 15 places, all below massif's threshold (1.00%)
+   n0: 164 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x14B1F1: alloc (alloc.rs:96)
+  n1: 1024 0x14B1F1: alloc_impl (alloc.rs:192)
+   n1: 1024 0x14B1F1: allocate (alloc.rs:254)
+    n1: 1024 0x14B1F1: try_allocate_in<alloc::alloc::Global> (raw_vec.rs:472)
+     n1: 1024 0x14B1F1: with_capacity_in<alloc::alloc::Global> (raw_vec.rs:418)
+      n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (raw_vec.rs:186)
+       n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:803)
+        n1: 1024 0x14B1F1: with_capacity<u8> (mod.rs:483)
+         n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x14B1F1: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x14B1F1: {closure#0} (stdio.rs:677)
+             n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+              n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:518)
+               n1: 1024 0x14B1F1: std::sync::poison::once::Once::call_once_force::{{closure}} (once.rs:214)
+                n1: 1024 0x109C23: std::sys::sync::once::futex::Once::call (futex.rs:176)
+                 n1: 1024 0x1095C8: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (mut_ptr.rs:533)
+                  n1: 1024 0x1095C8: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:517)
+                   n1: 1024 0x148363: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:396)
+                    n1: 1024 0x148363: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+                     n1: 1024 0x148363: stdout (stdio.rs:677)
+                      n1: 1024 0x148363: print_to<std::io::stdio::Stdout> (stdio.rs:1122)
+                       n1: 1024 0x148363: std::io::stdio::_print (stdio.rs:1233)
+                        n1: 1024 0x111358: multi_producer::main (multi_producer_sample.rs:100)
+                         n1: 1024 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+                           n1: 1024 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                            n1: 1024 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                             n1: 1024 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                              n1: 1024 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                               n1: 1024 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                                n1: 1024 0x1459DF: {closure#0} (rt.rs:168)
+                                 n1: 1024 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                                  n1: 1024 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                                   n1: 1024 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                                    n1: 1024 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                                     n1: 1024 0x110186: std::rt::lang_start (rt.rs:198)
+                                      n0: 1024 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 912 0x4010F03: UnknownInlinedFun (rtld-malloc.h:44)
+  n1: 912 0x4010F03: allocate_dtv (dl-tls.c:395)
+   n1: 912 0x4011A01: _dl_allocate_tls (dl-tls.c:673)
+    n1: 912 0x4907B23: allocate_stack (allocatestack.c:431)
+     n1: 912 0x4907B23: pthread_create@@GLIBC_2.34 (pthread_create.c:660)
+      n2: 912 0x14E6F0: std::sys::pal::unix::thread::Thread::new (thread.rs:85)
+       n1: 608 0x12270A: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 608 0x121DFF: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 608 0x121D9D: spawn<oxidator::consumer::orchestrator::{impl#0}::start::{closure_env#0}, ()> (mod.rs:399)
+          n1: 608 0x121D9D: std::thread::spawn (mod.rs:729)
+           n1: 608 0x127C1F: <oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start (orchestrator.rs:24)
+            n1: 608 0x1117FD: multi_producer::main (multi_producer_sample.rs:115)
+             n1: 608 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 608 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 608 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 608 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 608 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 608 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 608 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 608 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 608 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 608 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 608 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 608 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 608 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 608 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+       n1: 304 0x11E4BB: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 304 0x11DADD: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 304 0x11DA89: spawn<multi_producer::main::{closure_env#0}, ()> (mod.rs:399)
+          n1: 304 0x11DA89: std::thread::spawn (mod.rs:729)
+           n1: 304 0x112D35: multi_producer::main (multi_producer_sample.rs:122)
+            n1: 304 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+             n1: 304 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+              n1: 304 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+               n1: 304 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                n1: 304 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                 n1: 304 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                  n1: 304 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                   n1: 304 0x1459DF: {closure#0} (rt.rs:168)
+                    n1: 304 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                     n1: 304 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                      n1: 304 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                       n1: 304 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                        n1: 304 0x110186: std::rt::lang_start (rt.rs:198)
+                         n0: 304 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n0: 832 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=11
+#-----------
+time=20760048
+mem_heap_B=28548
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=29384024
+mem_heap_B=28516
+mem_heap_extra_B=412
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=31153043
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=33170643
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=34179443
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=36070943
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=37962443
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=39853943
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=41745443
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=43636943
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=45528443
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=47419943
+mem_heap_B=29044
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=49572426
+mem_heap_B=29908
+mem_heap_extra_B=516
+mem_stacks_B=0
+heap_tree=peak
+n6: 29908 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 24576 0x15C6C7: alloc::raw_vec::RawVecInner<A>::try_allocate_in (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n2: 24576 0x120380: alloc::raw_vec::RawVecInner<A>::with_capacity_in (raw_vec.rs:418)
+   n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (mod.rs:803)
+     n1: 16384 0x10B25F: alloc::vec::Vec<T>::with_capacity (mod.rs:483)
+      n1: 16384 0x118423: oxidator::storage::ring_buffer::RingBuffer<T>::new (ring_buffer.rs:13)
+       n1: 16384 0x1135F3: oxidator::client::client::DisruptorClient::init_data_storage (client.rs:46)
+        n1: 16384 0x111362: multi_producer::main (multi_producer_sample.rs:103)
+         n1: 16384 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+          n1: 16384 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+           n1: 16384 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+            n1: 16384 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+             n1: 16384 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+              n1: 16384 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+               n1: 16384 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                n1: 16384 0x1459DF: {closure#0} (rt.rs:168)
+                 n1: 16384 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                  n1: 16384 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                   n1: 16384 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                    n1: 16384 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                     n1: 16384 0x110186: std::rt::lang_start (rt.rs:198)
+                      n0: 16384 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (mod.rs:803)
+     n1: 8192 0x10B117: with_capacity<core::sync::atomic::AtomicI64> (mod.rs:483)
+      n1: 8192 0x10B117: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter (spec_from_iter_nested.rs:54)
+       n1: 8192 0x10C4F9: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter (spec_from_iter.rs:34)
+        n1: 8192 0x10C4AB: <alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter (mod.rs:3424)
+         n1: 8192 0x10DD70: core::iter::traits::iterator::Iterator::collect (iterator.rs:1971)
+          n1: 8192 0x121815: oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new (sequencer.rs:143)
+           n1: 8192 0x1137F1: oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer (client.rs:95)
+            n1: 8192 0x111372: multi_producer::main (multi_producer_sample.rs:103)
+             n1: 8192 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 8192 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 8192 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 8192 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 8192 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 8192 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 8192 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 8192 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 8192 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 8192 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 8192 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 8192 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 8192 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 8192 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1824 0x4010F03: UnknownInlinedFun (rtld-malloc.h:44)
+  n1: 1824 0x4010F03: allocate_dtv (dl-tls.c:395)
+   n1: 1824 0x4011A01: _dl_allocate_tls (dl-tls.c:673)
+    n1: 1824 0x4907B23: allocate_stack (allocatestack.c:431)
+     n1: 1824 0x4907B23: pthread_create@@GLIBC_2.34 (pthread_create.c:660)
+      n2: 1824 0x14E6F0: std::sys::pal::unix::thread::Thread::new (thread.rs:85)
+       n1: 1216 0x11E4BB: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 1216 0x11DADD: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 1216 0x11DA89: spawn<multi_producer::main::{closure_env#0}, ()> (mod.rs:399)
+          n1: 1216 0x11DA89: std::thread::spawn (mod.rs:729)
+           n1: 1216 0x112D35: multi_producer::main (multi_producer_sample.rs:122)
+            n1: 1216 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+             n1: 1216 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+              n1: 1216 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+               n1: 1216 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                n1: 1216 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                 n1: 1216 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                  n1: 1216 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                   n1: 1216 0x1459DF: {closure#0} (rt.rs:168)
+                    n1: 1216 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                     n1: 1216 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                      n1: 1216 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                       n1: 1216 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                        n1: 1216 0x110186: std::rt::lang_start (rt.rs:198)
+                         n0: 1216 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+       n1: 608 0x12270A: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 608 0x121DFF: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 608 0x121D9D: spawn<oxidator::consumer::orchestrator::{impl#0}::start::{closure_env#0}, ()> (mod.rs:399)
+          n1: 608 0x121D9D: std::thread::spawn (mod.rs:729)
+           n1: 608 0x127C1F: <oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start (orchestrator.rs:24)
+            n1: 608 0x1117FD: multi_producer::main (multi_producer_sample.rs:115)
+             n1: 608 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 608 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 608 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 608 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 608 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 608 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 608 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 608 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 608 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 608 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 608 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 608 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 608 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 608 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1428 0x11C8B1: alloc::alloc::alloc (alloc.rs:96)
+  n2: 1428 0x11C9B9: alloc::alloc::Global::alloc_impl (alloc.rs:192)
+   n1: 1264 0x11C7FD: allocate (alloc.rs:254)
+    n1: 1264 0x11C7FD: alloc::alloc::exchange_malloc (alloc.rs:349)
+     n0: 1264 in 15 places, all below massif's threshold (1.00%)
+   n0: 164 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x14B1F1: alloc (alloc.rs:96)
+  n1: 1024 0x14B1F1: alloc_impl (alloc.rs:192)
+   n1: 1024 0x14B1F1: allocate (alloc.rs:254)
+    n1: 1024 0x14B1F1: try_allocate_in<alloc::alloc::Global> (raw_vec.rs:472)
+     n1: 1024 0x14B1F1: with_capacity_in<alloc::alloc::Global> (raw_vec.rs:418)
+      n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (raw_vec.rs:186)
+       n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:803)
+        n1: 1024 0x14B1F1: with_capacity<u8> (mod.rs:483)
+         n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x14B1F1: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x14B1F1: {closure#0} (stdio.rs:677)
+             n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+              n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:518)
+               n1: 1024 0x14B1F1: std::sync::poison::once::Once::call_once_force::{{closure}} (once.rs:214)
+                n1: 1024 0x109C23: std::sys::sync::once::futex::Once::call (futex.rs:176)
+                 n1: 1024 0x1095C8: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (mut_ptr.rs:533)
+                  n1: 1024 0x1095C8: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:517)
+                   n1: 1024 0x148363: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:396)
+                    n1: 1024 0x148363: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+                     n1: 1024 0x148363: stdout (stdio.rs:677)
+                      n1: 1024 0x148363: print_to<std::io::stdio::Stdout> (stdio.rs:1122)
+                       n1: 1024 0x148363: std::io::stdio::_print (stdio.rs:1233)
+                        n1: 1024 0x111358: multi_producer::main (multi_producer_sample.rs:100)
+                         n1: 1024 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+                           n1: 1024 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                            n1: 1024 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                             n1: 1024 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                              n1: 1024 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                               n1: 1024 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                                n1: 1024 0x1459DF: {closure#0} (rt.rs:168)
+                                 n1: 1024 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                                  n1: 1024 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                                   n1: 1024 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                                    n1: 1024 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                                     n1: 1024 0x110186: std::rt::lang_start (rt.rs:198)
+                                      n0: 1024 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n0: 672 in 12 places, all below massif's threshold (1.00%)
+ n1: 384 0x10A13B: alloc::raw_vec::finish_grow (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n1: 384 0x15C61E: alloc::raw_vec::RawVecInner<A>::grow_amortized (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n0: 384 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=24
+#-----------
+time=55657952
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=57493111
+mem_heap_B=29764
+mem_heap_extra_B=500
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=59329127
+mem_heap_B=29764
+mem_heap_extra_B=500
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=61509286
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=64333926
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=67158566
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=69983206
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=71395526
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=72807846
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=74220166
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=75632486
+mem_heap_B=29748
+mem_heap_extra_B=492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=86752461
+mem_heap_B=29652
+mem_heap_extra_B=476
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=89576244
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=90988564
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=92400884
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=detailed
+n6: 29668 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 24576 0x15C6C7: alloc::raw_vec::RawVecInner<A>::try_allocate_in (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n2: 24576 0x120380: alloc::raw_vec::RawVecInner<A>::with_capacity_in (raw_vec.rs:418)
+   n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (mod.rs:803)
+     n1: 16384 0x10B25F: alloc::vec::Vec<T>::with_capacity (mod.rs:483)
+      n1: 16384 0x118423: oxidator::storage::ring_buffer::RingBuffer<T>::new (ring_buffer.rs:13)
+       n1: 16384 0x1135F3: oxidator::client::client::DisruptorClient::init_data_storage (client.rs:46)
+        n1: 16384 0x111362: multi_producer::main (multi_producer_sample.rs:103)
+         n1: 16384 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+          n1: 16384 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+           n1: 16384 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+            n1: 16384 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+             n1: 16384 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+              n1: 16384 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+               n1: 16384 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                n1: 16384 0x1459DF: {closure#0} (rt.rs:168)
+                 n1: 16384 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                  n1: 16384 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                   n1: 16384 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                    n1: 16384 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                     n1: 16384 0x110186: std::rt::lang_start (rt.rs:198)
+                      n0: 16384 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (mod.rs:803)
+     n1: 8192 0x10B117: with_capacity<core::sync::atomic::AtomicI64> (mod.rs:483)
+      n1: 8192 0x10B117: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter (spec_from_iter_nested.rs:54)
+       n1: 8192 0x10C4F9: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter (spec_from_iter.rs:34)
+        n1: 8192 0x10C4AB: <alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter (mod.rs:3424)
+         n1: 8192 0x10DD70: core::iter::traits::iterator::Iterator::collect (iterator.rs:1971)
+          n1: 8192 0x121815: oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new (sequencer.rs:143)
+           n1: 8192 0x1137F1: oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer (client.rs:95)
+            n1: 8192 0x111372: multi_producer::main (multi_producer_sample.rs:103)
+             n1: 8192 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 8192 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 8192 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 8192 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 8192 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 8192 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 8192 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 8192 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 8192 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 8192 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 8192 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 8192 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 8192 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 8192 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1824 0x4010F03: UnknownInlinedFun (rtld-malloc.h:44)
+  n1: 1824 0x4010F03: allocate_dtv (dl-tls.c:395)
+   n1: 1824 0x4011A01: _dl_allocate_tls (dl-tls.c:673)
+    n1: 1824 0x4907B23: allocate_stack (allocatestack.c:431)
+     n1: 1824 0x4907B23: pthread_create@@GLIBC_2.34 (pthread_create.c:660)
+      n2: 1824 0x14E6F0: std::sys::pal::unix::thread::Thread::new (thread.rs:85)
+       n1: 1216 0x11E4BB: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 1216 0x11DADD: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 1216 0x11DA89: spawn<multi_producer::main::{closure_env#0}, ()> (mod.rs:399)
+          n1: 1216 0x11DA89: std::thread::spawn (mod.rs:729)
+           n1: 1216 0x112D35: multi_producer::main (multi_producer_sample.rs:122)
+            n1: 1216 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+             n1: 1216 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+              n1: 1216 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+               n1: 1216 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                n1: 1216 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                 n1: 1216 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                  n1: 1216 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                   n1: 1216 0x1459DF: {closure#0} (rt.rs:168)
+                    n1: 1216 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                     n1: 1216 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                      n1: 1216 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                       n1: 1216 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                        n1: 1216 0x110186: std::rt::lang_start (rt.rs:198)
+                         n0: 1216 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+       n1: 608 0x12270A: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 608 0x121DFF: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 608 0x121D9D: spawn<oxidator::consumer::orchestrator::{impl#0}::start::{closure_env#0}, ()> (mod.rs:399)
+          n1: 608 0x121D9D: std::thread::spawn (mod.rs:729)
+           n1: 608 0x127C1F: <oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start (orchestrator.rs:24)
+            n1: 608 0x1117FD: multi_producer::main (multi_producer_sample.rs:115)
+             n1: 608 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 608 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 608 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 608 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 608 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 608 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 608 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 608 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 608 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 608 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 608 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 608 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 608 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 608 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1268 0x11C8B1: alloc::alloc::alloc (alloc.rs:96)
+  n2: 1268 0x11C9B9: alloc::alloc::Global::alloc_impl (alloc.rs:192)
+   n1: 1104 0x11C7FD: allocate (alloc.rs:254)
+    n1: 1104 0x11C7FD: alloc::alloc::exchange_malloc (alloc.rs:349)
+     n0: 1104 in 15 places, all below massif's threshold (1.00%)
+   n0: 164 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x14B1F1: alloc (alloc.rs:96)
+  n1: 1024 0x14B1F1: alloc_impl (alloc.rs:192)
+   n1: 1024 0x14B1F1: allocate (alloc.rs:254)
+    n1: 1024 0x14B1F1: try_allocate_in<alloc::alloc::Global> (raw_vec.rs:472)
+     n1: 1024 0x14B1F1: with_capacity_in<alloc::alloc::Global> (raw_vec.rs:418)
+      n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (raw_vec.rs:186)
+       n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:803)
+        n1: 1024 0x14B1F1: with_capacity<u8> (mod.rs:483)
+         n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x14B1F1: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x14B1F1: {closure#0} (stdio.rs:677)
+             n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+              n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:518)
+               n1: 1024 0x14B1F1: std::sync::poison::once::Once::call_once_force::{{closure}} (once.rs:214)
+                n1: 1024 0x109C23: std::sys::sync::once::futex::Once::call (futex.rs:176)
+                 n1: 1024 0x1095C8: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (mut_ptr.rs:533)
+                  n1: 1024 0x1095C8: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:517)
+                   n1: 1024 0x148363: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:396)
+                    n1: 1024 0x148363: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+                     n1: 1024 0x148363: stdout (stdio.rs:677)
+                      n1: 1024 0x148363: print_to<std::io::stdio::Stdout> (stdio.rs:1122)
+                       n1: 1024 0x148363: std::io::stdio::_print (stdio.rs:1233)
+                        n1: 1024 0x111358: multi_producer::main (multi_producer_sample.rs:100)
+                         n1: 1024 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+                           n1: 1024 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                            n1: 1024 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                             n1: 1024 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                              n1: 1024 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                               n1: 1024 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                                n1: 1024 0x1459DF: {closure#0} (rt.rs:168)
+                                 n1: 1024 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                                  n1: 1024 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                                   n1: 1024 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                                    n1: 1024 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                                     n1: 1024 0x110186: std::rt::lang_start (rt.rs:198)
+                                      n0: 1024 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n0: 592 in 12 places, all below massif's threshold (1.00%)
+ n1: 384 0x10A13B: alloc::raw_vec::finish_grow (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n1: 384 0x15C61E: alloc::raw_vec::RawVecInner<A>::grow_amortized (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n0: 384 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=39
+#-----------
+time=93813204
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=95225524
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=96637844
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=98050164
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=99462484
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=detailed
+n6: 29668 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 24576 0x15C6C7: alloc::raw_vec::RawVecInner<A>::try_allocate_in (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n2: 24576 0x120380: alloc::raw_vec::RawVecInner<A>::with_capacity_in (raw_vec.rs:418)
+   n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (mod.rs:803)
+     n1: 16384 0x10B25F: alloc::vec::Vec<T>::with_capacity (mod.rs:483)
+      n1: 16384 0x118423: oxidator::storage::ring_buffer::RingBuffer<T>::new (ring_buffer.rs:13)
+       n1: 16384 0x1135F3: oxidator::client::client::DisruptorClient::init_data_storage (client.rs:46)
+        n1: 16384 0x111362: multi_producer::main (multi_producer_sample.rs:103)
+         n1: 16384 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+          n1: 16384 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+           n1: 16384 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+            n1: 16384 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+             n1: 16384 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+              n1: 16384 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+               n1: 16384 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                n1: 16384 0x1459DF: {closure#0} (rt.rs:168)
+                 n1: 16384 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                  n1: 16384 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                   n1: 16384 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                    n1: 16384 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                     n1: 16384 0x110186: std::rt::lang_start (rt.rs:198)
+                      n0: 16384 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (mod.rs:803)
+     n1: 8192 0x10B117: with_capacity<core::sync::atomic::AtomicI64> (mod.rs:483)
+      n1: 8192 0x10B117: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter (spec_from_iter_nested.rs:54)
+       n1: 8192 0x10C4F9: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter (spec_from_iter.rs:34)
+        n1: 8192 0x10C4AB: <alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter (mod.rs:3424)
+         n1: 8192 0x10DD70: core::iter::traits::iterator::Iterator::collect (iterator.rs:1971)
+          n1: 8192 0x121815: oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new (sequencer.rs:143)
+           n1: 8192 0x1137F1: oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer (client.rs:95)
+            n1: 8192 0x111372: multi_producer::main (multi_producer_sample.rs:103)
+             n1: 8192 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 8192 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 8192 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 8192 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 8192 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 8192 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 8192 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 8192 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 8192 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 8192 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 8192 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 8192 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 8192 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 8192 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1824 0x4010F03: UnknownInlinedFun (rtld-malloc.h:44)
+  n1: 1824 0x4010F03: allocate_dtv (dl-tls.c:395)
+   n1: 1824 0x4011A01: _dl_allocate_tls (dl-tls.c:673)
+    n1: 1824 0x4907B23: allocate_stack (allocatestack.c:431)
+     n1: 1824 0x4907B23: pthread_create@@GLIBC_2.34 (pthread_create.c:660)
+      n2: 1824 0x14E6F0: std::sys::pal::unix::thread::Thread::new (thread.rs:85)
+       n1: 1216 0x11E4BB: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 1216 0x11DADD: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 1216 0x11DA89: spawn<multi_producer::main::{closure_env#0}, ()> (mod.rs:399)
+          n1: 1216 0x11DA89: std::thread::spawn (mod.rs:729)
+           n1: 1216 0x112D35: multi_producer::main (multi_producer_sample.rs:122)
+            n1: 1216 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+             n1: 1216 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+              n1: 1216 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+               n1: 1216 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                n1: 1216 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                 n1: 1216 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                  n1: 1216 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                   n1: 1216 0x1459DF: {closure#0} (rt.rs:168)
+                    n1: 1216 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                     n1: 1216 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                      n1: 1216 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                       n1: 1216 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                        n1: 1216 0x110186: std::rt::lang_start (rt.rs:198)
+                         n0: 1216 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+       n1: 608 0x12270A: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 608 0x121DFF: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 608 0x121D9D: spawn<oxidator::consumer::orchestrator::{impl#0}::start::{closure_env#0}, ()> (mod.rs:399)
+          n1: 608 0x121D9D: std::thread::spawn (mod.rs:729)
+           n1: 608 0x127C1F: <oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start (orchestrator.rs:24)
+            n1: 608 0x1117FD: multi_producer::main (multi_producer_sample.rs:115)
+             n1: 608 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 608 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 608 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 608 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 608 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 608 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 608 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 608 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 608 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 608 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 608 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 608 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 608 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 608 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1268 0x11C8B1: alloc::alloc::alloc (alloc.rs:96)
+  n2: 1268 0x11C9B9: alloc::alloc::Global::alloc_impl (alloc.rs:192)
+   n1: 1104 0x11C7FD: allocate (alloc.rs:254)
+    n1: 1104 0x11C7FD: alloc::alloc::exchange_malloc (alloc.rs:349)
+     n0: 1104 in 15 places, all below massif's threshold (1.00%)
+   n0: 164 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x14B1F1: alloc (alloc.rs:96)
+  n1: 1024 0x14B1F1: alloc_impl (alloc.rs:192)
+   n1: 1024 0x14B1F1: allocate (alloc.rs:254)
+    n1: 1024 0x14B1F1: try_allocate_in<alloc::alloc::Global> (raw_vec.rs:472)
+     n1: 1024 0x14B1F1: with_capacity_in<alloc::alloc::Global> (raw_vec.rs:418)
+      n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (raw_vec.rs:186)
+       n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:803)
+        n1: 1024 0x14B1F1: with_capacity<u8> (mod.rs:483)
+         n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x14B1F1: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x14B1F1: {closure#0} (stdio.rs:677)
+             n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+              n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:518)
+               n1: 1024 0x14B1F1: std::sync::poison::once::Once::call_once_force::{{closure}} (once.rs:214)
+                n1: 1024 0x109C23: std::sys::sync::once::futex::Once::call (futex.rs:176)
+                 n1: 1024 0x1095C8: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (mut_ptr.rs:533)
+                  n1: 1024 0x1095C8: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:517)
+                   n1: 1024 0x148363: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:396)
+                    n1: 1024 0x148363: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+                     n1: 1024 0x148363: stdout (stdio.rs:677)
+                      n1: 1024 0x148363: print_to<std::io::stdio::Stdout> (stdio.rs:1122)
+                       n1: 1024 0x148363: std::io::stdio::_print (stdio.rs:1233)
+                        n1: 1024 0x111358: multi_producer::main (multi_producer_sample.rs:100)
+                         n1: 1024 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+                           n1: 1024 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                            n1: 1024 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                             n1: 1024 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                              n1: 1024 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                               n1: 1024 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                                n1: 1024 0x1459DF: {closure#0} (rt.rs:168)
+                                 n1: 1024 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                                  n1: 1024 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                                   n1: 1024 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                                    n1: 1024 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                                     n1: 1024 0x110186: std::rt::lang_start (rt.rs:198)
+                                      n0: 1024 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n0: 592 in 12 places, all below massif's threshold (1.00%)
+ n1: 384 0x10A13B: alloc::raw_vec::finish_grow (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n1: 384 0x15C61E: alloc::raw_vec::RawVecInner<A>::grow_amortized (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n0: 384 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=100874804
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=102287124
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=103699444
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=105111764
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=106524084
+mem_heap_B=29668
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=detailed
+n6: 29668 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 24576 0x15C6C7: alloc::raw_vec::RawVecInner<A>::try_allocate_in (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n2: 24576 0x120380: alloc::raw_vec::RawVecInner<A>::with_capacity_in (raw_vec.rs:418)
+   n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 16384 0x10B25F: with_capacity_in<core::cell::UnsafeCell<multi_producer::Event>, alloc::alloc::Global> (mod.rs:803)
+     n1: 16384 0x10B25F: alloc::vec::Vec<T>::with_capacity (mod.rs:483)
+      n1: 16384 0x118423: oxidator::storage::ring_buffer::RingBuffer<T>::new (ring_buffer.rs:13)
+       n1: 16384 0x1135F3: oxidator::client::client::DisruptorClient::init_data_storage (client.rs:46)
+        n1: 16384 0x111362: multi_producer::main (multi_producer_sample.rs:103)
+         n1: 16384 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+          n1: 16384 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+           n1: 16384 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+            n1: 16384 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+             n1: 16384 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+              n1: 16384 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+               n1: 16384 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                n1: 16384 0x1459DF: {closure#0} (rt.rs:168)
+                 n1: 16384 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                  n1: 16384 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                   n1: 16384 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                    n1: 16384 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                     n1: 16384 0x110186: std::rt::lang_start (rt.rs:198)
+                      n0: 16384 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (raw_vec.rs:186)
+    n1: 8192 0x10B117: with_capacity_in<core::sync::atomic::AtomicI64, alloc::alloc::Global> (mod.rs:803)
+     n1: 8192 0x10B117: with_capacity<core::sync::atomic::AtomicI64> (mod.rs:483)
+      n1: 8192 0x10B117: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<T,I>>::from_iter (spec_from_iter_nested.rs:54)
+       n1: 8192 0x10C4F9: <alloc::vec::Vec<T> as alloc::vec::spec_from_iter::SpecFromIter<T,I>>::from_iter (spec_from_iter.rs:34)
+        n1: 8192 0x10C4AB: <alloc::vec::Vec<T> as core::iter::traits::collect::FromIterator<T>>::from_iter (mod.rs:3424)
+         n1: 8192 0x10DD70: core::iter::traits::iterator::Iterator::collect (iterator.rs:1971)
+          n1: 8192 0x121815: oxidator::coordinator::sequencer::MultiProducerSequencer<W>::new (sequencer.rs:143)
+           n1: 8192 0x1137F1: oxidator::client::client::WaitStrategyLayer<T,D,W>::with_multi_producer (client.rs:95)
+            n1: 8192 0x111372: multi_producer::main (multi_producer_sample.rs:103)
+             n1: 8192 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 8192 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 8192 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 8192 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 8192 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 8192 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 8192 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 8192 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 8192 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 8192 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 8192 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 8192 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 8192 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 8192 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1824 0x4010F03: UnknownInlinedFun (rtld-malloc.h:44)
+  n1: 1824 0x4010F03: allocate_dtv (dl-tls.c:395)
+   n1: 1824 0x4011A01: _dl_allocate_tls (dl-tls.c:673)
+    n1: 1824 0x4907B23: allocate_stack (allocatestack.c:431)
+     n1: 1824 0x4907B23: pthread_create@@GLIBC_2.34 (pthread_create.c:660)
+      n2: 1824 0x14E6F0: std::sys::pal::unix::thread::Thread::new (thread.rs:85)
+       n1: 1216 0x11E4BB: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 1216 0x11DADD: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 1216 0x11DA89: spawn<multi_producer::main::{closure_env#0}, ()> (mod.rs:399)
+          n1: 1216 0x11DA89: std::thread::spawn (mod.rs:729)
+           n1: 1216 0x112D35: multi_producer::main (multi_producer_sample.rs:122)
+            n1: 1216 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+             n1: 1216 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+              n1: 1216 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+               n1: 1216 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                n1: 1216 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                 n1: 1216 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                  n1: 1216 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                   n1: 1216 0x1459DF: {closure#0} (rt.rs:168)
+                    n1: 1216 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                     n1: 1216 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                      n1: 1216 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                       n1: 1216 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                        n1: 1216 0x110186: std::rt::lang_start (rt.rs:198)
+                         n0: 1216 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+       n1: 608 0x12270A: std::thread::Builder::spawn_unchecked_ (mod.rs:598)
+        n1: 608 0x121DFF: std::thread::Builder::spawn_unchecked (mod.rs:467)
+         n1: 608 0x121D9D: spawn<oxidator::consumer::orchestrator::{impl#0}::start::{closure_env#0}, ()> (mod.rs:399)
+          n1: 608 0x121D9D: std::thread::spawn (mod.rs:729)
+           n1: 608 0x127C1F: <oxidator::consumer::orchestrator::ConsumerOrchestrator as oxidator::traits::traits::Orchestrator>::start (orchestrator.rs:24)
+            n1: 608 0x1117FD: multi_producer::main (multi_producer_sample.rs:115)
+             n1: 608 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+              n1: 608 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+               n1: 608 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                n1: 608 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                 n1: 608 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                  n1: 608 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                   n1: 608 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                    n1: 608 0x1459DF: {closure#0} (rt.rs:168)
+                     n1: 608 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                      n1: 608 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                       n1: 608 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                        n1: 608 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                         n1: 608 0x110186: std::rt::lang_start (rt.rs:198)
+                          n0: 608 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n1: 1268 0x11C8B1: alloc::alloc::alloc (alloc.rs:96)
+  n2: 1268 0x11C9B9: alloc::alloc::Global::alloc_impl (alloc.rs:192)
+   n1: 1104 0x11C7FD: allocate (alloc.rs:254)
+    n1: 1104 0x11C7FD: alloc::alloc::exchange_malloc (alloc.rs:349)
+     n0: 1104 in 15 places, all below massif's threshold (1.00%)
+   n0: 164 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x14B1F1: alloc (alloc.rs:96)
+  n1: 1024 0x14B1F1: alloc_impl (alloc.rs:192)
+   n1: 1024 0x14B1F1: allocate (alloc.rs:254)
+    n1: 1024 0x14B1F1: try_allocate_in<alloc::alloc::Global> (raw_vec.rs:472)
+     n1: 1024 0x14B1F1: with_capacity_in<alloc::alloc::Global> (raw_vec.rs:418)
+      n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (raw_vec.rs:186)
+       n1: 1024 0x14B1F1: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:803)
+        n1: 1024 0x14B1F1: with_capacity<u8> (mod.rs:483)
+         n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x14B1F1: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x14B1F1: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x14B1F1: {closure#0} (stdio.rs:677)
+             n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+              n1: 1024 0x14B1F1: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:518)
+               n1: 1024 0x14B1F1: std::sync::poison::once::Once::call_once_force::{{closure}} (once.rs:214)
+                n1: 1024 0x109C23: std::sys::sync::once::futex::Once::call (futex.rs:176)
+                 n1: 1024 0x1095C8: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (mut_ptr.rs:533)
+                  n1: 1024 0x1095C8: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:517)
+                   n1: 1024 0x148363: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:396)
+                    n1: 1024 0x148363: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:310)
+                     n1: 1024 0x148363: stdout (stdio.rs:677)
+                      n1: 1024 0x148363: print_to<std::io::stdio::Stdout> (stdio.rs:1122)
+                       n1: 1024 0x148363: std::io::stdio::_print (stdio.rs:1233)
+                        n1: 1024 0x111358: multi_producer::main (multi_producer_sample.rs:100)
+                         n1: 1024 0x1189EA: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x11534D: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:152)
+                           n1: 1024 0x1101A0: std::rt::lang_start::{{closure}} (rt.rs:199)
+                            n1: 1024 0x1459DF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:284)
+                             n1: 1024 0x1459DF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:587)
+                              n1: 1024 0x1459DF: try<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:550)
+                               n1: 1024 0x1459DF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:358)
+                                n1: 1024 0x1459DF: {closure#0} (rt.rs:168)
+                                 n1: 1024 0x1459DF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:587)
+                                  n1: 1024 0x1459DF: try<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:550)
+                                   n1: 1024 0x1459DF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:358)
+                                    n1: 1024 0x1459DF: std::rt::lang_start_internal (rt.rs:164)
+                                     n1: 1024 0x110186: std::rt::lang_start (rt.rs:198)
+                                      n0: 1024 0x112E6D: main (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+ n0: 592 in 12 places, all below massif's threshold (1.00%)
+ n1: 384 0x10A13B: alloc::raw_vec::finish_grow (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+  n1: 384 0x15C61E: alloc::raw_vec::RawVecInner<A>::grow_amortized (in /home/akshay_kumar/Code/OSS/rust/oxidater/target/debug/examples/multi_producer)
+   n0: 384 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=109349436
+mem_heap_B=29476
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=115434634
+mem_heap_B=29156
+mem_heap_extra_B=388
+mem_stacks_B=0
+heap_tree=empty
