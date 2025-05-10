@@ -49,7 +49,7 @@ impl Task<Event> for OxidatorDummyTask {
     }
 }
 
-const OXIDATOR_BUFFER_SIZE: usize = 16384;
+const OXIDATOR_BUFFER_SIZE: usize = 512;
 
 // --- std::sync::mpsc benchmark (Single Producer, Multi Consumer) ---
 fn bench_std_mpsc_spmc(c: &mut Criterion) {
