@@ -2,8 +2,7 @@ use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use crate::coordinator::DefaultSequenceBarrier;
 use crate::traits::{AtomicSequence, Sequence, Sequencer, WaitStrategy};
-use crate::utils::min_sequence;
-use crate::utils::BitMap;
+use crate::utils::{min_sequence, BitMap};
 
 pub struct SingleProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,

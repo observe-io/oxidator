@@ -41,5 +41,10 @@ name = "crossbeam_channel_bench"
 path = "benchmarks/crossbeam_channel_bench.rs"
 harness = false # Required for criterion benchmarks
 
+[[bench]]
+name = "channel_benchmark" # Name of the benchmark binary
+path = "benchmarks/crossbeam_channel.rs"
+harness = false # Use criterion's harness
+
 [profile.release]
 debug = true
