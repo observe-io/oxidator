@@ -1,8 +1,9 @@
-use std::sync::{Arc};
-use std::sync::atomic::{AtomicBool, Ordering, AtomicI64};
+use std::sync::Arc;
+use std::sync::atomic::{AtomicBool, Ordering};
 use crate::coordinator::DefaultSequenceBarrier;
 use crate::traits::{AtomicSequence, Sequence, Sequencer, WaitStrategy};
 use crate::utils::min_sequence;
+use crate::utils::BitMap;
 
 pub struct SingleProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,
@@ -54,13 +55,13 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         loop {
             let raw_consumer_idx = self.slowest_consumer_sequence.load();
 
-            let consumer_idx = if (raw_consumer_idx == 0 && curr_producer_idx >= (self.buffer_size as i64 - 1)) {
+            let consumer_idx = if raw_consumer_idx == 0 && curr_producer_idx >= self.buffer_size as i64 - 1 {
                 self.buffer_size as i64
             } else {
                 raw_consumer_idx
             };
 
-            let available_slots = if (consumer_idx <= curr_producer_idx) {
+            let available_slots = if consumer_idx <= curr_producer_idx {
                 self.buffer_size as i64 - (curr_producer_idx - consumer_idx)
             } else {
                 consumer_idx - curr_producer_idx
@@ -83,7 +84,7 @@ impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
         (low, high)
     }
 
-    fn publish(&self, low: Sequence, high: Sequence) {
+    fn publish(&self, _low: Sequence, high: Sequence) {
         self.cursor.store(high);
 
         if !self.gating_sequences.is_empty() {
@@ -128,7 +129,7 @@ pub struct MultiProducerSequencer<W: WaitStrategy> {
     cursor: Arc<AtomicSequence>,
 
     highest_claimed_sequence: AtomicSequence,
-    sequence_tracker: Arc<Vec<AtomicI64>>,
+    sequence_tracker: Arc<BitMap>,
 }
 
 impl<W: WaitStrategy> MultiProducerSequencer<W> {
@@ -140,7 +141,7 @@ impl<W: WaitStrategy> MultiProducerSequencer<W> {
             is_done: Arc::new(AtomicBool::from(false)),
             cursor: Arc::new(AtomicSequence::default()),
             highest_claimed_sequence: AtomicSequence::default(),
-            sequence_tracker: Arc::new((0..buffer_size).map(|_| AtomicI64::new(0)).collect()),
+            sequence_tracker: Arc::new(BitMap::new(buffer_size)),
         }
     }
 
@@ -202,13 +203,8 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
     }
 
     fn publish(&self, low: Sequence, high: Sequence) {
-        let buffer_size = self.buffer_size as i64;
-
         for i in low..=high {
-            let idx = (i % buffer_size) as usize;
-            if idx < self.sequence_tracker.len() {
-                self.sequence_tracker[idx].store(1, Ordering::SeqCst);
-            }
+            self.sequence_tracker.set(i);
         }
 
         let mut current_cursor = self.cursor.load();
@@ -219,14 +215,7 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
             let mut max_committable_sequence = current_cursor;
 
             while next_cursor <= highest_claimed {
-                let idx = (next_cursor % buffer_size) as usize;
-                let tracker_value = if idx < self.sequence_tracker.len() {
-                    self.sequence_tracker[idx].load(Ordering::SeqCst)
-                } else {
-                    0
-                };
-
-                if tracker_value == 1 {
+                if self.sequence_tracker.is_set(next_cursor) {
                     max_committable_sequence = next_cursor;
                     next_cursor += 1;
                 } else {
@@ -237,10 +226,7 @@ impl<W: WaitStrategy> Sequencer for MultiProducerSequencer<W> {
             if max_committable_sequence > current_cursor {
                 if self.cursor.compare_exchange(current_cursor, max_committable_sequence) {
                     for i in current_cursor + 1..=max_committable_sequence {
-                        let idx = (i % buffer_size) as usize;
-                         if idx < self.sequence_tracker.len() {
-                            self.sequence_tracker[idx].store(0, Ordering::SeqCst);
-                        }
+                        self.sequence_tracker.unset(i);
                     }
                     self.wait_strategy.signal();
                     break;
@@ -294,7 +280,7 @@ mod tests_sequencer {
         let sequencer = SingleProducerSequencer::new(wait_strategy, 8);
         
         let gating_seq = create_new_dating_sequence(100);
-        let mut sequencer = {
+        let sequencer = {
             let mut s = sequencer;
             s.add_gating_sequence(gating_seq.clone());
             s
@@ -315,7 +301,7 @@ mod tests_sequencer {
         let sequencer = SingleProducerSequencer::new(wait_strategy, 8);
         
         let gating_seq = create_new_dating_sequence(100);
-        let mut sequencer = {
+        let sequencer = {
             let mut s = sequencer;
             s.add_gating_sequence(gating_seq.clone());
             s
