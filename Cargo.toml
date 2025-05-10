@@ -24,27 +24,18 @@ path = "samples/multi_producer_sample.rs"
 name = "single_producer"
 path = "samples/single_producer_sample.rs"
 
-
-[[bin]]
-name = "channel_bench"
-path = "benchmarks/channel_bench.rs"
-
-[[bin]]
-name = "crossbeam_bench"
-path = "benchmarks/crossbeam_bench.rs"
-
 [dev-dependencies]
 criterion = "0.5"
 
 [[bench]]
-name = "crossbeam_channel_bench"
-path = "benchmarks/crossbeam_channel_bench.rs"
-harness = false # Required for criterion benchmarks
+name = "multi-producer"
+path = "benchmarks/multi_producer_bench.rs"
+harness = false
 
 [[bench]]
-name = "channel_benchmark" # Name of the benchmark binary
-path = "benchmarks/crossbeam_channel.rs"
-harness = false # Use criterion's harness
+name = "single-producer"
+path = "benchmarks/single_producer_bench.rs"
+harness = false
 
 [profile.release]
 debug = true
