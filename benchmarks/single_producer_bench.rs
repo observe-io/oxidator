@@ -191,5 +191,57 @@ fn bench_oxidator_disruptor_spmc(c: &mut Criterion) {
     group.finish();
 }
 
-criterion_group!(benches, bench_std_mpsc_spmc, bench_crossbeam_spmc, bench_oxidator_disruptor_spmc);
+fn bench_oxidator_disruptor_batched(c: &mut Criterion) {
+    let mut group = c.benchmark_group("batched");
+    group.throughput(Throughput::Elements(TOTAL_MESSAGES as u64));
+
+    group.bench_function(BenchmarkId::new("oxidator_disruptor_batched", TOTAL_MESSAGES), |b| {
+        b.iter(|| {
+            let (producers, mut factory) = DisruptorClient
+                .init_data_storage::<Event, RingBuffer<Event>>(OXIDATOR_BUFFER_SIZE)
+                .with_yielding_wait_strategy()
+                .with_single_producer()
+                .build::<OxidatorDummyTask>(NUM_PRODUCERS);
+
+            let processed_count = Arc::new(AtomicUsize::new(0));
+
+            let dummy_task = Box::new(OxidatorDummyTask::default());
+            let dummy_idx = factory.add_task(dummy_task, vec![]);
+
+            let benchmark_task = Box::new(OxidatorBenchmarkTask {
+                processed_count: processed_count.clone(),
+            });
+            factory.add_task(benchmark_task, vec![dummy_idx]);
+
+            let mut consumer_handles = factory.init_consumers().start();
+
+            let producer = producers[0].clone();
+            let producer_join_handle = thread::spawn(move || {
+                for batch_start in (0..TOTAL_MESSAGES).step_by(10) {
+                    let batch: Vec<Event> = (batch_start..batch_start + 10)
+                        .map(|i| Event(black_box(i)))
+                        .collect();
+                    producer.write(batch, |slot, _seq, event_ref| {
+                        *slot = *event_ref;
+                    });
+                }
+                producer
+            });
+
+            let producer_after_join = producer_join_handle.join().unwrap();
+            producer_after_join.drain();
+
+            consumer_handles.join();
+
+            assert_eq!(
+                processed_count.load(Ordering::Relaxed),
+                TOTAL_MESSAGES,
+                "Mismatch in processed messages count"
+            );
+        });
+    });
+    group.finish();
+}
+
+criterion_group!(benches, bench_std_mpsc_spmc, bench_crossbeam_spmc, bench_oxidator_disruptor_spmc, bench_oxidator_disruptor_batched);
 criterion_main!(benches);
