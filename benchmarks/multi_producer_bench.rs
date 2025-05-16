@@ -16,7 +16,7 @@ use oxidator::RingBuffer;
 
 const NUM_PRODUCERS: usize = 2;
 const NUM_CONSUMERS: usize = 4;
-const NUM_MESSAGES_PER_PRODUCER: usize = 1000;
+const NUM_MESSAGES_PER_PRODUCER: usize = 512;
 const TOTAL_MESSAGES: usize = NUM_PRODUCERS * NUM_MESSAGES_PER_PRODUCER;
 
 // Define Event and Task for Oxidator benchmark
