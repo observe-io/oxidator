@@ -16,7 +16,7 @@ use oxidator::RingBuffer;
 
 const NUM_PRODUCERS: usize = 2;
 const NUM_CONSUMERS: usize = 4;
-const NUM_MESSAGES_PER_PRODUCER: usize = 512;
+const NUM_MESSAGES_PER_PRODUCER: usize = 520;
 const TOTAL_MESSAGES: usize = NUM_PRODUCERS * NUM_MESSAGES_PER_PRODUCER;
 
 // Define Event and Task for Oxidator benchmark
@@ -52,7 +52,8 @@ impl Task<Event> for OxidatorDummyTask {
     }
 }
 
-const OXIDATOR_BUFFER_SIZE: usize = 512;
+const OXIDATOR_BUFFER_SIZE: usize = 1024;
+const OXIDATOR_BATCH_SIZE: usize = 64; // Added for batched benchmark
 
 // --- std::sync::mpsc benchmark (Single Producer, Multi Consumer) ---
 fn bench_std_mpsc_spmc(c: &mut Criterion) {
@@ -143,107 +144,124 @@ fn bench_crossbeam_spmc(c: &mut Criterion) {
     group.finish();
 }
 
-// --- Oxidator Disruptor benchmark (Single Producer, Multi Consumer) ---
-fn bench_oxidator_disruptor_spmc(c: &mut Criterion) {
-    let mut group = c.benchmark_group("spmc");
+// --- Oxidator MPMC Unbatched Benchmark ---
+fn bench_oxidator_mpmc_unbatched(c: &mut Criterion) {
+    let mut group = c.benchmark_group("oxidator_mpmc");
     group.throughput(Throughput::Elements(TOTAL_MESSAGES as u64));
 
-    group.bench_function(BenchmarkId::new("oxidator_disruptor_spmc", TOTAL_MESSAGES), |b| {
-        b.iter(|| {
-            let (producers, mut factory) = DisruptorClient
-                .init_data_storage::<Event, RingBuffer<Event>>(OXIDATOR_BUFFER_SIZE)
-                .with_yielding_wait_strategy()
-                .with_single_producer()
-                .build::<OxidatorDummyTask>(NUM_PRODUCERS);
+    group.bench_function(
+        BenchmarkId::new("oxidator_mpmc_unbatched", TOTAL_MESSAGES),
+        |b| {
+            b.iter(|| {
+                let processed_count = Arc::new(AtomicUsize::new(0));
 
-            let processed_count = Arc::new(AtomicUsize::new(0));
+                let (producers_group, mut consumer_factory) = DisruptorClient
+                    .init_data_storage::<Event, RingBuffer<Event>>(OXIDATOR_BUFFER_SIZE)
+                    .with_yielding_wait_strategy()
+                    .with_multi_producer()
+                    .build::<OxidatorDummyTask>(NUM_PRODUCERS);
 
-            let dummy_task = Box::new(OxidatorDummyTask::default());
-            let dummy_idx = factory.add_task(dummy_task, vec![]);
+                let benchmark_task_instance = Box::new(OxidatorBenchmarkTask {
+                    processed_count: processed_count.clone(),
+                });
+                consumer_factory.add_task(benchmark_task_instance, vec![]);
 
-            let benchmark_task = Box::new(OxidatorBenchmarkTask {
-                processed_count: processed_count.clone(),
-            });
-            factory.add_task(benchmark_task, vec![dummy_idx]);
+                let mut consumer_handle = consumer_factory.init_consumers().start();
 
-            let mut consumer_handles = factory.init_consumers().start();
-
-            let producer = producers[0].clone();
-            let producer_join_handle = thread::spawn(move || {
-                for i in 0..TOTAL_MESSAGES {
-                    producer.write(vec![Event(black_box(i))], |slot, _seq, event_ref| {
-                        *slot = *event_ref;
-                    });
+                let mut producer_handles = Vec::with_capacity(NUM_PRODUCERS);
+                for producer_idx in 0..NUM_PRODUCERS {
+                    let producer = producers_group[producer_idx % producers_group.len()].clone();
+                    producer_handles.push(thread::spawn(move || {
+                        for msg_idx in 0..NUM_MESSAGES_PER_PRODUCER {
+                            let event_val = producer_idx * NUM_MESSAGES_PER_PRODUCER + msg_idx;
+                            let event = Event(black_box(event_val));
+                            producer.write(vec![event], |slot_in_ring, _sequence, source_event| {
+                                *slot_in_ring = *source_event;
+                            });
+                        }
+                    }));
                 }
-                producer
+
+                for handle in producer_handles {
+                    handle.join().unwrap();
+                }
+
+                if !producers_group.is_empty() {
+                    producers_group[0].drain();
+                }
+                consumer_handle.join();
+
+                assert_eq!(processed_count.load(Ordering::Relaxed), TOTAL_MESSAGES);
             });
-
-            let producer_after_join = producer_join_handle.join().unwrap();
-            producer_after_join.drain();
-
-            consumer_handles.join();
-
-            assert_eq!(
-                processed_count.load(Ordering::Relaxed),
-                TOTAL_MESSAGES,
-                "Mismatch in processed messages count"
-            );
-        });
-    });
+        },
+    );
     group.finish();
 }
 
-fn bench_oxidator_disruptor_batched(c: &mut Criterion) {
-    let mut group = c.benchmark_group("batched");
+// --- Oxidator MPMC Batched Benchmark ---
+fn bench_oxidator_mpmc_batched(c: &mut Criterion) {
+    let mut group = c.benchmark_group("oxidator_mpmc");
     group.throughput(Throughput::Elements(TOTAL_MESSAGES as u64));
 
-    group.bench_function(BenchmarkId::new("oxidator_disruptor_batched", TOTAL_MESSAGES), |b| {
-        b.iter(|| {
-            let (producers, mut factory) = DisruptorClient
-                .init_data_storage::<Event, RingBuffer<Event>>(OXIDATOR_BUFFER_SIZE)
-                .with_yielding_wait_strategy()
-                .with_single_producer()
-                .build::<OxidatorDummyTask>(NUM_PRODUCERS);
+    group.bench_function(
+        BenchmarkId::new("oxidator_mpmc_batched", TOTAL_MESSAGES),
+        |b| {
+            b.iter(|| {
+                let processed_count = Arc::new(AtomicUsize::new(0));
 
-            let processed_count = Arc::new(AtomicUsize::new(0));
+                let (producers_group, mut consumer_factory) = DisruptorClient
+                    .init_data_storage::<Event, RingBuffer<Event>>(OXIDATOR_BUFFER_SIZE)
+                    .with_yielding_wait_strategy()
+                    .with_multi_producer()
+                    .build::<OxidatorDummyTask>(NUM_PRODUCERS);
 
-            let dummy_task = Box::new(OxidatorDummyTask::default());
-            let dummy_idx = factory.add_task(dummy_task, vec![]);
+                let benchmark_task_instance = Box::new(OxidatorBenchmarkTask {
+                    processed_count: processed_count.clone(),
+                });
+                consumer_factory.add_task(benchmark_task_instance, vec![]);
+                
+                let mut consumer_handle = consumer_factory.init_consumers().start();
 
-            let benchmark_task = Box::new(OxidatorBenchmarkTask {
-                processed_count: processed_count.clone(),
-            });
-            factory.add_task(benchmark_task, vec![dummy_idx]);
+                let mut producer_handles = Vec::with_capacity(NUM_PRODUCERS);
+                for producer_idx in 0..NUM_PRODUCERS {
+                    let producer = producers_group[producer_idx % producers_group.len()].clone();
+                    producer_handles.push(thread::spawn(move || {
+                        let mut local_event_buffer = Vec::with_capacity(OXIDATOR_BATCH_SIZE);
+                        for msg_idx in 0..NUM_MESSAGES_PER_PRODUCER {
+                            let event_val = producer_idx * NUM_MESSAGES_PER_PRODUCER + msg_idx;
+                            local_event_buffer.push(Event(black_box(event_val)));
 
-            let mut consumer_handles = factory.init_consumers().start();
-
-            let producer = producers[0].clone();
-            let producer_join_handle = thread::spawn(move || {
-                for batch_start in (0..TOTAL_MESSAGES).step_by(10) {
-                    let batch: Vec<Event> = (batch_start..batch_start + 10)
-                        .map(|i| Event(black_box(i)))
-                        .collect();
-                    producer.write(batch, |slot, _seq, event_ref| {
-                        *slot = *event_ref;
-                    });
+                            if local_event_buffer.len() == OXIDATOR_BATCH_SIZE {
+                                let batch_to_send = std::mem::take(&mut local_event_buffer);
+                                producer.write(batch_to_send, |slot_in_ring, _sequence, source_event| {
+                                    *slot_in_ring = *source_event;
+                                });
+                                local_event_buffer = Vec::with_capacity(OXIDATOR_BATCH_SIZE);
+                            }
+                        }
+                        if !local_event_buffer.is_empty() {
+                            producer.write(local_event_buffer, |slot_in_ring, _sequence, source_event| {
+                                *slot_in_ring = *source_event;
+                            });
+                        }
+                    }));
                 }
-                producer
+
+                for handle in producer_handles {
+                    handle.join().unwrap();
+                }
+
+                if !producers_group.is_empty() {
+                    producers_group[0].drain();
+                }
+                consumer_handle.join();
+
+                assert_eq!(processed_count.load(Ordering::Relaxed), TOTAL_MESSAGES);
             });
-
-            let producer_after_join = producer_join_handle.join().unwrap();
-            producer_after_join.drain();
-
-            consumer_handles.join();
-
-            assert_eq!(
-                processed_count.load(Ordering::Relaxed),
-                TOTAL_MESSAGES,
-                "Mismatch in processed messages count"
-            );
-        });
-    });
+        },
+    );
     group.finish();
 }
 
-criterion_group!(benches, bench_std_mpsc_spmc, bench_crossbeam_spmc, bench_oxidator_disruptor_spmc, bench_oxidator_disruptor_batched);
+criterion_group!(benches, bench_std_mpsc_spmc, bench_crossbeam_spmc, bench_oxidator_mpmc_unbatched, bench_oxidator_mpmc_batched);
 criterion_main!(benches);
