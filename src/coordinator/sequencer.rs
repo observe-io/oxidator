@@ -46,41 +46,24 @@ impl<W: WaitStrategy> Clone for SingleProducerSequencer<W> {
 impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     type Barrier = DefaultSequenceBarrier<W>;
     fn next(&self, count: usize) -> (Sequence, Sequence) {
-        let curr_producer_idx = self.current_producer_sequence.load();
+        assert!(count > 0, "Count must be > 0");
+        let current_producer_claimed_high = self.current_producer_sequence.load();
+        let desired_next_producer_high = current_producer_claimed_high + count as i64;
 
-        let low = curr_producer_idx + 1;
-        let high = curr_producer_idx + count as i64;
-
-        loop {
-            let raw_consumer_idx = self.slowest_consumer_sequence.load();
-
-            let consumer_idx = if raw_consumer_idx == 0 && curr_producer_idx >= self.buffer_size as i64 - 1 {
-                self.buffer_size as i64
-            } else {
-                raw_consumer_idx
-            };
-
-            let available_slots = if consumer_idx <= curr_producer_idx {
-                self.buffer_size as i64 - (curr_producer_idx - consumer_idx)
-            } else {
-                consumer_idx - curr_producer_idx
-            };
-            
-            if available_slots < count as i64 {
-
-                let updated_consumer_idx = min_sequence(&self.gating_sequences);
-
-                self.slowest_consumer_sequence.store(updated_consumer_idx);
-
-                continue;
+        if !self.gating_sequences.is_empty() {
+            loop {
+                let min_consumer_seq = min_sequence(&self.gating_sequences);
+                if desired_next_producer_high - min_consumer_seq < self.buffer_size as i64 {
+                    break;
+                }
+                std::thread::yield_now();
             }
-
-            break;
         }
 
-        self.current_producer_sequence.store(high);
+        self.current_producer_sequence.store(desired_next_producer_high);
 
-        (low, high)
+        let low = current_producer_claimed_high + 1;
+        (low, desired_next_producer_high)
     }
 
     fn publish(&self, _low: Sequence, high: Sequence) {
