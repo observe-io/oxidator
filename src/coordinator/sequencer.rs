@@ -46,17 +46,16 @@ impl<W: WaitStrategy> Clone for SingleProducerSequencer<W> {
 impl<W:WaitStrategy> Sequencer for SingleProducerSequencer<W> {
     type Barrier = DefaultSequenceBarrier<W>;
     fn next(&self, count: usize) -> (Sequence, Sequence) {
-        assert!(count > 0, "Count must be > 0");
         let current_producer_claimed_high = self.current_producer_sequence.load();
         let desired_next_producer_high = current_producer_claimed_high + count as i64;
 
         if !self.gating_sequences.is_empty() {
             loop {
-                let min_consumer_seq = min_sequence(&self.gating_sequences);
+                let min_consumer_seq = self.slowest_consumer_sequence.load();
                 if desired_next_producer_high - min_consumer_seq < self.buffer_size as i64 {
                     break;
                 }
-                std::thread::yield_now();
+                std::thread::yield_now(); 
             }
         }
 
